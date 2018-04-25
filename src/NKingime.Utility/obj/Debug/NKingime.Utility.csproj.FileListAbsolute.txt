@@ -1,0 +1,4 @@
+F:\Kingime\NKingime\NKingimeV2.0\src\NKingime.Utility\bin\Debug\NKingime.Utility.dll
+F:\Kingime\NKingime\NKingimeV2.0\src\NKingime.Utility\bin\Debug\NKingime.Utility.pdb
+F:\Kingime\NKingime\NKingimeV2.0\src\NKingime.Utility\obj\Debug\NKingime.Utility.dll
+F:\Kingime\NKingime\NKingimeV2.0\src\NKingime.Utility\obj\Debug\NKingime.Utility.pdb

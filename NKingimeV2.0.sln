@@ -1,0 +1,59 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "app", "app", "{BDC434F6-FEC0-49D3-AC92-7ADA68B95C75}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{9C8310D2-B68B-4251-8FFE-9E4E89FA8AB7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{31B4AAC8-7405-490C-BC2C-9968D69A96B9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NKingime.Core", "src\NKingime.Core\NKingime.Core.csproj", "{A41DC1F7-3E5B-417E-A916-D0364A284A16}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NKingime.Entity", "src\NKingime.Entity\NKingime.Entity.csproj", "{B951CC84-CCAE-4B9D-8A26-AF3795CE0341}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NKingime.Utility", "src\NKingime.Utility\NKingime.Utility.csproj", "{3F63C2D8-1670-45D2-A0AD-5748B344FA98}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NKingime.Web.Mvc", "src\NKingime.Web.Mvc\NKingime.Web.Mvc.csproj", "{3728370B-08DA-4D39-B23F-BDD815386354}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NKingime.App.Mvc", "app\NKingime.App.Mvc\NKingime.App.Mvc.csproj", "{932B1A05-FEBB-45CB-9DE8-825F2C0AD6DC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A41DC1F7-3E5B-417E-A916-D0364A284A16}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A41DC1F7-3E5B-417E-A916-D0364A284A16}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A41DC1F7-3E5B-417E-A916-D0364A284A16}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A41DC1F7-3E5B-417E-A916-D0364A284A16}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B951CC84-CCAE-4B9D-8A26-AF3795CE0341}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B951CC84-CCAE-4B9D-8A26-AF3795CE0341}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B951CC84-CCAE-4B9D-8A26-AF3795CE0341}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B951CC84-CCAE-4B9D-8A26-AF3795CE0341}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3F63C2D8-1670-45D2-A0AD-5748B344FA98}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F63C2D8-1670-45D2-A0AD-5748B344FA98}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3F63C2D8-1670-45D2-A0AD-5748B344FA98}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3F63C2D8-1670-45D2-A0AD-5748B344FA98}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3728370B-08DA-4D39-B23F-BDD815386354}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3728370B-08DA-4D39-B23F-BDD815386354}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3728370B-08DA-4D39-B23F-BDD815386354}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3728370B-08DA-4D39-B23F-BDD815386354}.Release|Any CPU.Build.0 = Release|Any CPU
+		{932B1A05-FEBB-45CB-9DE8-825F2C0AD6DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{932B1A05-FEBB-45CB-9DE8-825F2C0AD6DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{932B1A05-FEBB-45CB-9DE8-825F2C0AD6DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{932B1A05-FEBB-45CB-9DE8-825F2C0AD6DC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{A41DC1F7-3E5B-417E-A916-D0364A284A16} = {9C8310D2-B68B-4251-8FFE-9E4E89FA8AB7}
+		{B951CC84-CCAE-4B9D-8A26-AF3795CE0341} = {9C8310D2-B68B-4251-8FFE-9E4E89FA8AB7}
+		{3F63C2D8-1670-45D2-A0AD-5748B344FA98} = {9C8310D2-B68B-4251-8FFE-9E4E89FA8AB7}
+		{3728370B-08DA-4D39-B23F-BDD815386354} = {9C8310D2-B68B-4251-8FFE-9E4E89FA8AB7}
+		{932B1A05-FEBB-45CB-9DE8-825F2C0AD6DC} = {BDC434F6-FEC0-49D3-AC92-7ADA68B95C75}
+	EndGlobalSection
+EndGlobal
