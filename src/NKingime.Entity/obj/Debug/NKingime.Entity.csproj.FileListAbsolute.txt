@@ -1,9 +1,0 @@
-F:\Kingime\NKingime\NKingimeV2.0\src\NKingime.Entity\bin\Debug\NKingime.Entity.dll
-F:\Kingime\NKingime\NKingimeV2.0\src\NKingime.Entity\bin\Debug\NKingime.Entity.pdb
-F:\Kingime\NKingime\NKingimeV2.0\src\NKingime.Entity\bin\Debug\NKingime.Core.dll
-F:\Kingime\NKingime\NKingimeV2.0\src\NKingime.Entity\bin\Debug\NKingime.Utility.dll
-F:\Kingime\NKingime\NKingimeV2.0\src\NKingime.Entity\bin\Debug\NKingime.Core.pdb
-F:\Kingime\NKingime\NKingimeV2.0\src\NKingime.Entity\bin\Debug\NKingime.Utility.pdb
-F:\Kingime\NKingime\NKingimeV2.0\src\NKingime.Entity\obj\Debug\NKingime.Entity.csprojResolveAssemblyReference.cache
-F:\Kingime\NKingime\NKingimeV2.0\src\NKingime.Entity\obj\Debug\NKingime.Entity.dll
-F:\Kingime\NKingime\NKingimeV2.0\src\NKingime.Entity\obj\Debug\NKingime.Entity.pdb
