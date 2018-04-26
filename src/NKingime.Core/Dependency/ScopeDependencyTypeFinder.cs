@@ -6,12 +6,12 @@ using NKingime.Core.Reflection;
 namespace NKingime.Core.Dependency
 {
     /// <summary>
-    /// <see cref="IScopeependency"/>接口实现类查找器
+    /// <see cref="IScopeependency"/>接口实现类查找器。
     /// </summary>
     public class ScopeDependencyTypeFinder : ITypeFinder
     {
         /// <summary>
-        /// 初始化一个<see cref="ScopeDependencyTypeFinder"/>类型的新实例
+        /// 初始化一个<see cref="ScopeDependencyTypeFinder"/>类型的新实例。
         /// </summary>
         public ScopeDependencyTypeFinder()
         {
@@ -19,14 +19,14 @@ namespace NKingime.Core.Dependency
         }
 
         /// <summary>
-        /// 获取或设置 程序集查找器
+        /// 获取或设置 程序集查找器。
         /// </summary>
         public IAllAssemblyFinder AssemblyFinder { get; set; }
 
         /// <summary>
-        /// 查找指定条件的项
+        /// 查找指定条件的项。
         /// </summary>
-        /// <param name="predicate">筛选条件</param>
+        /// <param name="predicate">基于谓词筛选表达式。</param>
         /// <returns></returns>
         public Type[] Find(Func<Type, bool> predicate)
         {
@@ -34,7 +34,7 @@ namespace NKingime.Core.Dependency
         }
 
         /// <summary>
-        /// 查找所有项
+        /// 查找所有项。
         /// </summary>
         /// <returns></returns>
         public Type[] FindAll()

@@ -11,7 +11,7 @@ namespace NKingime.Core.Config
         private const string DbContextsKey = "dbContexts";
 
         /// <summary>
-        /// 数据库上下文集合。
+        /// 获取或设置 数据库上下文集合。
         /// </summary>
         [ConfigurationProperty(DbContextsKey)]
         public DbContextCollection DbContexts

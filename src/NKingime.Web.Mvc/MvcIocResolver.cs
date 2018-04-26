@@ -6,19 +6,19 @@ using NKingime.Core.Dependency;
 namespace NKingime.Web.Mvc
 {
     /// <summary>
-    /// MVC依赖注入对象解析器
+    /// MVC依赖注入对象解析器。
     /// </summary>
     public class MvcIocResolver : IIocResolver
     {
         /// <summary>
-        /// 从全局容器中解析对象委托
+        /// 从全局容器中解析对象委托。
         /// </summary>
         public static Func<Type, object> GlobalResolveFunc { private get; set; }
 
         /// <summary>
-        /// 获取指定类型的实例
+        /// 获取指定类型的实例。
         /// </summary>
-        /// <typeparam name="T">类型</typeparam>
+        /// <typeparam name="T">要获取的实例的类型。</typeparam>
         /// <returns></returns>
         public T Resolve<T>()
         {
@@ -37,9 +37,9 @@ namespace NKingime.Web.Mvc
         }
 
         /// <summary>
-        /// 获取指定类型的实例
+        /// 获取指定类型的实例。
         /// </summary>
-        /// <param name="type">类型</param>
+        /// <param name="type">要获取的实例的类型。</param>
         /// <returns></returns>
         public object Resolve(Type type)
         {
@@ -55,13 +55,13 @@ namespace NKingime.Web.Mvc
                 }
                 return null;
             }
-            
+
         }
 
         /// <summary>
-        /// 获取指定类型的所有实例
+        /// 获取指定类型的所有实例。
         /// </summary>
-        /// <typeparam name="T">类型</typeparam>
+        /// <typeparam name="T">要获取的实例的类型。</typeparam>
         /// <returns></returns>
         public IEnumerable<T> Resolves<T>()
         {
@@ -69,9 +69,9 @@ namespace NKingime.Web.Mvc
         }
 
         /// <summary>
-        /// 获取指定类型的所有实例
+        /// 获取指定类型的所有实例。
         /// </summary>
-        /// <param name="type">类型</param>
+        /// <param name="type">要获取的实例的类型。</param>
         /// <returns></returns>
         public IEnumerable<object> Resolves(Type type)
         {

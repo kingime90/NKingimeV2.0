@@ -6,7 +6,7 @@ using NKingime.Core.Dependency;
 namespace NKingime.Core.Initialize
 {
     /// <summary>
-    /// 框架初始化
+    /// 框架初始化器。
     /// </summary>
     public class FrameworkInitializer : IFrameworkInitializer
     {
@@ -14,9 +14,9 @@ namespace NKingime.Core.Initialize
         private static bool _databaseInitialized;
 
         /// <summary>
-        /// 开始执行框架初始化
+        /// 开始执行框架初始化。
         /// </summary>
-        /// <param name="iocBuilder"></param>
+        /// <param name="iocBuilder">依赖注入构建器。</param>
         public void Initialize(IIocBuilder iocBuilder)
         {
             //依赖注入初始化

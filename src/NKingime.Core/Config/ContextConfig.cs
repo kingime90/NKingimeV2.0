@@ -55,7 +55,7 @@ namespace NKingime.Core.Config
         }
 
         /// <summary>
-        /// 数据库上下文序列。
+        /// 获取 数据库上下文序列。
         /// </summary>
         public IEnumerable<DbContextConfig> DbContexts { get; private set; }
     }

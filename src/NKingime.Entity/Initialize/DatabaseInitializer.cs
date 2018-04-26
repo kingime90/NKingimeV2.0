@@ -12,7 +12,7 @@ namespace NKingime.Entity.Initialize
         /// <summary>
         /// 初始化数据库。
         /// </summary>
-        /// <param name="contextConfigs"></param>
+        /// <param name="contextConfigs">数据库上下文配置。</param>
         public void Initialize(params DbContextConfig[] contextConfigs)
         {
             

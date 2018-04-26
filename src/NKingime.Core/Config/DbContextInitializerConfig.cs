@@ -45,14 +45,14 @@ namespace NKingime.Core.Config
         }
 
         /// <summary>
-        /// 初始化类型。
+        /// 获取 初始化类型。
         /// </summary>
         public Type InitializerType { get; }
 
         private readonly List<Assembly> _mapperAssemblys;
 
         /// <summary>
-        /// 映射程序集序列。
+        /// 获取 映射程序集序列。
         /// </summary>
         public IEnumerable<Assembly> MapperAssemblys
         {
@@ -63,7 +63,7 @@ namespace NKingime.Core.Config
         }
 
         /// <summary>
-        /// 程序集查找器。
+        /// 获取 程序集查找器。
         /// </summary>
         protected IAssemblyFinder AssemblyFinder { get; }
     }

@@ -3,14 +3,14 @@
 namespace NKingime.Core.Dependency
 {
     /// <summary>
-    /// 默认IoC服务提供者实现
+    /// 默认IoC服务提供者实现。
     /// </summary>
     public class IocServiceProvider : IServiceProvider
     {
         private readonly IIocResolver _resolver;
 
         /// <summary>
-        /// 初始化一个<see cref="IocServiceProvider"/>类型的新实例
+        /// 初始化一个<see cref="IocServiceProvider"/>类型的新实例。
         /// </summary>
         public IocServiceProvider(IIocResolver resolver)
         {

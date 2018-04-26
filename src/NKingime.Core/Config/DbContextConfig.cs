@@ -27,27 +27,27 @@ namespace NKingime.Core.Config
         }
 
         /// <summary>
-        /// 节点名称。
+        /// 获取 节点名称。
         /// </summary>
         public string Name { get; }
 
         /// <summary>
-        /// 数据库上下文类型。
+        /// 获取 数据库上下文类型。
         /// </summary>
         public Type ContextType { get; }
 
         /// <summary>
-        /// 数据库连接字符串名称。
+        /// 获取 数据库连接字符串名称。
         /// </summary>
         public string ConnectionStringName { get; }
 
         /// <summary>
-        /// 是否启用。
+        /// 获取 是否启用。
         /// </summary>
         public bool Enabled { get; }
 
         /// <summary>
-        /// 数据库上下文初始化配置。
+        /// 获取 数据库上下文初始化配置。
         /// </summary>
         public DbContextInitializerConfig InitializerConfig { get; }
     }

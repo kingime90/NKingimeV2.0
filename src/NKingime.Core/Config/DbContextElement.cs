@@ -19,7 +19,7 @@ namespace NKingime.Core.Config
         private const string DbContextInitializerKey = "initializer";
 
         /// <summary>
-        /// 节点名称。
+        /// 获取或设置 节点名称。
         /// </summary>
         [ConfigurationProperty(NameKey)]
         public string Name
@@ -29,7 +29,7 @@ namespace NKingime.Core.Config
         }
 
         /// <summary>
-        /// 数据库上下文类型名称。
+        /// 获取或设置 数据库上下文类型名称。
         /// </summary>
         [ConfigurationProperty(TypeKey)]
         public string ContextTypeName
@@ -39,7 +39,7 @@ namespace NKingime.Core.Config
         }
 
         /// <summary>
-        /// 数据库连接字符串名称。
+        /// 获取或设置 数据库连接字符串名称。
         /// </summary>
         [ConfigurationProperty(ConnectionStringNameKey)]
         public string ConnectionStringName
@@ -49,7 +49,7 @@ namespace NKingime.Core.Config
         }
 
         /// <summary>
-        /// 是否启用值。
+        /// 获取或设置 是否启用值。
         /// </summary>
         [ConfigurationProperty(EnabledKey)]
         public string EnabledValue
@@ -59,7 +59,7 @@ namespace NKingime.Core.Config
         }
 
         /// <summary>
-        /// 数据库上下文初始化配置。
+        /// 获取或设置 数据库上下文初始化配置。
         /// </summary>
         [ConfigurationProperty(DbContextInitializerKey)]
         public DbContextInitializerElement DbContextInitializer

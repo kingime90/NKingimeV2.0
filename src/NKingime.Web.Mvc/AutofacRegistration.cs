@@ -11,15 +11,15 @@ using NKingime.Core.Option;
 namespace NKingime.Web.Mvc
 {
     /// <summary>
-    /// Autofac类型映射注册操作类
+    /// Autofac类型映射注册操作类。
     /// </summary>
     public static class AutofacRegistration
     {
         /// <summary>
-        /// 使用<see cref="ServiceDescriptor"/>映射信息进行类型注册
+        /// 使用<see cref="ServiceDescriptor"/>映射信息进行类型注册。
         /// </summary>
-        /// <param name="builder">容器构建器</param>
-        /// <param name="descriptors">类型映射描述信息集合</param>
+        /// <param name="builder">容器构建器。</param>
+        /// <param name="descriptors">依赖注入映射描述信息。</param>
         public static void Populate(this ContainerBuilder builder, IEnumerable<ServiceDescriptor> descriptors)
         {
             builder.RegisterType<IocServiceProvider>().As<IServiceProvider>().SingleInstance();
