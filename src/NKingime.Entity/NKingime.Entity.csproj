@@ -30,7 +30,21 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.Extended, Version=6.0.0.0, Culture=neutral, PublicKeyToken=05b7e29bdd433584, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\EntityFramework.Extended.6.1.0.168\lib\net45\EntityFramework.Extended.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -40,7 +54,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Mapper\DefaultEntityMapper.cs" />
+    <Compile Include="Mapper\EntityMapperBase.cs" />
+    <Compile Include="Mapper\IEntityMapper.cs" />
+    <Compile Include="Data\DbContextBase.cs" />
+    <Compile Include="Data\DbContextManage.cs" />
+    <Compile Include="Data\DefaultDbContext.cs" />
+    <Compile Include="Data\Repository.cs" />
+    <Compile Include="Dependency\DbContextTypeResolver.cs" />
+    <Compile Include="Dependency\IDbContextTypeResolver.cs" />
+    <Compile Include="Extensions\DbContextExtensions.cs" />
     <Compile Include="Initialize\DatabaseInitializer.cs" />
+    <Compile Include="Initialize\DbContextInitializerBase.cs" />
+    <Compile Include="Initialize\DefaultDbContextInitializer.cs" />
+    <Compile Include="Migrations\AutoMigrationsConfiguration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />
@@ -53,6 +80,10 @@
       <Project>{3f63c2d8-1670-45d2-a0ad-5748b344fa98}</Project>
       <Name>NKingime.Utility</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
