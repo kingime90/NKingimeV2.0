@@ -48,15 +48,14 @@ namespace NKingime.Core.Dependency
         public IServiceCollection Build()
         {
             IServiceCollection services = new ServiceCollection();
-            ServiceBuildOptions options = _options;
 
-            var implementationTypes = options.TransientTypeFinder.FindAll();
+            var implementationTypes = _options.TransientTypeFinder.Find(type=> !type.IsAbstract);
             AddTypeWithInterfaces(services, implementationTypes, LifetimeOption.Transient);
 
-            implementationTypes = options.ScopeTypeFinder.FindAll();
+            implementationTypes = _options.ScopeTypeFinder.Find(type => !type.IsAbstract);
             AddTypeWithInterfaces(services, implementationTypes, LifetimeOption.Scope);
 
-            implementationTypes = options.SingletonTypeFinder.FindAll();
+            implementationTypes = _options.SingletonTypeFinder.Find(type => !type.IsAbstract);
             AddTypeWithInterfaces(services, implementationTypes, LifetimeOption.Singleton);
 
             return services;

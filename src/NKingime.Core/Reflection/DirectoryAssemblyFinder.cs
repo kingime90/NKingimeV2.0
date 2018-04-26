@@ -9,7 +9,7 @@ namespace NKingime.Core.Reflection
     /// <summary>
     /// 目录程序集查找器。
     /// </summary>
-    public class DirectoryAssemblyFinder : IAllAssemblyFinder
+    public class DirectoryAssemblyFinder : AssemblyFinderBase, IAllAssemblyFinder
     {
         /// <summary>
         /// 程序集缓存。
@@ -34,20 +34,10 @@ namespace NKingime.Core.Reflection
         }
 
         /// <summary>
-        /// 查找指定条件的项。
-        /// </summary>
-        /// <param name="predicate">基于谓词筛选表达式。</param>
-        /// <returns></returns>
-        public Assembly[] Find(Func<Assembly, bool> predicate)
-        {
-            return FindAll().Where(predicate).ToArray();
-        }
-
-        /// <summary>
         /// 查找所有项。
         /// </summary>
         /// <returns></returns>
-        public Assembly[] FindAll()
+        public override Assembly[] FindAll()
         {
             Assembly[] assemblies = null;
             if (AssembliesCache.TryGetValue(_path, out assemblies))
