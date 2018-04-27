@@ -2,6 +2,7 @@
 using Microsoft.Owin;
 using NKingime.Core.Dependency;
 using NKingime.Core.Initialize;
+using NKingime.Entity.Extensions;
 using NKingime.Web.Mvc.Dependency;
 
 [assembly: OwinStartupAttribute(typeof(NKingime.App.Mvc.Startup))]
@@ -13,6 +14,7 @@ namespace NKingime.App.Mvc
         {
             IServiceBuilder builder = new ServiceBuilder();
             IServiceCollection services = builder.Build();
+            services.AddDataServices();
 
             IIocBuilder mvcIocBuilder = new MvcAutofacIocBuilder(services);
             IFrameworkInitializer initializer = new FrameworkInitializer();

@@ -36,7 +36,7 @@ namespace NKingime.Entity.Data
         #region 属性
 
         /// <summary>
-        /// 获取当前业务单元操作。
+        /// 获取 当前业务单元操作。
         /// </summary>
         public override IUnitOfWork UnitOfWork { get; }
 

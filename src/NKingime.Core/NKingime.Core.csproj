@@ -72,6 +72,7 @@
     <Compile Include="Dependency\SingletonDependencyTypeFinder.cs" />
     <Compile Include="Dependency\TransientDependencyTypeFinder.cs" />
     <Compile Include="Entity\AutoIdentity.cs" />
+    <Compile Include="Entity\HexIdentity.cs" />
     <Compile Include="Entity\EntityBase.cs" />
     <Compile Include="Entity\GuidIdentity.cs" />
     <Compile Include="Entity\ICreateTime.cs" />

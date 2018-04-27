@@ -43,7 +43,7 @@ namespace NKingime.Utility.Extensions
         /// <param name="t">要获取的类型实例。</param>
         /// <param name="defVal">默认类型实例。</param>
         /// <returns>如果 t 参数不为 null，则为 t；如果 defVal 参数不为 null，则为 defVal；否则为 default(T)。</returns>
-        public static T GetOrDefault<T>(this T t, T defVal)
+        public static T GetOrDefault<T>(this T t, T defVal = default(T))
         {
             if (t.IsNotNull())
             {
