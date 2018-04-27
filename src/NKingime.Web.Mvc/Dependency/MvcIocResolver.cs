@@ -3,7 +3,7 @@ using System.Web.Mvc;
 using System.Collections.Generic;
 using NKingime.Core.Dependency;
 
-namespace NKingime.Web.Mvc
+namespace NKingime.Web.Mvc.Dependency
 {
     /// <summary>
     /// MVC依赖注入对象解析器。

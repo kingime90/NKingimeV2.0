@@ -218,7 +218,7 @@ namespace NKingime.Entity.Data
             //
             if (orderSelectors.IsNotEmpty())
             {
-                queryable = OrderBy(queryable, orderSelectors);
+                queryable = OrderUtil.OrderBy(queryable, orderSelectors);
             }
             //
             return queryable.FirstOrDefault();
@@ -274,7 +274,7 @@ namespace NKingime.Entity.Data
             //
             if (orderSelectors.IsNotEmpty())
             {
-                queryable = OrderBy(queryable, orderSelectors);
+                queryable = OrderUtil.OrderBy(queryable, orderSelectors);
             }
             queryable = queryable.Skip(pagedResult.PageSize * (pagedResult.PageIndex - 1)).Take(pagedResult.PageSize);
             pagedResult.SetResultList(queryable.ToList());
@@ -300,37 +300,6 @@ namespace NKingime.Entity.Data
         #region 辅助方法
 
         /// <summary>
-        /// 根据指定排序选择器集合排序。
-        /// </summary>
-        /// <param name="queryable">提供对数据类型已知的特定数据源的查询进行计算的功能。</param>
-        /// <param name="orderSelectors">排序选择器数组。</param>
-        /// <returns></returns>
-        protected IOrderedQueryable<TEntity> OrderBy(IQueryable<TEntity> queryable, params OrderSelector<TEntity>[] orderSelectors)
-        {
-            int index = 0;
-            bool isAscending;
-            IOrderedQueryable<TEntity> orderedQueryable = null;
-            foreach (var orderSelector in orderSelectors)
-            {
-                isAscending = orderSelector.SortDirection == ListSortDirection.Ascending;
-                foreach (var keySelector in orderSelector.KeySelectors)
-                {
-                    if (index == 0)
-                    {
-                        orderedQueryable = isAscending ? queryable.OrderBy(keySelector) : queryable.OrderByDescending(keySelector);
-                    }
-                    else
-                    {
-                        orderedQueryable = isAscending ? orderedQueryable.ThenBy(keySelector) : orderedQueryable.ThenByDescending(keySelector);
-                    }
-                    //
-                    index++;
-                }
-            }
-            return orderedQueryable;
-        }
-
-        /// <summary>
         /// 根据指定筛选表达式获取数据实体列表。
         /// </summary>
         /// <param name="isTrack">是否跟踪查询。</param>
@@ -347,7 +316,7 @@ namespace NKingime.Entity.Data
             //
             if (orderSelectors.IsNotEmpty())
             {
-                queryable = OrderBy(queryable, orderSelectors);
+                queryable = OrderUtil.OrderBy(queryable, orderSelectors);
             }
             //
             return queryable.ToList();

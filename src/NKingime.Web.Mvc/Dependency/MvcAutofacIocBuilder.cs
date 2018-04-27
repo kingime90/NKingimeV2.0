@@ -6,7 +6,7 @@ using Autofac.Integration.Mvc;
 using NKingime.Core.Dependency;
 using NKingime.Core.Extensions;
 
-namespace NKingime.Web.Mvc
+namespace NKingime.Web.Mvc.Dependency
 {
     /// <summary>
     /// Mvc-Autofac依赖注入初始化类。

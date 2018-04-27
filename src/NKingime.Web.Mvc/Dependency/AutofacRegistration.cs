@@ -4,11 +4,11 @@ using System.Collections.Generic;
 using Autofac;
 using Autofac.Core;
 using Autofac.Builder;
+using NKingime.Core.Option;
 using NKingime.Core.Dependency;
 using NKingime.Utility.Extensions;
-using NKingime.Core.Option;
 
-namespace NKingime.Web.Mvc
+namespace NKingime.Web.Mvc.Dependency
 {
     /// <summary>
     /// Autofac类型映射注册操作类。
@@ -19,14 +19,18 @@ namespace NKingime.Web.Mvc
         /// 使用<see cref="ServiceDescriptor"/>映射信息进行类型注册。
         /// </summary>
         /// <param name="builder">容器构建器。</param>
-        /// <param name="descriptors">依赖注入映射描述信息。</param>
+        /// <param name="descriptors">依赖注入映射描述信息集合。</param>
         public static void Populate(this ContainerBuilder builder, IEnumerable<ServiceDescriptor> descriptors)
         {
             builder.RegisterType<IocServiceProvider>().As<IServiceProvider>().SingleInstance();
-
             RegisterInternal(builder, descriptors);
         }
 
+        /// <summary>
+        /// 内部注册。
+        /// </summary>
+        /// <param name="builder">容器构建器。</param>
+        /// <param name="descriptors">依赖注入映射描述信息集合。</param>
         private static void RegisterInternal(ContainerBuilder builder, IEnumerable<ServiceDescriptor> descriptors)
         {
             foreach (ServiceDescriptor descriptor in descriptors)

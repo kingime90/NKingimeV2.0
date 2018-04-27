@@ -76,9 +76,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AutofacRegistration.cs" />
-    <Compile Include="MvcAutofacIocBuilder.cs" />
-    <Compile Include="MvcIocResolver.cs" />
+    <Compile Include="Dependency\AutofacRegistration.cs" />
+    <Compile Include="Dependency\MvcAutofacIocBuilder.cs" />
+    <Compile Include="Dependency\MvcIocResolver.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
