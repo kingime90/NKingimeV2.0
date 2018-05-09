@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Configuration;
 using System.Collections.Generic;
 using NKingime.Utility.Extensions;
 
@@ -20,6 +21,21 @@ namespace NKingime.Utility.General
         /// 起始页页码（默认1）。
         /// </summary>
         public static readonly int StartPageIndex = 1;
+
+        static PagedResultBase()
+        {
+            var defaultPageSize = ConfigurationManager.AppSettings["webpage:DefaultPageSize"];
+            if (!string.IsNullOrWhiteSpace(defaultPageSize))
+            {
+                DefaultPageSize = Convert.ToInt32(defaultPageSize);
+            }
+            //
+            var startPageIndex = ConfigurationManager.AppSettings["webpage:StartPageIndex"];
+            if (!string.IsNullOrWhiteSpace(startPageIndex))
+            {
+                StartPageIndex = Convert.ToInt32(startPageIndex);
+            }
+        }
 
         /// <summary>
         /// 初始化一个<see cref="PagedResultBase{T}"/>类型的新实例。

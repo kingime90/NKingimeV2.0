@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using NKingime.Core.Entity;
 using NKingime.Utility.General;
 using NKingime.Utility.Extensions;
+using NKingime.Utility;
 
 namespace NKingime.Core.Data
 {
@@ -386,6 +387,25 @@ namespace NKingime.Core.Data
         protected virtual void CheckCreateTime(TEntity entity, DateTime createTime)
         {
             entity.SetPropertyValue<TEntity, ICreateTime, DateTime>(s => s.CreateTime, createTime);
+        }
+
+        /// <summary>
+        /// 检查主键。
+        /// </summary>
+        /// <param name="entity"></param>
+        protected virtual void CheckPrimaryKey(TEntity entity)
+        {
+            if (entity is GuidIdentity)
+            {
+                (entity as GuidIdentity).Id = Guid.NewGuid().ToString();
+                return;
+            }
+            //
+            if (entity is HexIdentity)
+            {
+                (entity as HexIdentity).Id = IdentityUtil.GenerateHex();
+                return;
+            }
         }
 
         /// <summary>

@@ -4,11 +4,11 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace NKingime.App.Mvc.Areas.Samples.Controllers
+namespace NKingime.App.Mvc.Areas.Sample.Controllers
 {
     public class HomeController : Controller
     {
-        // GET: Samples/Home
+        // GET: Sample/Home
         public ActionResult Index()
         {
             return View();

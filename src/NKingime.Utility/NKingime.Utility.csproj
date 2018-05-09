@@ -31,6 +31,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -53,6 +54,7 @@
     <Compile Include="General\PagedResultBase.cs" />
     <Compile Include="General\ParameterRebinder.cs" />
     <Compile Include="General\ReadOnlyList.cs" />
+    <Compile Include="IdentityUtil.cs" />
     <Compile Include="Option\CompareOption.cs" />
     <Compile Include="Option\StingRemoveOption.cs" />
     <Compile Include="OrderUtil.cs" />

@@ -203,9 +203,9 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
-    <Compile Include="Areas\Samples\Controllers\HomeController.cs" />
-    <Compile Include="Areas\Samples\Controllers\QueryController.cs" />
-    <Compile Include="Areas\Samples\SamplesAreaRegistration.cs" />
+    <Compile Include="Areas\Sample\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Sample\Controllers\QueryController.cs" />
+    <Compile Include="Areas\Sample\SamplesAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -233,11 +233,13 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="context.config" />
-    <Content Include="Areas\Samples\Views\web.config" />
-    <Content Include="Areas\Samples\Views\_ViewStart.cshtml" />
-    <Content Include="Areas\Samples\Views\Shared\_Layout.cshtml" />
-    <Content Include="Areas\Samples\Views\Home\Index.cshtml" />
-    <Content Include="Areas\Samples\Views\Query\Index.cshtml" />
+    <Content Include="Areas\Sample\Views\web.config" />
+    <Content Include="Areas\Sample\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Sample\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Sample\Views\Home\Index.cshtml" />
+    <Content Include="Areas\Sample\Views\Query\ListModel.cshtml" />
+    <Content Include="Config\AppSetting.config" />
+    <Content Include="Areas\Sample\Views\Query\ListViewBag.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -287,7 +289,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Samples\Models\" />
+    <Folder Include="Areas\Sample\Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

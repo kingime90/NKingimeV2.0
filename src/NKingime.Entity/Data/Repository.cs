@@ -67,7 +67,7 @@ namespace NKingime.Entity.Data
         /// <returns>返回受影响的行数。</returns>
         public override int Save(TEntity entity)
         {
-            CheckCreateTime(entity, DateTime.Now);
+            CheckSave(entity, DateTime.Now);
             _dbSet.Add(entity);
             return UnitOfWork.SaveChanges();
         }
@@ -82,7 +82,7 @@ namespace NKingime.Entity.Data
             var createTime = DateTime.Now;
             foreach (var entity in entities)
             {
-                CheckCreateTime(entity, createTime);
+                CheckSave(entity, createTime);
             }
             _dbSet.AddRange(entities);
             return UnitOfWork.SaveChanges();
@@ -272,10 +272,11 @@ namespace NKingime.Entity.Data
                 queryable = queryable.Where(predicate);
             }
             //
-            if (orderSelectors.IsNotEmpty())
+            if (orderSelectors.IsEmpty())
             {
-                queryable = OrderUtil.OrderBy(queryable, orderSelectors);
+                orderSelectors = new OrderSelector<TEntity>[] { OrderUtil.Ascending<TEntity>(s => new { s.Id }) };
             }
+            queryable = OrderUtil.OrderBy(queryable, orderSelectors);
             queryable = queryable.Skip(pagedResult.PageSize * (pagedResult.PageIndex - 1)).Take(pagedResult.PageSize);
             pagedResult.SetResultList(queryable.ToList());
             return pagedResult;
@@ -320,6 +321,17 @@ namespace NKingime.Entity.Data
             }
             //
             return queryable.ToList();
+        }
+
+        /// <summary>
+        /// 检查保存。
+        /// </summary>
+        /// <param name="entity">数据实体。</param>
+        /// <param name="createTime">创建时间。</param>
+        private void CheckSave(TEntity entity, DateTime createTime)
+        {
+            CheckPrimaryKey(entity);
+            CheckCreateTime(entity, createTime);
         }
 
         #endregion

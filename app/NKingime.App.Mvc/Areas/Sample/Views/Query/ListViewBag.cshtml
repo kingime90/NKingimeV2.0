@@ -1,0 +1,33 @@
+﻿@using NKingime.Utility.General
+@{
+    ViewBag.Title = "Query";
+}
+
+<h2>ViewBag传递数据</h2>
+<table>
+    <thead>
+        <tr>
+            <th>用户名</th>
+            <th>性别</th>
+            <th>生日</th>
+            <th>手机号码</th>
+            <th>电子邮箱</th>
+        </tr>
+    </thead>
+    @if (!ViewBag.PagedResult.IsEmpty)
+    {
+        <tbody>
+            @foreach (var user in ViewBag.PagedResult.ResultList)
+            {
+                <tr>
+                    <th>@user.Username</th>
+                    <th>@user.GenderType</th>
+                    <th>@user.Birthday</th>
+                    <th>@user.Mobile</th>
+                    <th>@user.Email</th>
+                </tr>
+            }
+        </tbody>
+    }
+</table>
+
