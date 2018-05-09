@@ -395,15 +395,24 @@ namespace NKingime.Core.Data
         /// <param name="entity"></param>
         protected virtual void CheckPrimaryKey(TEntity entity)
         {
-            if (entity is GuidIdentity)
+            var guidIdentity = (entity as GuidIdentity);
+            if (guidIdentity.IsNotNull())
             {
-                (entity as GuidIdentity).Id = Guid.NewGuid().ToString();
+                guidIdentity.Id = IdentityUtil.NewGuid();
                 return;
             }
             //
-            if (entity is HexIdentity)
+            var hexIdentity = (entity as HexIdentity);
+            if (hexIdentity.IsNotNull())
             {
-                (entity as HexIdentity).Id = IdentityUtil.GenerateHex();
+                hexIdentity.Id = IdentityUtil.NewHex();
+                return;
+            }
+            //
+            var uuidIdentity = (entity as UUIDIdentity);
+            if (uuidIdentity.IsNotNull())
+            {
+                uuidIdentity.Id = IdentityUtil.NewUUID();
                 return;
             }
         }

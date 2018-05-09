@@ -55,6 +55,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Extensions\ServiceCollectionExtensions.cs" />
+    <Compile Include="Mapper\DefaultStringIdentity.cs" />
+    <Compile Include="Mapper\StringIdentityEntityMapper.cs" />
     <Compile Include="Mapper\DefaultEntityMapper.cs" />
     <Compile Include="Mapper\EntityMapperBase.cs" />
     <Compile Include="Mapper\IEntityMapper.cs" />

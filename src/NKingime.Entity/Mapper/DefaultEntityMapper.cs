@@ -5,7 +5,7 @@ using NKingime.Entity.Data;
 namespace NKingime.Entity.Mapper
 {
     /// <summary>
-    /// 默认数据实体映射配置基类。
+    /// 默认数据库上下文数据实体映射配置基类。
     /// </summary>
     /// <typeparam name="TEntity">数据实体类型。</typeparam>
     /// <typeparam name="TKey">主键类型。</typeparam>

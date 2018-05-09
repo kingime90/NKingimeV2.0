@@ -34,16 +34,25 @@ namespace NKingime.Entity.Mapper
         /// <param name="configurations">实体映射配置注册器。</param>
         public void RegistTo(ConfigurationRegistrar configurations)
         {
-            ModelMapping();
+            KeyMapping();
+            PropertyMapping();
             configurations.Add(this);
         }
 
         /// <summary>
-        /// 模型映射。
+        /// 主键映射。
         /// </summary>
-        protected virtual void ModelMapping()
+        protected virtual void KeyMapping()
         {
             
+        }
+
+        /// <summary>
+        /// 属性映射。
+        /// </summary>
+        protected virtual void PropertyMapping()
+        {
+
         }
     }
 }

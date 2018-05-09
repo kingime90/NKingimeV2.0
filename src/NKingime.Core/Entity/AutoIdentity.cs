@@ -28,12 +28,12 @@ namespace NKingime.Core.Entity
             {
                 return false;
             }
-            var autoIdentity = obj as AutoIdentity;
-            if (autoIdentity.IsNull())
+            var identity = obj as AutoIdentity;
+            if (identity.IsNull())
             {
                 return false;
             }
-            return autoIdentity.Id > 0 && Id == autoIdentity.Id;
+            return identity.Id > 0 && Id == identity.Id;
         }
 
         /// <summary>

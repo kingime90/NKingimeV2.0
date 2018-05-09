@@ -26,7 +26,7 @@ namespace NKingime.App.Mvc.Areas.Sample.Controllers
 
         public ActionResult Create(User user)
         {
-            if (user.IsNull())
+            if (user.Id == 0)
             {
                 user = new Entity.User()
                 {

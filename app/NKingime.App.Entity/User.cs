@@ -7,7 +7,7 @@ namespace NKingime.App.Entity
     /// <summary>
     /// 用户信息实体。
     /// </summary>
-    public class User : HexIdentity
+    public class User : UUIDIdentity
     {
         /// <summary>
         /// 用户名。
