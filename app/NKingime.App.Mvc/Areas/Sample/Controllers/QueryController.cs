@@ -11,9 +11,9 @@ namespace NKingime.App.Mvc.Areas.Sample.Controllers
     {
         public IUserRepository UserRepository { get; set; }
 
-        public ActionResult ListModel(int? pageSize, int? pageIndex)
+        public ActionResult ListModel(int? pageSize, int? page)
         {
-            var pagedResult = UserRepository.PagedList(pageSize.GetValue(), pageIndex.GetValue());
+            var pagedResult = UserRepository.PagedList(pageSize.GetValue(), page.GetValue());
             var pagedLis = new StaticPagedList<User>(pagedResult.ResultList, pagedResult.PageIndex, pagedResult.PageSize, pagedResult.TotalCount);
             return View(pagedLis);
         }
