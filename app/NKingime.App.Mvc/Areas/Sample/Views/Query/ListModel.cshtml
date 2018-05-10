@@ -1,11 +1,13 @@
-﻿@using NKingime.Utility.General
-@using NKingime.App.Entity
+﻿@using NKingime.App.Entity
+@using PagedList.Mvc
 
-@model IPagedResult<User>
+@model PagedList.IPagedList<User>
 @{
     ViewBag.Title = "Query";
 }
-
+@section heads{ 
+    @Styles.Render("~/Content/PagedList.css")   
+}
 <h2>Model传递数据</h2>
 <table>
     <thead>
@@ -18,10 +20,10 @@
             <th>电子邮箱</th>
         </tr>
     </thead>
-    @if (!Model.IsEmpty)
+    @if (Model.TotalItemCount > 0)
     {
         <tbody>
-            @foreach (var user in @Model.ResultList)
+            @foreach (User user in @Model)
             {
                 <tr>
                     <th>@user.Id</th>
@@ -35,4 +37,5 @@
         </tbody>
     }
 </table>
+@Html.PagedListPager(Model, pageIndex => Url.Action(Convert.ToString(ViewContext.RouteData.Values["action"]), new { pageIndex = pageIndex }), new PagedListRenderOptions { LinkToFirstPageFormat = "首页", LinkToPreviousPageFormat = "上一页", LinkToNextPageFormat = "下一页", LinkToLastPageFormat = "尾页", MaximumPageNumbersToDisplay = 10 })
 

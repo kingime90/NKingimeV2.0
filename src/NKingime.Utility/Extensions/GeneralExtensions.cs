@@ -232,13 +232,13 @@ namespace NKingime.Utility.Extensions
         #region 可空类型 Nullable<T>
 
         /// <summary>
-        /// 获取指定可空类型基础类型值。
+        /// 获取指定可空类型的值。
         /// </summary>
         /// <typeparam name="T">泛型类型。</typeparam>
         /// <param name="value">可空类型值。</param>
-        /// <param name="defVal">基础类型默认值，默认 default(T)。</param>
+        /// <param name="defVal">默认值，默认 default(T)。</param>
         /// <returns></returns>
-        public static T GetUnderlyingValue<T>(this Nullable<T> value, T defVal = default(T)) where T : struct
+        public static T GetValue<T>(this Nullable<T> value, T defVal = default(T)) where T : struct
         {
             return value.HasValue.IfElse(() => value.Value, defVal);
         }
