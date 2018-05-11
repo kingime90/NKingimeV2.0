@@ -7,7 +7,6 @@
 }
 @section heads{
     @Styles.Render("~/Content/PagedList.css")
-    @Styles.Render("~/static/css/bootstrap/bootstrap-table.css")
 }
 <div class="container">
     <h2>Model传递数据</h2>
@@ -39,6 +38,5 @@
     @Html.PagedListPager(Model, page => Url.Action(Convert.ToString(ViewContext.RouteData.Values["action"]), new { page = page }), new PagedListRenderOptions { LinkToFirstPageFormat = "首页", LinkToPreviousPageFormat = "上一页", LinkToNextPageFormat = "下一页", LinkToLastPageFormat = "尾页", MaximumPageNumbersToDisplay = 10 })
 </div>
 @section scripts{
-    @Scripts.Render("~/static/js/bootstrap/bootstrap-table.js")
-    @Scripts.Render("~/static/js/bootstrap/bootstrap-table-zh-CN.js")
+
 }

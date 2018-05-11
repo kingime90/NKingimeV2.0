@@ -227,19 +227,8 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\bootstrap-theme.css" />
-    <Content Include="Content\bootstrap-theme.min.css" />
-    <Content Include="Content\bootstrap.css" />
-    <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\PagedList.css" />
     <Content Include="favicon.ico" />
-    <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Content\Site.css" />
-    <Content Include="Scripts\ai.0.22.9-build00167.js" />
-    <Content Include="Scripts\ai.0.22.9-build00167.min.js" />
-    <Content Include="Scripts\bootstrap.js" />
-    <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -251,26 +240,23 @@
     <Content Include="Areas\Sample\Views\Query\ListModel.cshtml" />
     <Content Include="Config\AppSetting.config" />
     <Content Include="Areas\Sample\Views\Query\ListViewBag.cshtml" />
-    <Content Include="fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="Content\bootstrap.css.map" />
-    <Content Include="Content\bootstrap-theme.css.map" />
-    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
-    <Content Include="Scripts\jquery-1.10.2.js" />
-    <Content Include="Scripts\jquery-1.10.2.min.js" />
-    <None Include="Scripts\jquery.validate-vsdoc.js" />
-    <Content Include="Scripts\jquery.validate.js" />
-    <Content Include="Scripts\jquery.validate.min.js" />
-    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
-    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
-    <Content Include="Scripts\modernizr-2.6.2.js" />
-    <Content Include="Scripts\respond.js" />
-    <Content Include="Scripts\respond.min.js" />
-    <Content Include="Scripts\_references.js" />
-    <Content Include="static\css\bootstrap\bootstrap-table.css" />
-    <Content Include="static\js\bootstrap\bootstrap-table-zh-CN.js" />
-    <Content Include="static\js\bootstrap\bootstrap-table.js" />
+    <Content Include="static\lib\bootstrap\css\bootstrap-table.css" />
+    <Content Include="static\lib\bootstrap\css\bootstrap-theme.css" />
+    <Content Include="static\lib\bootstrap\css\bootstrap-theme.min.css" />
+    <Content Include="static\lib\bootstrap\css\bootstrap.css" />
+    <Content Include="static\lib\bootstrap\css\bootstrap.min.css" />
+    <Content Include="static\lib\bootstrap\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="static\lib\bootstrap\js\bootstrap-table-zh-CN.js" />
+    <Content Include="static\lib\bootstrap\js\bootstrap-table.js" />
+    <Content Include="static\lib\bootstrap\js\bootstrap.js" />
+    <Content Include="static\lib\bootstrap\js\bootstrap.min.js" />
+    <Content Include="static\lib\bootstrap\js\npm.js" />
+    <Content Include="static\shared\css\pagedlist.css" />
+    <Content Include="static\shared\css\site.css" />
+    <Content Include="static\shared\js\jquery-1.10.2.js" />
+    <Content Include="static\shared\js\jquery-1.10.2.min.js" />
+    <Content Include="static\shared\js\modernizr-2.6.2.js" />
+    <Content Include="static\shared\js\respond.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -309,12 +295,19 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Sample\Models\" />
-    <Folder Include="static\img\" />
+    <Folder Include="static\shared\img\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
-    <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <Content Include="static\lib\bootstrap\css\bootstrap-theme.css.map" />
+    <Content Include="static\lib\bootstrap\css\bootstrap-theme.min.css.map" />
+    <Content Include="static\lib\bootstrap\css\bootstrap.css.map" />
+    <Content Include="static\lib\bootstrap\css\bootstrap.min.css.map" />
+    <Content Include="static\lib\bootstrap\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="static\lib\bootstrap\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="static\lib\bootstrap\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="static\lib\bootstrap\fonts\glyphicons-halflings-regular.woff2" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\src\NKingime.Core\NKingime.Core.csproj">
