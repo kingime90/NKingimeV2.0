@@ -41,6 +41,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\NKingime.Core\NKingime.Core.csproj">
+      <Project>{a41dc1f7-3e5b-417e-a916-d0364a284a16}</Project>
+      <Name>NKingime.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NKingime.App.IService\NKingime.App.IService.csproj">
+      <Project>{50B7E261-2E4B-49BA-84DB-8C699908E09B}</Project>
+      <Name>NKingime.App.IService</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

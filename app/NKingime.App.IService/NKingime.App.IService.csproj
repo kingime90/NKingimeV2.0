@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{B24965D4-3656-4B94-93F7-7FECE1A42672}</ProjectGuid>
+    <ProjectGuid>{50B7E261-2E4B-49BA-84DB-8C699908E09B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>NKingime.App.Repository</RootNamespace>
-    <AssemblyName>NKingime.App.Repository</AssemblyName>
+    <RootNamespace>NKingime.App.IService</RootNamespace>
+    <AssemblyName>NKingime.App.IService</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -40,25 +40,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="UserRepository.cs" />
+    <Compile Include="IUserService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\src\NKingime.Core\NKingime.Core.csproj">
-      <Project>{a41dc1f7-3e5b-417e-a916-d0364a284a16}</Project>
+      <Project>{A41DC1F7-3E5B-417E-A916-D0364A284A16}</Project>
       <Name>NKingime.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\src\NKingime.Entity\NKingime.Entity.csproj">
-      <Project>{b951cc84-ccae-4b9d-8a26-af3795ce0341}</Project>
-      <Name>NKingime.Entity</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\NKingime.App.Entity\NKingime.App.Entity.csproj">
-      <Project>{3913788C-050A-43D4-8B77-14B7A1209F07}</Project>
-      <Name>NKingime.App.Entity</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\NKingime.App.IRepository\NKingime.App.IRepository.csproj">
-      <Project>{47927bbd-765b-432a-b197-9dab00f12636}</Project>
-      <Name>NKingime.App.IRepository</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

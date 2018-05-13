@@ -1,6 +1,7 @@
 ﻿using System;
 using NKingime.App.Entity;
 using NKingime.Entity.Data;
+using NKingime.App.IRepository;
 using NKingime.Entity.Dependency;
 
 namespace NKingime.App.Repository

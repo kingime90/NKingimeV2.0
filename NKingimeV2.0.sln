@@ -25,6 +25,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NKingime.App.Repository", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NKingime.App.Service", "app\NKingime.App.Service\NKingime.App.Service.csproj", "{0E71EA94-051D-4238-9BE1-B38951C7A9E1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NKingime.App.IService", "app\NKingime.App.IService\NKingime.App.IService.csproj", "{50B7E261-2E4B-49BA-84DB-8C699908E09B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NKingime.App.IRepository", "app\NKingime.App.IRepository\NKingime.App.IRepository.csproj", "{47927BBD-765B-432A-B197-9DAB00F12636}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -63,6 +67,14 @@ Global
 		{0E71EA94-051D-4238-9BE1-B38951C7A9E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0E71EA94-051D-4238-9BE1-B38951C7A9E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0E71EA94-051D-4238-9BE1-B38951C7A9E1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{50B7E261-2E4B-49BA-84DB-8C699908E09B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{50B7E261-2E4B-49BA-84DB-8C699908E09B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{50B7E261-2E4B-49BA-84DB-8C699908E09B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{50B7E261-2E4B-49BA-84DB-8C699908E09B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{47927BBD-765B-432A-B197-9DAB00F12636}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{47927BBD-765B-432A-B197-9DAB00F12636}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{47927BBD-765B-432A-B197-9DAB00F12636}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{47927BBD-765B-432A-B197-9DAB00F12636}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -76,5 +88,7 @@ Global
 		{3913788C-050A-43D4-8B77-14B7A1209F07} = {BDC434F6-FEC0-49D3-AC92-7ADA68B95C75}
 		{B24965D4-3656-4B94-93F7-7FECE1A42672} = {BDC434F6-FEC0-49D3-AC92-7ADA68B95C75}
 		{0E71EA94-051D-4238-9BE1-B38951C7A9E1} = {BDC434F6-FEC0-49D3-AC92-7ADA68B95C75}
+		{50B7E261-2E4B-49BA-84DB-8C699908E09B} = {BDC434F6-FEC0-49D3-AC92-7ADA68B95C75}
+		{47927BBD-765B-432A-B197-9DAB00F12636} = {BDC434F6-FEC0-49D3-AC92-7ADA68B95C75}
 	EndGlobalSection
 EndGlobal

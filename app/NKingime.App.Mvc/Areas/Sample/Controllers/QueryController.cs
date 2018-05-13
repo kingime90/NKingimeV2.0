@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Web.Mvc;
-using NKingime.App.Entity;
-using NKingime.App.Repository;
-using NKingime.Utility.Extensions;
 using PagedList;
+using NKingime.App.Entity;
+using NKingime.App.IRepository;
+using NKingime.Utility.Extensions;
 
 namespace NKingime.App.Mvc.Areas.Sample.Controllers
 {
