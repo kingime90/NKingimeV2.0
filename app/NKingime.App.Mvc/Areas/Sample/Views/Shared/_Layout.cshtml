@@ -4,9 +4,15 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
-    @Styles.Render("~/bundles/css/bootstrap")
+    @Styles.Render("~/bundles/style/bootstrap")
+    @Styles.Render("~/bundles/pagedlist")
     @Scripts.Render("~/bundles/modernizr")
     @RenderSection("heads", required: false)
+    <style type="text/css">
+        .pagination {
+            margin:0;
+        }
+    </style>
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -33,7 +39,7 @@
         </footer>
     </div>
     @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/lib/bootstrap")
+    @Scripts.Render("~/bundles/script/bootstrap")
     @RenderSection("scripts", required: false)
 </body>
 </html>

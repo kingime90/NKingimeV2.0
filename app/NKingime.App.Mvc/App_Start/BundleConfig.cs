@@ -16,16 +16,19 @@ namespace NKingime.App.Mvc
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
                         "~/static/shared/js/modernizr-*"));
 
-            bundles.Add(new ScriptBundle("~/bundles/lib/bootstrap").Include(
+            bundles.Add(new ScriptBundle("~/bundles/script/bootstrap").Include(
                       "~/static/lib/bootstrap/js/bootstrap.js",
                       "~/static/lib/bootstrap/js/bootstrap-table.js",
                       "~/static/lib/bootstrap/js/bootstrap-table-zh-CN.js",
                       "~/static/shared/js/respond.js"));
 
-            bundles.Add(new StyleBundle("~/bundles/css/bootstrap").Include(
+            bundles.Add(new StyleBundle("~/bundles/style/bootstrap").Include(
                       "~/static/lib/bootstrap/css/bootstrap.css",
                       "~/static/lib/bootstrap/css/bootstrap-table.css",
                       "~/static/shared/css/site.css"));
+
+            bundles.Add(new StyleBundle("~/bundles/pagedlist").Include(
+                      "~/static/shared/css/pagedlist.css"));
         }
     }
 }

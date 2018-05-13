@@ -52,6 +52,28 @@ namespace NKingime.Utility.Extensions
         }
 
         /// <summary>
+        /// 如果指定的字符串不是 null、System.String.Empty 字符串，则返回此字符串，否则返回设置的默认值。
+        /// </summary>
+        /// <param name="value">字符串的值。</param>
+        /// <param name="defVal">默认值，默认字符串 ""。</param>
+        /// <returns></returns>
+        public static string IfNullOrEmpty(this string value, string defVal = "")
+        {
+            return !value.IsNullOrEmpty() ? value : defVal;
+        }
+
+        /// <summary>
+        /// 如果指定的字符串不是 null、空、空白字符，则返回此字符串，否则返回设置的默认值。
+        /// </summary>
+        /// <param name="value">字符串的值。</param>
+        /// <param name="defVal">默认值，默认字符串 ""。</param>
+        /// <returns></returns>
+        public static string IfNullOrWhiteSpace(this string value, string defVal = "")
+        {
+            return !value.IsNullOrWhiteSpace() ? value : defVal;
+        }
+
+        /// <summary>
         /// 获取移除数组中指定的一组字符后的字符串。
         /// </summary>
         /// <param name="value">要获取的字符串。</param>

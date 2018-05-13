@@ -269,6 +269,40 @@ namespace NKingime.Utility.Extensions
 
         #endregion
 
+        /// <summary>
+        /// 格式化时间。
+        /// </summary>
+        /// <param name="value">要转换的值。</param>
+        /// <param name="format">标准或自定义日期和时间格式的字符串。</param>
+        /// <param name="defVal">默认值，字符串 ""。</param>
+        /// <returns></returns>
+        public static string FormatTime(this DateTime? value, string format, string defVal = "")
+        {
+            return value.HasValue.IfElse(() => value.Value.FormatTime(format), defVal);
+        }
+
+        /// <summary>
+        /// 转换为长时间格式字符串（yyyy-MM-dd HH:mm:ss）。
+        /// </summary>
+        /// <param name="value">要转换的值。</param>
+        /// <param name="defVal">默认值，字符串 ""。</param>
+        /// <returns></returns>
+        public static string ToLongTime(this DateTime? value, string defVal = "")
+        {
+            return value.FormatTime(ValueTypeExtensions.LongTimeFormat, defVal);
+        }
+
+        /// <summary>
+        /// 转换为日期格式字符串（yyyy-MM-dd）。
+        /// </summary>
+        /// <param name="value">要转换的值。</param>
+        /// <param name="defVal">默认值，字符串 ""。</param>
+        /// <returns></returns>
+        public static string ToDateFormat(this DateTime? value, string defVal = "")
+        {
+            return value.FormatTime(ValueTypeExtensions.DateFormat, defVal);
+        }
+
         #endregion
 
     }

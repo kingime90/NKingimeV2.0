@@ -7,7 +7,7 @@ namespace NKingime.App.Entity
     /// <summary>
     /// 用户信息实体。
     /// </summary>
-    public class User : UUIDIdentity
+    public class User : UUIDIdentity,ICreateTime,ILastUpdateTime
     {
         /// <summary>
         /// 用户名。
@@ -33,5 +33,15 @@ namespace NKingime.App.Entity
         /// 电子邮箱。
         /// </summary>
         public string Email { get; set; }
+
+        /// <summary>
+        /// 注册时间。
+        /// </summary>
+        public DateTime CreateTime { get; set; }
+
+        /// <summary>
+        /// 最后更新时间（可空）。
+        /// </summary>
+        public DateTime? LastUpdateTime { get; set; }
     }
 }
