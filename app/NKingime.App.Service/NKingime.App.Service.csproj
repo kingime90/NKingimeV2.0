@@ -48,6 +48,10 @@
       <Project>{a41dc1f7-3e5b-417e-a916-d0364a284a16}</Project>
       <Name>NKingime.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\NKingime.App.IRepository\NKingime.App.IRepository.csproj">
+      <Project>{47927BBD-765B-432A-B197-9DAB00F12636}</Project>
+      <Name>NKingime.App.IRepository</Name>
+    </ProjectReference>
     <ProjectReference Include="..\NKingime.App.IService\NKingime.App.IService.csproj">
       <Project>{50B7E261-2E4B-49BA-84DB-8C699908E09B}</Project>
       <Name>NKingime.App.IService</Name>

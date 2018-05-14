@@ -331,8 +331,12 @@
       <Name>NKingime.App.Entity</Name>
     </ProjectReference>
     <ProjectReference Include="..\NKingime.App.IRepository\NKingime.App.IRepository.csproj">
-      <Project>{47927BBD-765B-432A-B197-9DAB00F12636}</Project>
+      <Project>{47927bbd-765b-432a-b197-9dab00f12636}</Project>
       <Name>NKingime.App.IRepository</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NKingime.App.IService\NKingime.App.IService.csproj">
+      <Project>{50b7e261-2e4b-49ba-84db-8c699908e09b}</Project>
+      <Name>NKingime.App.IService</Name>
     </ProjectReference>
     <ProjectReference Include="..\NKingime.App.Repository\NKingime.App.Repository.csproj">
       <Project>{b24965d4-3656-4b94-93f7-7fece1a42672}</Project>
