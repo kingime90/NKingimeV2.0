@@ -1,171 +1,19 @@
 ﻿using System;
-using System.Linq;
 using System.Linq.Expressions;
 using System.Collections.Generic;
 using NKingime.Core.Entity;
-using NKingime.Utility.General;
 using NKingime.Core.Dependency;
+using NKingime.Utility.General;
 
-namespace NKingime.Core.Data
+namespace NKingime.Core.Service
 {
     /// <summary>
-    /// 定义数据实体仓储接口。
+    /// 定义数据实体服务接口。
     /// </summary>
     /// <typeparam name="TEntity">数据实体类型。</typeparam>
     /// <typeparam name="TKey">主键类型。</typeparam>
-    public interface IRepository<TEntity, TKey> : IRepository where TEntity : class, IEntity<TKey> where TKey : IEquatable<TKey>
+    public interface IService<TEntity, TKey> : IService where TEntity : class, IEntity<TKey> where TKey : IEquatable<TKey>
     {
-        #region 属性
-
-        /// <summary>
-        /// 获取 当前业务单元操作。
-        /// </summary>
-        IUnitOfWork UnitOfWork { get; }
-
-        /// <summary>
-        /// 获取 当前数据实体类型的查询数据集，数据将使用不跟踪变化的方式来查询，当数据用于展现时，推荐使用此数据集，如果用于新增，更新，删除时，请使用<see cref="TrackEntities"/>数据集。
-        /// </summary>
-        IQueryable<TEntity> Entities { get; }
-
-        /// <summary>
-        /// 获取 当前数据实体类型的查询数据集，当数据用于新增，更新，删除时，使用此数据集，如果数据用于展现，推荐使用<see cref="Entities"/>数据集。
-        /// </summary>
-        IQueryable<TEntity> TrackEntities { get; }
-
-        #endregion
-
-        #region 新增
-
-        /// <summary>
-        /// 保存数据实体。
-        /// </summary>
-        /// <param name="entity">数据实体。</param>
-        /// <returns>返回受影响的行数。</returns>
-        int Save(TEntity entity);
-
-        /// <summary>
-        /// 保存数据实体序列。
-        /// </summary>
-        /// <param name="entities">数据实体序列。</param>
-        /// <returns>返回受影响的行数。</returns>
-        int Save(IEnumerable<TEntity> entities);
-
-        #endregion
-
-        #region 删除
-
-        /// <summary>
-        /// 根据主键删除数据实体。
-        /// </summary>
-        /// <param name="key">主键。</param>
-        /// <returns>返回受影响的行数。</returns>
-        int DeleteByKey(TKey key);
-
-        /// <summary>
-        /// 删除数据实体。
-        /// </summary>
-        /// <param name="entity">数据实体。</param>
-        /// <returns>返回受影响的行数。</returns>
-        int Delete(TEntity entity);
-
-        /// <summary>
-        /// 删除数据实体序列。
-        /// </summary>
-        /// <param name="entities">数据实体序列。</param>
-        /// <returns>返回受影响的行数。</returns>
-        int Delete(IEnumerable<TEntity> entities);
-
-        /// <summary>
-        /// 删除所有符合条件的数据实体。
-        /// </summary>
-        /// <param name="predicate">基于谓词筛选表达式。</param>
-        /// <returns>返回受影响的行数。</returns>
-        int Delete(Expression<Func<TEntity, bool>> predicate);
-
-        #endregion
-
-        #region 更新
-
-        /// <summary>
-        /// 更新数据实体。
-        /// </summary>
-        /// <param name="entity">数据实体。</param>
-        /// <returns>返回受影响的行数。</returns>
-        int Update(TEntity entity);
-
-        /// <summary>
-        /// 更新数据实体序列。
-        /// </summary>
-        /// <param name="entities">数据实体序列。</param>
-        /// <returns>返回受影响的行数。</returns>
-        int Update(IEnumerable<TEntity> entities);
-
-        /// <summary>
-        /// 更新所有符合条件的数据实体。
-        /// </summary>
-        /// <param name="predicate">基于谓词筛选表达式。</param>
-        /// <param name="updateExpression">更新实体表达式。</param>
-        /// <returns></returns>
-        int Update(Expression<Func<TEntity, bool>> predicate, Expression<Func<TEntity, TEntity>> updateExpression);
-
-        /// <summary>
-        /// 根据主键逻辑删除数据实体。
-        /// </summary>
-        /// <param name="key">主键。</param>
-        /// <returns>返回受影响的行数。</returns>
-        int RecycleByKey(TKey key);
-
-        /// <summary>
-        /// 逻辑删除数据实体。
-        /// </summary>
-        /// <param name="entity"></param>
-        /// <returns></returns>
-        int Recycle(TEntity entity);
-
-        /// <summary>
-        /// 逻辑删除数据实体序列。
-        /// </summary>
-        /// <param name="entities">数据实体序列。</param>
-        /// <returns>返回受影响的行数。</returns>
-        int Recycle(IEnumerable<TEntity> entities);
-
-        /// <summary>
-        /// 逻辑删除所有符合条件的数据实体。
-        /// </summary>
-        /// <param name="predicate">基于谓词筛选表达式。</param>
-        /// <returns>返回受影响的行数。</returns>
-        int Recycle(Expression<Func<TEntity, bool>> predicate);
-
-        /// <summary>
-        /// 根据主键逻辑还原数据实体。
-        /// </summary>
-        /// <param name="key">主键。</param>
-        /// <returns>返回受影响的行数。</returns>
-        int RestoreByKey(TKey key);
-
-        /// <summary>
-        /// 逻辑还原数据实体。
-        /// </summary>
-        /// <param name="entity"></param>
-        /// <returns></returns>
-        int Restore(TEntity entity);
-
-        /// <summary>
-        /// 逻辑还原数据实体序列。
-        /// </summary>
-        /// <param name="entities">数据实体序列。</param>
-        /// <returns>返回受影响的行数。</returns>
-        int Restore(IEnumerable<TEntity> entities);
-
-        /// <summary>
-        /// 逻辑还原所有符合条件的数据实体。
-        /// </summary>
-        /// <param name="predicate">基于谓词筛选表达式。</param>
-        /// <returns>返回受影响的行数。</returns>
-        int Restore(Expression<Func<TEntity, bool>> predicate);
-
-        #endregion
-
         #region 查询
 
         /// <summary>
@@ -310,9 +158,9 @@ namespace NKingime.Core.Data
     }
 
     /// <summary>
-    /// 定义数据仓储接口。
+    /// 定义数据服务接口。
     /// </summary>
-    public interface IRepository : IScopeDependency
+    public interface IService : IScopeDependency
     {
 
     }

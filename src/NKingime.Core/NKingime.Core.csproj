@@ -96,6 +96,8 @@
     <Compile Include="Reflection\IMethodInfoFinder.cs" />
     <Compile Include="Reflection\ITypeFinder.cs" />
     <Compile Include="Reflection\TypeFinderBase.cs" />
+    <Compile Include="Service\IService.cs" />
+    <Compile Include="Service\ServiceBase.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

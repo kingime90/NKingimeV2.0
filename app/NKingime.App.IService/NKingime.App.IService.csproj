@@ -48,6 +48,14 @@
       <Project>{A41DC1F7-3E5B-417E-A916-D0364A284A16}</Project>
       <Name>NKingime.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\src\NKingime.Utility\NKingime.Utility.csproj">
+      <Project>{3F63C2D8-1670-45D2-A0AD-5748B344FA98}</Project>
+      <Name>NKingime.Utility</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NKingime.App.Entity\NKingime.App.Entity.csproj">
+      <Project>{3913788C-050A-43D4-8B77-14B7A1209F07}</Project>
+      <Name>NKingime.App.Entity</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

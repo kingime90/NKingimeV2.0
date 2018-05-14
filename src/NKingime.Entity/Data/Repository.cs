@@ -16,7 +16,7 @@ using NKingime.Entity.Extensions;
 namespace NKingime.Entity.Data
 {
     /// <summary>
-    /// EntityFramework数据仓储。
+    /// EntityFramework数据实体仓储。
     /// </summary>
     /// <typeparam name="TEntity">数据实体类型。</typeparam>
     /// <typeparam name="TKey">主键类型。</typeparam>

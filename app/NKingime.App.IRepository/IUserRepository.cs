@@ -5,7 +5,7 @@ using NKingime.App.Entity;
 namespace NKingime.App.IRepository
 {
     /// <summary>
-    /// 定义用户信息数据仓储接口。
+    /// 定义用户信息数据实体仓储接口。
     /// </summary>
     public interface IUserRepository : IRepository<User, long>
     {

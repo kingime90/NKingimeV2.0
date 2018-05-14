@@ -9,14 +9,16 @@ namespace NKingime.App.Mvc.Areas.Sample.Controllers
 {
     public class QueryController : Controller
     {
+        /// <summary>
+        /// 获取或设置 用户信息数据实体服务。
+        /// </summary>
         public IUserService UserService { get; set; }
 
         public ActionResult ListModel(int? pageSize, int? page)
         {
-            //var pagedResult = UserRepository.PagedList(pageSize.GetValue(), page.GetValue());
-            //var pagedLis = new StaticPagedList<User>(pagedResult.ResultList, pagedResult.PageIndex, pagedResult.PageSize, pagedResult.TotalCount);
-            //return View(pagedLis);
-            return View();
+            var pagedResult = UserService.PagedList(pageSize.GetValue(), page.GetValue());
+            var pagedLis = new StaticPagedList<User>(pagedResult.ResultList, pagedResult.PageIndex, pagedResult.PageSize, pagedResult.TotalCount);
+            return View(pagedLis);
         }
 
         public ActionResult ListViewBag(int? pageSize, int? pageIndex)
