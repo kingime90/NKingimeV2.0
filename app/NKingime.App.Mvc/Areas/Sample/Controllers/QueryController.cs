@@ -2,11 +2,14 @@
 using System.Web.Mvc;
 using PagedList;
 using NKingime.App.Entity;
-using NKingime.Utility.Extensions;
 using NKingime.App.IService;
+using NKingime.Utility.Extensions;
 
 namespace NKingime.App.Mvc.Areas.Sample.Controllers
 {
+    /// <summary>
+    /// 查询控制器。
+    /// </summary>
     public class QueryController : Controller
     {
         /// <summary>
@@ -21,27 +24,11 @@ namespace NKingime.App.Mvc.Areas.Sample.Controllers
             return View(pagedLis);
         }
 
-        public ActionResult ListViewBag(int? pageSize, int? pageIndex)
+        public ActionResult ListViewBag(int? pageSize, int? page)
         {
-            //var pagedResult = UserRepository.PagedList(pageSize.GetValue(), pageIndex.GetValue());
-            //ViewBag.PagedResult = pagedResult;
+            var pagedResult = UserService.PagedList(pageSize.GetValue(), page.GetValue());
+            ViewBag.PagedResult = pagedResult;
             return View();
-        }
-
-        public ActionResult Create(User user)
-        {
-            //if (user.Id == 0)
-            //{
-            //    user = new Entity.User()
-            //    {
-            //        Username = "test001",
-            //        Birthday = DateTime.Now.AddYears(-22),
-            //    };
-            //    user.Email = user.Username + "@163.com";
-            //    user.Mobile = "13698745638";
-            //}
-            //UserRepository.Save(user);
-            return RedirectToAction("Index");
         }
     }
 }

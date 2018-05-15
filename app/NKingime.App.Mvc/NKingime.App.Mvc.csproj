@@ -211,6 +211,7 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Areas\Sample\Controllers\UpdateController.cs" />
     <Compile Include="Areas\Sample\Controllers\HomeController.cs" />
     <Compile Include="Areas\Sample\Controllers\QueryController.cs" />
     <Compile Include="Areas\Sample\SampleAreaRegistration.cs" />
@@ -295,10 +296,12 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Sample\Models\" />
+    <Folder Include="Areas\Sample\Views\Edit\" />
     <Folder Include="static\shared\img\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+    <Content Include="Areas\Sample\Views\Update\Edit.cshtml" />
     <None Include="Project_Readme.html" />
     <Content Include="static\lib\bootstrap\css\bootstrap-theme.css.map" />
     <Content Include="static\lib\bootstrap\css\bootstrap-theme.min.css.map" />
