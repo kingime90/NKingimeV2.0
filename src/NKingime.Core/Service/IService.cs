@@ -14,6 +14,18 @@ namespace NKingime.Core.Service
     /// <typeparam name="TKey">主键类型。</typeparam>
     public interface IService<TEntity, TKey> : IService where TEntity : class, IEntity<TKey> where TKey : IEquatable<TKey>
     {
+        #region 删除
+
+        /// <summary>
+        /// 根据主键删除数据实体。
+        /// </summary>
+        /// <param name="key">主键。</param>
+        /// <param name="valid">验证数据实体受限制函数。</param>
+        /// <returns>返回操作结果。</returns>
+        DeleteResult DeleteByKey(TKey key, Func<TEntity, DeleteResult> valid = null);
+
+        #endregion
+
         #region 查询
 
         /// <summary>

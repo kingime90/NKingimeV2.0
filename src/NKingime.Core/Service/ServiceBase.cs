@@ -3,7 +3,9 @@ using System.Linq.Expressions;
 using System.Collections.Generic;
 using NKingime.Core.Data;
 using NKingime.Core.Entity;
+using NKingime.Core.Option;
 using NKingime.Utility.General;
+using NKingime.Utility.Extensions;
 
 namespace NKingime.Core.Service
 {
@@ -27,6 +29,55 @@ namespace NKingime.Core.Service
         {
             _entityRepository = entityRepository;
         }
+
+        #region 删除
+
+        /// <summary>
+        /// 根据主键删除数据实体。
+        /// </summary>
+        /// <param name="key">主键。</param>
+        /// <param name="valid">验证数据实体受限制函数。</param>
+        /// <returns>返回操作结果。</returns>
+        public DeleteResult DeleteByKey(TKey key, Func<TEntity, DeleteResult> valid = null)
+        {
+            var operateResult = DeleteResult.CreateResult(DeleteResultOption.Success);
+            if (key is string)
+            {
+                if (Convert.ToString(key).IsNullOrWhiteSpace())
+                {
+                    operateResult = DeleteResult.CreateResult(DeleteResultOption.ArgumentError);
+                }
+            }
+            else
+            {
+                if (key.Equals(default(TKey)))
+                {
+                    operateResult = DeleteResult.CreateResult(DeleteResultOption.ArgumentError);
+                }
+            }
+            if (operateResult.Result != DeleteResultOption.Success)
+            {
+                return operateResult as DeleteResult;
+            }
+            var entity = GetByKey(key);
+            if (entity.IsNull())
+            {
+                operateResult = DeleteResult.CreateResult(DeleteResultOption.NotFound);
+                return operateResult as DeleteResult;
+            }
+            if (valid != null)
+            {
+                operateResult = valid(entity);
+                if (operateResult.Result == DeleteResultOption.Limited)
+                {
+                    return operateResult as DeleteResult;
+                }
+            }
+            _entityRepository.Delete(entity);
+            return operateResult as DeleteResult;
+        }
+
+        #endregion
 
         #region 查询
 

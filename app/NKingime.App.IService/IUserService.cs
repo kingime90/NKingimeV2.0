@@ -1,6 +1,7 @@
 ﻿using System;
 using NKingime.App.Entity;
 using NKingime.Core.Service;
+using NKingime.Core.Option;
 
 namespace NKingime.App.IService
 {
