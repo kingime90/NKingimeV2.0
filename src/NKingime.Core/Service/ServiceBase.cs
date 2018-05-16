@@ -40,41 +40,31 @@ namespace NKingime.Core.Service
         /// <returns>返回操作结果。</returns>
         public DeleteResult DeleteByKey(TKey key, Func<TEntity, DeleteResult> valid = null)
         {
-            var operateResult = DeleteResult.CreateResult(DeleteResultOption.Success);
-            if (key is string)
+            var operateResult = new DeleteResult();
+            if (((key is string) && Convert.ToString(key).IsNullOrWhiteSpace()) || key.Equals(default(TKey)))
             {
-                if (Convert.ToString(key).IsNullOrWhiteSpace())
-                {
-                    operateResult = DeleteResult.CreateResult(DeleteResultOption.ArgumentError);
-                }
+                operateResult.SetResult(DeleteResultOption.ArgumentError);
+                return operateResult;
             }
-            else
-            {
-                if (key.Equals(default(TKey)))
-                {
-                    operateResult = DeleteResult.CreateResult(DeleteResultOption.ArgumentError);
-                }
-            }
-            if (operateResult.Result != DeleteResultOption.Success)
-            {
-                return operateResult as DeleteResult;
-            }
+            //
             var entity = GetByKey(key);
             if (entity.IsNull())
             {
-                operateResult = DeleteResult.CreateResult(DeleteResultOption.NotFound);
-                return operateResult as DeleteResult;
+                operateResult.SetResult(DeleteResultOption.NotFound);
+                return operateResult;
             }
+            //
             if (valid != null)
             {
-                operateResult = valid(entity);
-                if (operateResult.Result == DeleteResultOption.Limited)
+                var validResult = valid(entity);
+                if (validResult.Result == DeleteResultOption.Limited)
                 {
-                    return operateResult as DeleteResult;
+                    return validResult;
                 }
             }
+            //
             _entityRepository.Delete(entity);
-            return operateResult as DeleteResult;
+            return operateResult;
         }
 
         #endregion

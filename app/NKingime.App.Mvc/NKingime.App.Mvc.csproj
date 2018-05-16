@@ -302,6 +302,7 @@
   <ItemGroup>
     <Content Include="packages.config" />
     <Content Include="Areas\Sample\Views\Update\Edit.cshtml" />
+    <Content Include="Areas\Sample\Views\Update\Error.cshtml" />
     <None Include="Project_Readme.html" />
     <Content Include="static\lib\bootstrap\css\bootstrap-theme.css.map" />
     <Content Include="static\lib\bootstrap\css\bootstrap-theme.min.css.map" />

@@ -9,6 +9,14 @@ namespace NKingime.Core.Service
     public class DeleteResult : OperateResult<DeleteResultOption>
     {
         /// <summary>
+        /// 初始化一个<see cref="DeleteResult"/>成功实例。
+        /// </summary>
+        public DeleteResult() : base(DeleteResultOption.Success)
+        {
+
+        }
+
+        /// <summary>
         /// 初始化一个<see cref="DeleteResult"/>新实例。
         /// </summary>
         /// <param name="result">结果。</param>

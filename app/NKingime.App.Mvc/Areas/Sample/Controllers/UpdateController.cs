@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Web.Mvc;
+using NKingime.Core.Option;
 using NKingime.App.IService;
 using NKingime.Utility.Extensions;
 
@@ -21,7 +22,6 @@ namespace NKingime.App.Mvc.Areas.Sample.Controllers
         /// <returns></returns>
         public ActionResult Edit(string uid)
         {
-
             return View();
         }
 
@@ -33,7 +33,23 @@ namespace NKingime.App.Mvc.Areas.Sample.Controllers
         public ActionResult Delete(long? uid)
         {
             var operateResult = UserService.DeleteByKey(uid.GetValue());
-            return RedirectToAction("ListModel", "Query");
+            string message = "删除失败，";
+            switch (operateResult.Result)
+            {
+                case DeleteResultOption.ArgumentError:
+                    message += "参数错误。";
+                    break;
+                case DeleteResultOption.NotFound:
+                    message += "未找到记录。";
+                    break;
+                case DeleteResultOption.Limited:
+                    message += "受限制。";
+                    break;
+                case DeleteResultOption.Success:
+                    return RedirectToAction("ListModel", "Query");
+            }
+            ViewBag.Message = message;
+            return View("Error");
         }
     }
 }

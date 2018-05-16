@@ -6,7 +6,7 @@ namespace NKingime.Core.Service
     /// 操作结果基类。
     /// </summary>
     /// <typeparam name="TResult"></typeparam>
-    public class OperateResult<TResult> where TResult : struct
+    public abstract class OperateResult<TResult> where TResult : struct
     {
         /// <summary>
         /// 初始化一个<see cref="ServiceResult{TResult}"/>新实例。
@@ -30,22 +30,31 @@ namespace NKingime.Core.Service
         /// <summary>
         /// 获取 结果。
         /// </summary>
-        public TResult Result { get; }
+        public TResult Result { get; private set; }
 
         /// <summary>
         /// 获取 消息。
         /// </summary>
-        public string Message { get; }
+        public string Message { get; private set; }
 
         /// <summary>
-        /// 创建操作结果。
+        /// 设置结果。
         /// </summary>
         /// <param name="result">结果。</param>
-        /// <param name="message">消息，默认 null。</param>
-        /// <returns></returns>
-        public static OperateResult<TResult> CreateResult(TResult result, string message = null)
+        public virtual void SetResult(TResult result)
         {
-            return new OperateResult<TResult>(result, message);
+            Result = result;
+        }
+
+        /// <summary>
+        /// 设置结果。
+        /// </summary>
+        /// <param name="result">结果。</param>
+        /// <param name="message">消息。</param>
+        public virtual void SetResult(TResult result, string message)
+        {
+            Result = result;
+            Message = message;
         }
     }
 }
