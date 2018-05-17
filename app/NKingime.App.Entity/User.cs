@@ -17,7 +17,7 @@ namespace NKingime.App.Entity
         /// <summary>
         /// 性别类型。
         /// </summary>
-        public GenderOption GenderType { get; set; }
+        public GenderOption? GenderType { get; set; }
 
         /// <summary>
         /// 生日。

@@ -3,6 +3,7 @@ using System.Web.Mvc;
 using NKingime.Core.Option;
 using NKingime.App.IService;
 using NKingime.Utility.Extensions;
+using NKingime.App.Entity;
 
 namespace NKingime.App.Mvc.Areas.Sample.Controllers
 {
@@ -20,9 +21,15 @@ namespace NKingime.App.Mvc.Areas.Sample.Controllers
         /// 编辑
         /// </summary>
         /// <returns></returns>
-        public ActionResult Edit(string uid)
+        public ActionResult Edit(long? uid)
         {
-            return View();
+            var entity = UserService.GetByKey(uid.GetValue());
+            if (entity == null)
+            {
+                ViewBag.Message = "未找到记录。";
+                return View("Error");
+            }
+            return View(entity);
         }
 
         /// <summary>
@@ -50,6 +57,18 @@ namespace NKingime.App.Mvc.Areas.Sample.Controllers
             }
             ViewBag.Message = message;
             return View("Error");
+        }
+
+        /// <summary>
+        /// 保存
+        /// </summary>
+        /// <param name="entity"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public ActionResult Save(User entity)
+        {
+
+            return View();
         }
     }
 }
