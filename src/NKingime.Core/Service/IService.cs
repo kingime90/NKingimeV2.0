@@ -17,12 +17,12 @@ namespace NKingime.Core.Service
         #region 删除
 
         /// <summary>
-        /// 根据主键删除数据实体。
+        /// 根据主键删除数据实体并检查约束。
         /// </summary>
         /// <param name="key">主键。</param>
-        /// <param name="valid">验证数据实体受限制函数。</param>
+        /// <param name="constraint">检查约束函数，并返回检查结果。</param>
         /// <returns>返回操作结果。</returns>
-        DeleteResult DeleteByKey(TKey key, Func<TEntity, DeleteResult> valid = null);
+        DeleteResult DeleteByKeyWithConstraint(TKey key, Func<TEntity, CheckResult> constraint = null);
 
         #endregion
 

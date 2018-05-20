@@ -12,7 +12,7 @@ namespace NKingime.Core.Service
         /// 初始化一个<see cref="ServiceResult{TResult}"/>新实例。
         /// </summary>
         /// <param name="result">结果。</param>
-        public OperateResult(TResult result)
+        public OperateResult(TResult result = default(TResult))
         {
             Result = result;
         }
@@ -44,6 +44,15 @@ namespace NKingime.Core.Service
         public virtual void SetResult(TResult result)
         {
             Result = result;
+        }
+
+        /// <summary>
+        /// 设置消息。
+        /// </summary>
+        /// <param name="message">消息。</param>
+        public virtual void SetMessage(string message)
+        {
+            Message = message;
         }
 
         /// <summary>

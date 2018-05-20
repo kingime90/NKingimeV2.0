@@ -2,9 +2,9 @@
 namespace NKingime.Core.Option
 {
     /// <summary>
-    /// 删除结果选项。
+    /// 保存结果选项。
     /// </summary>
-    public enum DeleteResultOption : byte
+    public enum SaveResultOption : byte
     {
         /// <summary>
         /// 参数错误。
@@ -12,18 +12,13 @@ namespace NKingime.Core.Option
         ArgumentError = 1,
 
         /// <summary>
-        /// 未找到记录。
-        /// </summary>
-        NotFound = 2,
-
-        /// <summary>
         /// 约束/限制。
         /// </summary>
-        Constraint = 3,
+        Constraint = 2,
 
         /// <summary>
         /// 成功。
         /// </summary>
-        Success = 4,
+        Success = 3,
     }
 }

@@ -2,9 +2,9 @@
 namespace NKingime.Core.Option
 {
     /// <summary>
-    /// 删除结果选项。
+    /// 更新结果选项。
     /// </summary>
-    public enum DeleteResultOption : byte
+    public enum UpdateResultOption : byte
     {
         /// <summary>
         /// 参数错误。

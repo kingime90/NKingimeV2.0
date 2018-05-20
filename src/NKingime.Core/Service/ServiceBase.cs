@@ -30,15 +30,28 @@ namespace NKingime.Core.Service
             _entityRepository = entityRepository;
         }
 
+        /// <summary>
+        /// 更新数据实体并检查约束。
+        /// </summary>
+        /// <param name="entity">数据实体。</param>
+        /// <param name="constraint">检查约束函数，并返回检查结果。</param>
+        /// <returns></returns>
+        public UpdateResult UpdateWithConstraint(TEntity entity, Func<TEntity, CheckResult> constraint = null)
+        {
+            var operateResult = new UpdateResult();
+
+            return operateResult;
+        }
+
         #region 删除
 
         /// <summary>
-        /// 根据主键删除数据实体。
+        /// 根据主键删除数据实体并检查约束。
         /// </summary>
         /// <param name="key">主键。</param>
-        /// <param name="valid">验证数据实体受限制函数。</param>
+        /// <param name="constraint">检查约束函数，并返回检查结果。</param>
         /// <returns>返回操作结果。</returns>
-        public DeleteResult DeleteByKey(TKey key, Func<TEntity, DeleteResult> valid = null)
+        public DeleteResult DeleteByKeyWithConstraint(TKey key, Func<TEntity, CheckResult> constraint = null)
         {
             var operateResult = new DeleteResult();
             if (((key is string) && Convert.ToString(key).IsNullOrWhiteSpace()) || key.Equals(default(TKey)))
@@ -54,12 +67,13 @@ namespace NKingime.Core.Service
                 return operateResult;
             }
             //
-            if (valid != null)
+            if (constraint != null)
             {
-                var validResult = valid(entity);
-                if (validResult.Result == DeleteResultOption.Limited)
+                var checkResult = constraint(entity);
+                if (checkResult.Result != CheckResultOption.Pass)
                 {
-                    return validResult;
+                    operateResult.SetResult(DeleteResultOption.Constraint, checkResult.Message);
+                    return operateResult;
                 }
             }
             //

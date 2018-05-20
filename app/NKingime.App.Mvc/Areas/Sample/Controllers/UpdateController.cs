@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Web.Mvc;
+using NKingime.App.Entity;
 using NKingime.Core.Option;
 using NKingime.App.IService;
 using NKingime.Utility.Extensions;
-using NKingime.App.Entity;
 
 namespace NKingime.App.Mvc.Areas.Sample.Controllers
 {
@@ -39,7 +39,7 @@ namespace NKingime.App.Mvc.Areas.Sample.Controllers
         /// <returns></returns>
         public ActionResult Delete(long? uid)
         {
-            var operateResult = UserService.DeleteByKey(uid.GetValue());
+            var operateResult = UserService.DeleteByKeyWithConstraint(uid.GetValue());
             string message = "删除失败，";
             switch (operateResult.Result)
             {
@@ -49,7 +49,7 @@ namespace NKingime.App.Mvc.Areas.Sample.Controllers
                 case DeleteResultOption.NotFound:
                     message += "未找到记录。";
                     break;
-                case DeleteResultOption.Limited:
+                case DeleteResultOption.Constraint:
                     message += "受限制。";
                     break;
                 case DeleteResultOption.Success:
@@ -65,8 +65,19 @@ namespace NKingime.App.Mvc.Areas.Sample.Controllers
         /// <param name="entity"></param>
         /// <returns></returns>
         [HttpPost]
-        public ActionResult Save(User entity)
+        public ActionResult Save(User user)
         {
+            //var entity = UserService.GetByKey(user.Id);
+            //if (entity == null)
+            //{
+            //    ViewBag.Message = "未找到记录。";
+            //    return View("Error");
+            //}
+            //entity.Username = user.Username;
+            //entity.GenderType = user.GenderType;
+            //entity.Birthday = user.Birthday;
+            //entity.Mobile = user.Mobile;
+            //entity.Email = user.Email;
 
             return View();
         }

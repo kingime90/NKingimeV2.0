@@ -21,6 +21,8 @@ namespace NKingime.App.Mvc
             initializer.Initialize(mvcIocBuilder);
 
             ConfigureAuth(app);
+
+
         }
     }
 }

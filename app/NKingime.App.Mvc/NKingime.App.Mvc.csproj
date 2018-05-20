@@ -296,7 +296,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Sample\Models\" />
-    <Folder Include="Areas\Sample\Views\Edit\" />
     <Folder Include="static\shared\img\" />
   </ItemGroup>
   <ItemGroup>
