@@ -30,10 +30,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=6.2.2.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\AutoMapper.6.2.2\lib\net45\AutoMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -71,6 +76,8 @@
     <Compile Include="Dependency\ServiceProviderExtensions.cs" />
     <Compile Include="Dependency\SingletonDependencyTypeFinder.cs" />
     <Compile Include="Dependency\TransientDependencyTypeFinder.cs" />
+    <Compile Include="Dto\EntityDtoProfile.cs" />
+    <Compile Include="Dto\IEntityDto.cs" />
     <Compile Include="Entity\AutoIdentity.cs" />
     <Compile Include="Entity\UUIDIdentity.cs" />
     <Compile Include="Entity\StringIdentity.cs" />
@@ -108,7 +115,9 @@
     <Compile Include="Service\SaveResult.cs" />
     <Compile Include="Service\ServiceBase.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\NKingime.Utility\NKingime.Utility.csproj">
       <Project>{3f63c2d8-1670-45d2-a0ad-5748b344fa98}</Project>
