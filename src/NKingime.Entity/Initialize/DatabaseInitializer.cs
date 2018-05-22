@@ -51,6 +51,7 @@ namespace NKingime.Entity.Initialize
 
             }
             dbContextInitializer.MapperAssemblys = initializerConfig.MapperAssemblys;
+            dbContextInitializer.ProfileAssemblys = initializerConfig.ProfileAssemblys;
             return dbContextInitializer;
         }
     }

@@ -7,10 +7,12 @@ using System.Collections.ObjectModel;
 using System.Data.Entity.Core.Mapping;
 using System.Data.Entity.Infrastructure;
 using System.Data.Entity.Core.Metadata.Edm;
+using AutoMapper;
 using NKingime.Core.Data;
 using NKingime.Entity.Mapper;
 using NKingime.Entity.Migrations;
 using NKingime.Utility.Extensions;
+using NKingime.Core.Dto;
 
 namespace NKingime.Entity.Initialize
 {
@@ -91,9 +93,14 @@ namespace NKingime.Entity.Initialize
     public abstract class DbContextInitializerBase
     {
         /// <summary>
-        /// 映射程序集序列。
+        /// 数据实体映射程序集序列。
         /// </summary>
         public IEnumerable<Assembly> MapperAssemblys { get; set; }
+
+        /// <summary>
+        /// 数据实体DTO映射配置程序集序列。
+        /// </summary>
+        public IEnumerable<Assembly> ProfileAssemblys { get; set; }
 
         /// <summary>
         /// 当前上下文数据实体映射实例集合。
@@ -144,6 +151,17 @@ namespace NKingime.Entity.Initialize
                 entityMapperSet.Add(entityType, entityMapper);
             }
             EntityMappers = new ReadOnlyDictionary<Type, IEntityMapper>(entityMapperSet);
+            //初始化数据实体DTO映射配置
+            baseType = typeof(EntityDtoProfile<,>);
+            var profileTypes = ProfileAssemblys.SelectMany(assembly => assembly.GetTypes()).Where(p => baseType.IsGenericAssignableFrom(p) && !p.IsAbstract).Distinct().ToArray();
+            var profiles = profileTypes.Select(s => Activator.CreateInstance(s) as Profile).ToArray();
+            AutoMapper.Mapper.Initialize(cfg =>
+            {
+                foreach (var profile in profiles)
+                {
+                    cfg.AddProfile(profile);
+                }
+            });
         }
 
         /// <summary>

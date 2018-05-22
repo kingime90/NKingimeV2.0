@@ -329,6 +329,10 @@
       <Project>{3728370b-08da-4d39-b23f-bdd815386354}</Project>
       <Name>NKingime.Web.Mvc</Name>
     </ProjectReference>
+    <ProjectReference Include="..\NKingime.App.EntityDto\NKingime.App.EntityDto.csproj">
+      <Project>{21167C7F-75F4-466F-866F-FEE818079765}</Project>
+      <Name>NKingime.App.EntityDto</Name>
+    </ProjectReference>
     <ProjectReference Include="..\NKingime.App.Entity\NKingime.App.Entity.csproj">
       <Project>{3913788c-050a-43d4-8b77-14b7a1209f07}</Project>
       <Name>NKingime.App.Entity</Name>

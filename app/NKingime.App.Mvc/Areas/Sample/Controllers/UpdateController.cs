@@ -4,6 +4,7 @@ using NKingime.App.Entity;
 using NKingime.Core.Option;
 using NKingime.App.IService;
 using NKingime.Utility.Extensions;
+using NKingime.App.EntityDto;
 
 namespace NKingime.App.Mvc.Areas.Sample.Controllers
 {
@@ -65,19 +66,13 @@ namespace NKingime.App.Mvc.Areas.Sample.Controllers
         /// <param name="entity"></param>
         /// <returns></returns>
         [HttpPost]
-        public ActionResult Save(User user)
+        public ActionResult Save(UserSaveDto userDto)
         {
-            //var entity = UserService.GetByKey(user.Id);
-            //if (entity == null)
-            //{
-            //    ViewBag.Message = "未找到记录。";
-            //    return View("Error");
-            //}
-            //entity.Username = user.Username;
-            //entity.GenderType = user.GenderType;
-            //entity.Birthday = user.Birthday;
-            //entity.Mobile = user.Mobile;
-            //entity.Email = user.Email;
+            if (userDto == null)
+            {
+                ViewBag.Message = "未找到记录。";
+                return View("Error");
+            }
 
             return View();
         }

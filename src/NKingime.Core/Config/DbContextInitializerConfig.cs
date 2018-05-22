@@ -19,6 +19,7 @@ namespace NKingime.Core.Config
         {
             AssemblyFinder = new DirectoryAssemblyFinder();
             _mapperAssemblys = new List<Assembly>();
+            _profileAssemblys = new List<Assembly>();
         }
 
         /// <summary>
@@ -32,6 +33,7 @@ namespace NKingime.Core.Config
             {
                 //异常处理
             }
+            //
             var mapperAssemblyNames = element.MapperAssemblys.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
             var assemblySet = AssemblyFinder.FindAll().ToDictionary(assembly => assembly.GetName().Name);
             foreach (var assemblyName in mapperAssemblyNames)
@@ -41,6 +43,16 @@ namespace NKingime.Core.Config
                     //异常处理
                 }
                 _mapperAssemblys.Add(assemblySet[assemblyName]);
+            }
+            //
+            var profileAssemblyNames = element.ProfileAssemblys.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+            foreach (var assemblyName in profileAssemblyNames)
+            {
+                if (!assemblySet.ContainsKey(assemblyName))
+                {
+                    //异常处理
+                }
+                _profileAssemblys.Add(assemblySet[assemblyName]);
             }
         }
 
@@ -52,13 +64,26 @@ namespace NKingime.Core.Config
         private readonly List<Assembly> _mapperAssemblys;
 
         /// <summary>
-        /// 获取 映射程序集序列。
+        /// 获取 数据实体映射程序集序列。
         /// </summary>
         public IEnumerable<Assembly> MapperAssemblys
         {
             get
             {
                 return _mapperAssemblys;
+            }
+        }
+
+        private readonly List<Assembly> _profileAssemblys;
+
+        /// <summary>
+        /// 获取 数据实体DTO映射配置程序集序列。
+        /// </summary>
+        public IEnumerable<Assembly> ProfileAssemblys
+        {
+            get
+            {
+                return _profileAssemblys;
             }
         }
 
