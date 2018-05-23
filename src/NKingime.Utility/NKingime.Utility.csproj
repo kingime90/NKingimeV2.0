@@ -48,6 +48,7 @@
     <Compile Include="Extensions\TypeExtensions.cs" />
     <Compile Include="Extensions\ValidationExtensions.cs" />
     <Compile Include="Extensions\ValueTypeExtension.cs" />
+    <Compile Include="General\Cloneable.cs" />
     <Compile Include="General\IPagedResult.cs" />
     <Compile Include="General\OrderSelector.cs" />
     <Compile Include="General\PagedResult.cs" />

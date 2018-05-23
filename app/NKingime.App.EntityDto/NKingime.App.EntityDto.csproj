@@ -54,6 +54,10 @@
       <Project>{a41dc1f7-3e5b-417e-a916-d0364a284a16}</Project>
       <Name>NKingime.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\src\NKingime.Utility\NKingime.Utility.csproj">
+      <Project>{3f63c2d8-1670-45d2-a0ad-5748b344fa98}</Project>
+      <Name>NKingime.Utility</Name>
+    </ProjectReference>
     <ProjectReference Include="..\NKingime.App.Entity\NKingime.App.Entity.csproj">
       <Project>{3913788C-050A-43D4-8B77-14B7A1209F07}</Project>
       <Name>NKingime.App.Entity</Name>
