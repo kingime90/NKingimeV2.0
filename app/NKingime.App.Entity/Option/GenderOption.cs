@@ -19,12 +19,12 @@ namespace NKingime.App.Entity.Option
         /// 男。
         /// </summary>
         [Description("男")]
-        Male = 0,
+        Male = 1,
 
         /// <summary>
         /// 女。
         /// </summary>
         [Description("女")]
-        Female = 0,
+        Female = 2,
     }
 }

@@ -40,7 +40,7 @@ namespace NKingime.App.Mvc.Areas.Sample.Controllers
         /// <returns></returns>
         public ActionResult Delete(long? uid)
         {
-            var operateResult = UserService.DeleteByKeyWithConstraint(uid.GetValue());
+            var operateResult = UserService.DeleteByKeyWithCheckout(uid.GetValue());
             string message = "删除失败，";
             switch (operateResult.Result)
             {
@@ -68,13 +68,24 @@ namespace NKingime.App.Mvc.Areas.Sample.Controllers
         [HttpPost]
         public ActionResult Save(UserSaveDto userDto)
         {
-            if (userDto == null)
+            var operateResult = UserService.UpdateWithCheckout(userDto);
+            string message = "更新失败，";
+            switch (operateResult.Result)
             {
-                ViewBag.Message = "未找到记录。";
-                return View("Error");
+                case UpdateResultOption.ArgumentError:
+                    message += "参数错误。";
+                    break;
+                case UpdateResultOption.NotFound:
+                    message += "未找到记录。";
+                    break;
+                case UpdateResultOption.Constraint:
+                    message += "受限制。";
+                    break;
+                case UpdateResultOption.Success:
+                    return RedirectToAction("ListModel", "Query");
             }
-
-            return View();
+            ViewBag.Message = message;
+            return View("Error");
         }
     }
 }

@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Linq.Expressions;
 using System.Collections.Generic;
+using AutoMapper;
+using NKingime.Core.Dto;
 using NKingime.Core.Data;
 using NKingime.Core.Entity;
 using NKingime.Core.Option;
@@ -30,28 +32,15 @@ namespace NKingime.Core.Service
             _entityRepository = entityRepository;
         }
 
-        /// <summary>
-        /// 更新数据实体并检查约束。
-        /// </summary>
-        /// <param name="entity">数据实体。</param>
-        /// <param name="constraint">检查约束函数，并返回检查结果。</param>
-        /// <returns></returns>
-        public UpdateResult UpdateWithConstraint(TEntity entity, Func<TEntity, CheckResult> constraint = null)
-        {
-            var operateResult = new UpdateResult();
-
-            return operateResult;
-        }
-
         #region 删除
 
         /// <summary>
-        /// 根据主键删除数据实体并检查约束。
+        /// 根据主键删除数据实体并校验。
         /// </summary>
         /// <param name="key">主键。</param>
-        /// <param name="constraint">检查约束函数，并返回检查结果。</param>
-        /// <returns>返回操作结果。</returns>
-        public DeleteResult DeleteByKeyWithConstraint(TKey key, Func<TEntity, CheckResult> constraint = null)
+        /// <param name="checkout">校验函数，并返回校验操作结果。</param>
+        /// <returns>返回删除操作结果。</returns>
+        public DeleteResult DeleteByKeyWithCheckout(TKey key, Func<TEntity, CheckoutResult> checkout = null)
         {
             var operateResult = new DeleteResult();
             if (((key is string) && Convert.ToString(key).IsNullOrWhiteSpace()) || key.Equals(default(TKey)))
@@ -67,17 +56,60 @@ namespace NKingime.Core.Service
                 return operateResult;
             }
             //
-            if (constraint != null)
+            if (checkout != null)
             {
-                var checkResult = constraint(entity);
-                if (checkResult.Result != CheckResultOption.Pass)
+                var checkoutResult = checkout(entity);
+                if (checkoutResult.Result != CheckResultOption.Pass)
                 {
-                    operateResult.SetResult(DeleteResultOption.Constraint, checkResult.Message);
+                    operateResult.SetResult(DeleteResultOption.Constraint, checkoutResult.Message);
                     return operateResult;
                 }
             }
             //
             _entityRepository.Delete(entity);
+            return operateResult;
+        }
+
+        #endregion
+
+        #region 更新
+
+        /// <summary>
+        /// 更新数据实体并校验。
+        /// </summary>
+        /// <typeparam name="TEntityDto">数据实体DTO类型。</typeparam>
+        /// <param name="entityDto">数据实体DTO实例。</param>
+        /// <param name="checkout">校验函数 (<see cref="TEntity"/> unchanged, <see cref="TEntity"/> modified) => { return <see cref="CheckResultOption.Pass"/>; }，其中 unchanged 数据库中未更改的数据，modified 已修改其中的一些或所有属性值；并返回校验操作结果。</param>
+        /// <returns>返回更新操作结果。</returns>
+        public UpdateResult UpdateWithCheckout<TEntityDto>(TEntityDto entityDto, Func<TEntity, TEntity, CheckoutResult> constraint = null) where TEntityDto : class, IEntityDto, IEntity<TKey>
+        {
+            var operateResult = new UpdateResult();
+            if (entityDto == null || ((entityDto.Id is string) && Convert.ToString(entityDto.Id).IsNullOrWhiteSpace()) || entityDto.Id.Equals(default(TKey)))
+            {
+                operateResult.SetResult(UpdateResultOption.ArgumentError);
+                return operateResult;
+            }
+            var entity = GetByKey(entityDto.Id);
+            if (entity.IsNull())
+            {
+                operateResult.SetResult(UpdateResultOption.NotFound);
+                return operateResult;
+            }
+            //实体将由上下文跟踪并存在于数据库中，其属性值与数据库中的值相同
+            var unchanged = entity.Clone() as TEntity;
+            //实体将由上下文跟踪并存在于数据库中，已修改其中的一些或所有属性值
+            entity = Mapper.Map(entityDto, entity);
+            if (constraint != null)
+            {
+                var checkResult = constraint(unchanged, entity);
+                if (checkResult.Result != CheckResultOption.Pass)
+                {
+                    operateResult.SetResult(UpdateResultOption.Constraint, checkResult.Message);
+                    return operateResult;
+                }
+            }
+            _entityRepository.Update(entity);
+            //
             return operateResult;
         }
 

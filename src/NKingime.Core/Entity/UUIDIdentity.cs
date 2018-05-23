@@ -5,14 +5,15 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace NKingime.Core.Entity
 {
     /// <summary>
-    /// UUID。
+    /// UUID数据实体基类。
     /// </summary>
-    public abstract class UUIDIdentity : IEntity<long>
+    [Serializable]
+    public abstract class UUIDIdentity : CloneableEntity<long>
     {
         /// <summary>
         /// 主键ID。
         /// </summary>
         [Key, DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public long Id { get; set; }
+        public override long Id { get; set; }
     }
 }

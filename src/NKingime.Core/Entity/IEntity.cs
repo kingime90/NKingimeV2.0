@@ -6,7 +6,7 @@ namespace NKingime.Core.Entity
     /// 定义数据实体接口。
     /// </summary>
     /// <typeparam name="TKey">主键类型。</typeparam>
-    public interface IEntity<out TKey> where TKey : IEquatable<TKey>
+    public interface IEntity<out TKey> : ICloneable where TKey : IEquatable<TKey>
     {
         /// <summary>
         /// 主键ID。

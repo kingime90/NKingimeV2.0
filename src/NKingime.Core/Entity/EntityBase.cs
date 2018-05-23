@@ -5,6 +5,7 @@ namespace NKingime.Core.Entity
     /// <summary>
     /// 唯一标识数据实体基类，继承基类 <see cref="AutoIdentity"/>，实现接口 <see cref="ICreateTime"/>。
     /// </summary>
+    [Serializable]
     public abstract class EntityBase : AutoIdentity, ICreateTime
     {
         /// <summary>

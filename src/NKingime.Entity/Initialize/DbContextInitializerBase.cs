@@ -151,6 +151,7 @@ namespace NKingime.Entity.Initialize
                 entityMapperSet.Add(entityType, entityMapper);
             }
             EntityMappers = new ReadOnlyDictionary<Type, IEntityMapper>(entityMapperSet);
+
             //初始化数据实体DTO映射配置
             baseType = typeof(EntityDtoProfile<,>);
             var profileTypes = ProfileAssemblys.SelectMany(assembly => assembly.GetTypes()).Where(p => baseType.IsGenericAssignableFrom(p) && !p.IsAbstract).Distinct().ToArray();

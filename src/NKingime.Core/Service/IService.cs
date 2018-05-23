@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Linq.Expressions;
 using System.Collections.Generic;
+using NKingime.Core.Dto;
+using NKingime.Core.Option;
 using NKingime.Core.Entity;
 using NKingime.Core.Dependency;
 using NKingime.Utility.General;
@@ -17,12 +19,25 @@ namespace NKingime.Core.Service
         #region 删除
 
         /// <summary>
-        /// 根据主键删除数据实体并检查约束。
+        /// 根据主键删除数据实体并校验。
         /// </summary>
         /// <param name="key">主键。</param>
-        /// <param name="constraint">检查约束函数，并返回检查结果。</param>
-        /// <returns>返回操作结果。</returns>
-        DeleteResult DeleteByKeyWithConstraint(TKey key, Func<TEntity, CheckResult> constraint = null);
+        /// <param name="checkout">校验函数，并返回校验操作结果。</param>
+        /// <returns>返回删除操作结果。</returns>
+        DeleteResult DeleteByKeyWithCheckout(TKey key, Func<TEntity, CheckoutResult> checkout = null);
+
+        #endregion
+
+        #region 更新
+
+        /// <summary>
+        /// 更新数据实体并校验。
+        /// </summary>
+        /// <typeparam name="TEntityDto">数据实体DTO类型。</typeparam>
+        /// <param name="entityDto">数据实体DTO实例。</param>
+        /// <param name="checkout">校验函数 (<see cref="TEntity"/> unchanged, <see cref="TEntity"/> modified) => { return <see cref="CheckResultOption.Pass"/>; }，其中 unchanged 数据库中未更改的数据，modified 已修改其中的一些或所有属性值；并返回校验操作结果。</param>
+        /// <returns>返回更新操作结果。</returns>
+        UpdateResult UpdateWithCheckout<TEntityDto>(TEntityDto entityDto, Func<TEntity, TEntity, CheckoutResult> checkout = null) where TEntityDto : class, IEntityDto, IEntity<TKey>;
 
         #endregion
 

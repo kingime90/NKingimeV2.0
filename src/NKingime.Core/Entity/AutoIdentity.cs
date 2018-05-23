@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using NKingime.Utility.Extensions;
 
@@ -7,13 +8,14 @@ namespace NKingime.Core.Entity
     /// <summary>
     /// 自增唯一标识数据实体基类。
     /// </summary>
-    public abstract class AutoIdentity : IEntity<int>
+    [Serializable]
+    public abstract class AutoIdentity : CloneableEntity<int>
     {
         /// <summary>
         /// 主键ID（自增）。
         /// </summary>
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Id { get; set; }
+        public override int Id { get; set; }
 
         #region 重载
 

@@ -7,6 +7,7 @@ namespace NKingime.App.Entity
     /// <summary>
     /// 用户信息实体。
     /// </summary>
+    [Serializable]
     public class User : UUIDIdentity, ICreateTime, ILastUpdateTime
     {
         /// <summary>

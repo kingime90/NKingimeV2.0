@@ -4,14 +4,15 @@ using System.ComponentModel.DataAnnotations;
 namespace NKingime.Core.Entity
 {
     /// <summary>
-    /// 字符串唯一标识基类。
+    /// 字符串唯一标识数据实体基类。
     /// </summary>
-    public abstract class StringIdentity : IEntity<string>
+    [Serializable]
+    public abstract class StringIdentity : CloneableEntity<string>
     {
         /// <summary>
         /// 主键ID。
         /// </summary>
         [Key]
-        public string Id { get; set; }
+        public override string Id { get; set; }
     }
 }
