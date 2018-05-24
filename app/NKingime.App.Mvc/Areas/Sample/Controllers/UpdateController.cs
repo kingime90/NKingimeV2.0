@@ -40,7 +40,7 @@ namespace NKingime.App.Mvc.Areas.Sample.Controllers
         /// <returns></returns>
         public ActionResult Delete(long? uid)
         {
-            var operateResult = UserService.DeleteByKeyWithCheckout(uid.GetValue());
+            var operateResult = UserService.DeleteByKeyWithCheck(uid.GetValue());
             string message = "删除失败，";
             switch (operateResult.Result)
             {
@@ -68,7 +68,7 @@ namespace NKingime.App.Mvc.Areas.Sample.Controllers
         [HttpPost]
         public ActionResult Save(UserSaveDto userDto)
         {
-            var operateResult = UserService.UpdateWithCheckout(userDto);
+            var operateResult = UserService.UpdateWithCheck(userDto);
             string message = "更新失败，";
             switch (operateResult.Result)
             {

@@ -2,7 +2,7 @@
 namespace NKingime.Core.Option
 {
     /// <summary>
-    /// 检查结果选项。
+    /// 校验结果选项。
     /// </summary>
     public enum CheckResultOption : byte
     {

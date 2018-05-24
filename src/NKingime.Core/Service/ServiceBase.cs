@@ -38,9 +38,9 @@ namespace NKingime.Core.Service
         /// 根据主键删除数据实体并校验。
         /// </summary>
         /// <param name="key">主键。</param>
-        /// <param name="checkout">校验函数，并返回校验操作结果。</param>
+        /// <param name="check">校验函数，并返回校验操作结果。</param>
         /// <returns>返回删除操作结果。</returns>
-        public DeleteResult DeleteByKeyWithCheckout(TKey key, Func<TEntity, CheckoutResult> checkout = null)
+        public DeleteResult DeleteByKeyWithCheck(TKey key, Func<TEntity, CheckResult> check = null)
         {
             var operateResult = new DeleteResult();
             if (((key is string) && Convert.ToString(key).IsNullOrWhiteSpace()) || key.Equals(default(TKey)))
@@ -56,12 +56,12 @@ namespace NKingime.Core.Service
                 return operateResult;
             }
             //
-            if (checkout != null)
+            if (check != null)
             {
-                var checkoutResult = checkout(entity);
-                if (checkoutResult.Result != CheckResultOption.Pass)
+                var checkResult = check(entity);
+                if (checkResult.Result != CheckResultOption.Pass)
                 {
-                    operateResult.SetResult(DeleteResultOption.Constraint, checkoutResult.Message);
+                    operateResult.SetResult(DeleteResultOption.Constraint, checkResult.Message);
                     return operateResult;
                 }
             }
@@ -79,9 +79,9 @@ namespace NKingime.Core.Service
         /// </summary>
         /// <typeparam name="TEntityDto">数据实体DTO类型。</typeparam>
         /// <param name="entityDto">数据实体DTO实例。</param>
-        /// <param name="checkout">校验函数 (<see cref="TEntity"/> unchanged, <see cref="TEntity"/> modified) => { return <see cref="CheckResultOption.Pass"/>; }，其中 unchanged 数据库中未更改的数据，modified 已修改其中的一些或所有属性值；并返回校验操作结果。</param>
+        /// <param name="check">校验函数 (<see cref="TEntity"/> unchanged, <see cref="TEntity"/> modified) => { return <see cref="new CheckResult(CheckResultOption.Pass)"/>; }，其中 unchanged 数据库中未更改的数据，modified 已修改其中的一些或所有属性值；并返回校验操作结果。</param>
         /// <returns>返回更新操作结果。</returns>
-        public UpdateResult UpdateWithCheckout<TEntityDto>(TEntityDto entityDto, Func<TEntity, TEntity, CheckoutResult> constraint = null) where TEntityDto : class, IEntityDto, IEntity<TKey>
+        public UpdateResult UpdateWithCheck<TEntityDto>(TEntityDto entityDto, Func<TEntity, TEntity, CheckResult> check = null) where TEntityDto : class, IEntityDto, IEntity<TKey>
         {
             var operateResult = new UpdateResult();
             if (entityDto == null || ((entityDto.Id is string) && Convert.ToString(entityDto.Id).IsNullOrWhiteSpace()) || entityDto.Id.Equals(default(TKey)))
@@ -99,9 +99,9 @@ namespace NKingime.Core.Service
             var unchanged = entity.Clone() as TEntity;
             //实体将由上下文跟踪并存在于数据库中，已修改其中的一些或所有属性值
             entity = Mapper.Map(entityDto, entity);
-            if (constraint != null)
+            if (check != null)
             {
-                var checkResult = constraint(unchanged, entity);
+                var checkResult = check(unchanged, entity);
                 if (checkResult.Result != CheckResultOption.Pass)
                 {
                     operateResult.SetResult(UpdateResultOption.Constraint, checkResult.Message);

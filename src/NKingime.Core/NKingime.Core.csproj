@@ -108,7 +108,7 @@
     <Compile Include="Reflection\IMethodInfoFinder.cs" />
     <Compile Include="Reflection\ITypeFinder.cs" />
     <Compile Include="Reflection\TypeFinderBase.cs" />
-    <Compile Include="Service\CheckoutResult.cs" />
+    <Compile Include="Service\CheckResult.cs" />
     <Compile Include="Service\UpdateResult.cs" />
     <Compile Include="Service\DeleteResult.cs" />
     <Compile Include="Service\IService.cs" />

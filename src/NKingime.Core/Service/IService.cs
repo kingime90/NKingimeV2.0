@@ -22,9 +22,9 @@ namespace NKingime.Core.Service
         /// 根据主键删除数据实体并校验。
         /// </summary>
         /// <param name="key">主键。</param>
-        /// <param name="checkout">校验函数，并返回校验操作结果。</param>
+        /// <param name="check">校验函数，并返回校验操作结果。</param>
         /// <returns>返回删除操作结果。</returns>
-        DeleteResult DeleteByKeyWithCheckout(TKey key, Func<TEntity, CheckoutResult> checkout = null);
+        DeleteResult DeleteByKeyWithCheck(TKey key, Func<TEntity, CheckResult> check = null);
 
         #endregion
 
@@ -35,9 +35,9 @@ namespace NKingime.Core.Service
         /// </summary>
         /// <typeparam name="TEntityDto">数据实体DTO类型。</typeparam>
         /// <param name="entityDto">数据实体DTO实例。</param>
-        /// <param name="checkout">校验函数 (<see cref="TEntity"/> unchanged, <see cref="TEntity"/> modified) => { return <see cref="CheckResultOption.Pass"/>; }，其中 unchanged 数据库中未更改的数据，modified 已修改其中的一些或所有属性值；并返回校验操作结果。</param>
+        /// <param name="check">校验函数 (<see cref="TEntity"/> unchanged, <see cref="TEntity"/> modified) => { return <see cref="new CheckResult(CheckResultOption.Pass)"/>; }，其中 unchanged 数据库中未更改的数据，modified 已修改其中的一些或所有属性值；并返回校验操作结果。</param>
         /// <returns>返回更新操作结果。</returns>
-        UpdateResult UpdateWithCheckout<TEntityDto>(TEntityDto entityDto, Func<TEntity, TEntity, CheckoutResult> checkout = null) where TEntityDto : class, IEntityDto, IEntity<TKey>;
+        UpdateResult UpdateWithCheck<TEntityDto>(TEntityDto entityDto, Func<TEntity, TEntity, CheckResult> check = null) where TEntityDto : class, IEntityDto, IEntity<TKey>;
 
         #endregion
 
