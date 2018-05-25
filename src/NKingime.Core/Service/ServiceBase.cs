@@ -32,6 +32,41 @@ namespace NKingime.Core.Service
             _entityRepository = entityRepository;
         }
 
+        #region 保存
+
+        /// <summary>
+        /// 保存数据实体并校验。
+        /// </summary>
+        /// <typeparam name="TEntityDto">数据实体DTO类型。</typeparam>
+        /// <param name="entityDto">数据实体DTO实例。</param>
+        /// <param name="check">校验函数 (<see cref="TEntity"/> detached) => { return <see cref="new CheckResult(CheckResultOption.Pass)"/>; }，其中 detached 该实体未由上下文跟踪；并返回校验操作结果。</param>
+        /// <returns>返回保存操作结果。</returns>
+        public SaveResult SaveWithCheck<TEntityDto>(TEntityDto entityDto, Func<TEntity, CheckResult> check = null) where TEntityDto : class, IEntityDto, IEntity<TKey>
+        {
+            var operateResult = new SaveResult();
+            if (entityDto == null)
+            {
+                operateResult.SetResult(SaveResultOption.ArgumentError);
+                return operateResult;
+            }
+            //该实体未由上下文跟踪（分离的）
+            var detached = Mapper.Map<TEntity>(entityDto);
+            if (check != null)
+            {
+                var checkResult = check(detached);
+                if (checkResult.Result != CheckResultOption.Pass)
+                {
+                    operateResult.SetResult(SaveResultOption.Constraint, checkResult.Message);
+                    return operateResult;
+                }
+            }
+            _entityRepository.Save(detached);
+            //
+            return operateResult;
+        }
+
+        #endregion
+
         #region 删除
 
         /// <summary>
@@ -84,7 +119,7 @@ namespace NKingime.Core.Service
         public UpdateResult UpdateWithCheck<TEntityDto>(TEntityDto entityDto, Func<TEntity, TEntity, CheckResult> check = null) where TEntityDto : class, IEntityDto, IEntity<TKey>
         {
             var operateResult = new UpdateResult();
-            if (entityDto == null || ((entityDto.Id is string) && Convert.ToString(entityDto.Id).IsNullOrWhiteSpace()) || entityDto.Id.Equals(default(TKey)))
+            if (entityDto == null || entityDto.Id.Equals(default(TKey)) || ((entityDto.Id is string) && Convert.ToString(entityDto.Id).IsNullOrWhiteSpace()))
             {
                 operateResult.SetResult(UpdateResultOption.ArgumentError);
                 return operateResult;

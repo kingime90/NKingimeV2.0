@@ -16,6 +16,19 @@ namespace NKingime.Core.Service
     /// <typeparam name="TKey">主键类型。</typeparam>
     public interface IService<TEntity, TKey> : IService where TEntity : class, IEntity<TKey> where TKey : IEquatable<TKey>
     {
+        #region 保存
+
+        /// <summary>
+        /// 保存数据实体并校验。
+        /// </summary>
+        /// <typeparam name="TEntityDto">数据实体DTO类型。</typeparam>
+        /// <param name="entityDto">数据实体DTO实例。</param>
+        /// <param name="check">校验函数 (<see cref="TEntity"/> detached) => { return <see cref="new CheckResult(CheckResultOption.Pass)"/>; }，其中 detached 该实体未由上下文跟踪；并返回校验操作结果。</param>
+        /// <returns>返回保存操作结果。</returns>
+        SaveResult SaveWithCheck<TEntityDto>(TEntityDto entityDto, Func<TEntity, CheckResult> check = null) where TEntityDto : class, IEntityDto, IEntity<TKey>;
+
+        #endregion
+
         #region 删除
 
         /// <summary>

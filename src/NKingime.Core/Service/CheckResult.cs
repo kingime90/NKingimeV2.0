@@ -9,7 +9,7 @@ namespace NKingime.Core.Service
     public class CheckResult : OperateResult<CheckResultOption>
     {
         /// <summary>
-        /// 初始化一个<see cref="CheckResult"/>成功实例。
+        /// 初始化一个<see cref="CheckResult"/>通过实例。
         /// </summary>
         public CheckResult() : base(CheckResultOption.Pass)
         {

@@ -24,7 +24,5 @@ namespace NKingime.App.Service
         {
             EntityRepository = entityRepository;
         }
-
-
     }
 }

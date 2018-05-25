@@ -185,7 +185,7 @@ namespace NKingime.Entity.Data
         /// <returns></returns>
         public override bool Exists(Expression<Func<TEntity, bool>> predicate, TKey key = default(TKey))
         {
-            if (!key.Equals(default(TKey)) && !string.IsNullOrWhiteSpace(key.CastTo<string>()))
+            if (!(key.Equals(default(TKey)) || ((key is string) && Convert.ToString(key).IsNullOrWhiteSpace())))
             {
                 predicate = predicate.And(p => !p.Id.Equals(key));
             }

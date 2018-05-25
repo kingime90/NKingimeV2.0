@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Web.Mvc;
-using NKingime.App.Entity;
 using NKingime.Core.Option;
 using NKingime.App.IService;
 using NKingime.Utility.Extensions;
 using NKingime.App.EntityDto;
+using NKingime.Core.Service;
+using NKingime.App.Entity.Option;
 
 namespace NKingime.App.Mvc.Areas.Sample.Controllers
 {
@@ -68,7 +69,15 @@ namespace NKingime.App.Mvc.Areas.Sample.Controllers
         [HttpPost]
         public ActionResult Save(UserSaveDto userDto)
         {
-            var operateResult = UserService.UpdateWithCheck(userDto);
+            var operateResult = UserService.UpdateWithCheck(userDto, (unchanged, modified) =>
+            {
+                var checkResult = new CheckResult();
+                if (unchanged.GenderType == GenderOption.Female && unchanged.GenderType != modified.GenderType)
+                {
+                    checkResult.SetResult(CheckResultOption.NonPass, $"当性别为{GenderOption.Female}时，不允许修改。");
+                }
+                return checkResult;
+            });
             string message = "更新失败，";
             switch (operateResult.Result)
             {
@@ -79,7 +88,7 @@ namespace NKingime.App.Mvc.Areas.Sample.Controllers
                     message += "未找到记录。";
                     break;
                 case UpdateResultOption.Constraint:
-                    message += "受限制。";
+                    message += "受限制，" + operateResult.Message + "。";
                     break;
                 case UpdateResultOption.Success:
                     return RedirectToAction("ListModel", "Query");
