@@ -114,7 +114,6 @@
     <Compile Include="Service\IService.cs" />
     <Compile Include="Service\OperateResult.cs" />
     <Compile Include="Service\SaveResult.cs" />
-    <Compile Include="Service\ServiceBase.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

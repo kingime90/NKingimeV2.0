@@ -1,8 +1,8 @@
 ﻿using System;
 using NKingime.App.Entity;
 using NKingime.App.IService;
-using NKingime.Core.Service;
 using NKingime.App.IRepository;
+using NKingime.Entity.Service;
 
 namespace NKingime.App.Service
 {

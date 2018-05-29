@@ -1,15 +1,15 @@
 ﻿using System;
 using System.Linq.Expressions;
 using System.Collections.Generic;
-using AutoMapper;
 using NKingime.Core.Dto;
 using NKingime.Core.Data;
 using NKingime.Core.Entity;
 using NKingime.Core.Option;
+using NKingime.Core.Service;
 using NKingime.Utility.General;
 using NKingime.Utility.Extensions;
 
-namespace NKingime.Core.Service
+namespace NKingime.Entity.Service
 {
     /// <summary>
     /// 数据实体服务基类。
@@ -50,7 +50,7 @@ namespace NKingime.Core.Service
                 return operateResult;
             }
             //该实体未由上下文跟踪（分离的）
-            var detached = Mapper.Map<TEntity>(entityDto);
+            var detached = AutoMapper.Mapper.Map<TEntity>(entityDto);
             if (check != null)
             {
                 var checkResult = check(detached);
@@ -78,7 +78,7 @@ namespace NKingime.Core.Service
         public DeleteResult DeleteByKeyWithCheck(TKey key, Func<TEntity, CheckResult> check = null)
         {
             var operateResult = new DeleteResult();
-            if (((key is string) && Convert.ToString(key).IsNullOrWhiteSpace()) || key.Equals(default(TKey)))
+            if (key.Equals(default(TKey)) || ((key is string) && Convert.ToString(key).IsNullOrWhiteSpace()))
             {
                 operateResult.SetResult(DeleteResultOption.ArgumentError);
                 return operateResult;
@@ -133,7 +133,7 @@ namespace NKingime.Core.Service
             //实体将由上下文跟踪并存在于数据库中，其属性值与数据库中的值相同
             var unchanged = entity.Clone() as TEntity;
             //实体将由上下文跟踪并存在于数据库中，已修改其中的一些或所有属性值
-            entity = Mapper.Map(entityDto, entity);
+            entity = AutoMapper.Mapper.Map(entityDto, entity);
             if (check != null)
             {
                 var checkResult = check(unchanged, entity);
