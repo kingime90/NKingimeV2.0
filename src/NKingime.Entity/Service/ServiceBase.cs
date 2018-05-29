@@ -8,6 +8,7 @@ using NKingime.Core.Option;
 using NKingime.Core.Service;
 using NKingime.Utility.General;
 using NKingime.Utility.Extensions;
+using NKingime.Core.Extensions;
 
 namespace NKingime.Entity.Service
 {
@@ -50,7 +51,7 @@ namespace NKingime.Entity.Service
                 return operateResult;
             }
             //该实体未由上下文跟踪（分离的）
-            var detached = AutoMapper.Mapper.Map<TEntity>(entityDto);
+            var detached = entityDto.MapTo<TEntity>();
             if (check != null)
             {
                 var checkResult = check(detached);
@@ -133,7 +134,7 @@ namespace NKingime.Entity.Service
             //实体将由上下文跟踪并存在于数据库中，其属性值与数据库中的值相同
             var unchanged = entity.Clone() as TEntity;
             //实体将由上下文跟踪并存在于数据库中，已修改其中的一些或所有属性值
-            entity = AutoMapper.Mapper.Map(entityDto, entity);
+            entity = entityDto.MapTo(entity);
             if (check != null)
             {
                 var checkResult = check(unchanged, entity);
