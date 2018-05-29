@@ -89,6 +89,7 @@
     <Compile Include="Entity\IEntity.cs" />
     <Compile Include="Entity\ILastUpdateTime.cs" />
     <Compile Include="Entity\IRecyclable.cs" />
+    <Compile Include="Extensions\AutoMapperExtensions.cs" />
     <Compile Include="Extensions\ServiceCollectionExtensions.cs" />
     <Compile Include="Initialize\FrameworkInitializer.cs" />
     <Compile Include="Initialize\IDatabaseInitializer.cs" />
