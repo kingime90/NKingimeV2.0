@@ -31,6 +31,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NKingime.App.IRepository", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NKingime.App.EntityDto", "app\NKingime.App.EntityDto\NKingime.App.EntityDto.csproj", "{21167C7F-75F4-466F-866F-FEE818079765}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NKingime.Validate", "src\NKingime.Validate\NKingime.Validate.csproj", "{587B7F2B-D03F-4BFC-9799-2426F770CFB2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NKingime.Validate.Tests", "tests\NKingime.Validate.Tests\NKingime.Validate.Tests.csproj", "{97ED37DD-CC20-4C0E-B433-E72154E6E655}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -81,6 +85,14 @@ Global
 		{21167C7F-75F4-466F-866F-FEE818079765}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{21167C7F-75F4-466F-866F-FEE818079765}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{21167C7F-75F4-466F-866F-FEE818079765}.Release|Any CPU.Build.0 = Release|Any CPU
+		{587B7F2B-D03F-4BFC-9799-2426F770CFB2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{587B7F2B-D03F-4BFC-9799-2426F770CFB2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{587B7F2B-D03F-4BFC-9799-2426F770CFB2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{587B7F2B-D03F-4BFC-9799-2426F770CFB2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{97ED37DD-CC20-4C0E-B433-E72154E6E655}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{97ED37DD-CC20-4C0E-B433-E72154E6E655}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{97ED37DD-CC20-4C0E-B433-E72154E6E655}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{97ED37DD-CC20-4C0E-B433-E72154E6E655}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -97,5 +109,7 @@ Global
 		{50B7E261-2E4B-49BA-84DB-8C699908E09B} = {BDC434F6-FEC0-49D3-AC92-7ADA68B95C75}
 		{47927BBD-765B-432A-B197-9DAB00F12636} = {BDC434F6-FEC0-49D3-AC92-7ADA68B95C75}
 		{21167C7F-75F4-466F-866F-FEE818079765} = {BDC434F6-FEC0-49D3-AC92-7ADA68B95C75}
+		{587B7F2B-D03F-4BFC-9799-2426F770CFB2} = {9C8310D2-B68B-4251-8FFE-9E4E89FA8AB7}
+		{97ED37DD-CC20-4C0E-B433-E72154E6E655} = {31B4AAC8-7405-490C-BC2C-9968D69A96B9}
 	EndGlobalSection
 EndGlobal

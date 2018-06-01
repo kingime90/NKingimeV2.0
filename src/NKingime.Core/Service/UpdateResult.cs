@@ -1,12 +1,13 @@
 ﻿using System;
 using NKingime.Core.Option;
+using NKingime.Utility.General;
 
 namespace NKingime.Core.Service
 {
     /// <summary>
-    /// 更新操作结果。
+    /// 更新消息结果。
     /// </summary>
-    public class UpdateResult : OperateResult<UpdateResultOption>
+    public class UpdateResult : MessageResult<UpdateResultOption>
     {
         /// <summary>
         /// 初始化一个<see cref="UpdateResult"/>成功实例。

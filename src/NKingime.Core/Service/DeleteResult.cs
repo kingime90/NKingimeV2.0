@@ -1,12 +1,13 @@
 ﻿using System;
 using NKingime.Core.Option;
+using NKingime.Utility.General;
 
 namespace NKingime.Core.Service
 {
     /// <summary>
-    /// 删除操作结果。
+    /// 删除消息结果。
     /// </summary>
-    public class DeleteResult : OperateResult<DeleteResultOption>
+    public class DeleteResult : MessageResult<DeleteResultOption>
     {
         /// <summary>
         /// 初始化一个<see cref="DeleteResult"/>成功实例。

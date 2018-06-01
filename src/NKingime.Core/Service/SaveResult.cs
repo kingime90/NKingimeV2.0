@@ -1,12 +1,13 @@
 ﻿using System;
 using NKingime.Core.Option;
+using NKingime.Utility.General;
 
 namespace NKingime.Core.Service
 {
     /// <summary>
-    /// 保存操作结果。
+    /// 保存消息结果。
     /// </summary>
-    public class SaveResult : OperateResult<SaveResultOption>
+    public class SaveResult : MessageResult<SaveResultOption>
     {
         /// <summary>
         /// 初始化一个<see cref="SaveResult"/>成功实例。

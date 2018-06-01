@@ -1,28 +1,28 @@
 ﻿using System;
 
-namespace NKingime.Core.Service
+namespace NKingime.Utility.General
 {
     /// <summary>
-    /// 操作结果基类。
+    /// 消息结果基类。
     /// </summary>
     /// <typeparam name="TResult"></typeparam>
-    public abstract class OperateResult<TResult> where TResult : struct
+    public abstract class MessageResult<TResult> where TResult : struct
     {
         /// <summary>
-        /// 初始化一个<see cref="ServiceResult{TResult}"/>新实例。
+        /// 初始化一个<see cref="MessageResult{TResult}"/>新实例。
         /// </summary>
         /// <param name="result">结果。</param>
-        public OperateResult(TResult result = default(TResult))
+        public MessageResult(TResult result = default(TResult))
         {
             Result = result;
         }
 
         /// <summary>
-        /// 初始化一个<see cref="ServiceResult{TResult}"/>新实例。
+        /// 初始化一个<see cref="MessageResult{TResult}"/>新实例。
         /// </summary>
         /// <param name="result">结果。</param>
         /// <param name="message">消息。</param>
-        public OperateResult(TResult result, string message) : this(result)
+        public MessageResult(TResult result, string message) : this(result)
         {
             Message = message;
         }

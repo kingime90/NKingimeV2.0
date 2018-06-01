@@ -10,33 +10,8 @@ namespace NKingime.Utility.General
     /// 分页结果基类。
     /// </summary>
     /// <typeparam name="T">分页实体类型。</typeparam>
-    public abstract class PagedResultBase<T> : IPagedResult<T>
+    public abstract class PagedResultBase<T> : PagedResultBase, IPagedResult<T>
     {
-        /// <summary>
-        /// 默认每页多少条（默认10）。
-        /// </summary>
-        public static readonly int DefaultPageSize = 10;
-
-        /// <summary>
-        /// 起始页页码（默认1）。
-        /// </summary>
-        public static readonly int StartPageIndex = 1;
-
-        static PagedResultBase()
-        {
-            var defaultPageSize = ConfigurationManager.AppSettings["webpage:DefaultPageSize"];
-            if (!string.IsNullOrWhiteSpace(defaultPageSize))
-            {
-                DefaultPageSize = Convert.ToInt32(defaultPageSize);
-            }
-            //
-            var startPageIndex = ConfigurationManager.AppSettings["webpage:StartPageIndex"];
-            if (!string.IsNullOrWhiteSpace(startPageIndex))
-            {
-                StartPageIndex = Convert.ToInt32(startPageIndex);
-            }
-        }
-
         /// <summary>
         /// 初始化一个<see cref="PagedResultBase{T}"/>类型的新实例。
         /// </summary>
@@ -163,6 +138,34 @@ namespace NKingime.Utility.General
         public virtual void SetResultList(IEnumerable<T> resultList)
         {
             ResultList = resultList.GetOrDefault(Enumerable.Empty<T>());
+        }
+    }
+
+    public class PagedResultBase
+    {
+        /// <summary>
+        /// 默认每页多少条（默认10）。
+        /// </summary>
+        public static readonly int DefaultPageSize = 10;
+
+        /// <summary>
+        /// 起始页页码（默认1）。
+        /// </summary>
+        public static readonly int StartPageIndex = 1;
+
+        static PagedResultBase()
+        {
+            var defaultPageSize = ConfigurationManager.AppSettings["webpage:DefaultPageSize"];
+            if (!string.IsNullOrWhiteSpace(defaultPageSize))
+            {
+                DefaultPageSize = Convert.ToInt32(defaultPageSize);
+            }
+            //
+            var startPageIndex = ConfigurationManager.AppSettings["webpage:StartPageIndex"];
+            if (!string.IsNullOrWhiteSpace(startPageIndex))
+            {
+                StartPageIndex = Convert.ToInt32(startPageIndex);
+            }
         }
     }
 }

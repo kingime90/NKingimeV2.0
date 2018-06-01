@@ -113,7 +113,6 @@
     <Compile Include="Service\UpdateResult.cs" />
     <Compile Include="Service\DeleteResult.cs" />
     <Compile Include="Service\IService.cs" />
-    <Compile Include="Service\OperateResult.cs" />
     <Compile Include="Service\SaveResult.cs" />
   </ItemGroup>
   <ItemGroup>

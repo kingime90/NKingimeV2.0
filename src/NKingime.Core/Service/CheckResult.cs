@@ -1,12 +1,13 @@
 ﻿using System;
 using NKingime.Core.Option;
+using NKingime.Utility.General;
 
 namespace NKingime.Core.Service
 {
     /// <summary>
-    /// 校验操作结果。
+    /// 校验消息结果。
     /// </summary>
-    public class CheckResult : OperateResult<CheckResultOption>
+    public class CheckResult : MessageResult<CheckResultOption>
     {
         /// <summary>
         /// 初始化一个<see cref="CheckResult"/>通过实例。
