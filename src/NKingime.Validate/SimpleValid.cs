@@ -60,7 +60,7 @@ namespace NKingime.Validate
             foreach (var item in ValidRuleSet)
             {
                 value = item.Key.GetValue(entity);
-                item.Value.Validate(value);
+                item.Value.Validate(value, entity);
             }
             return null;
         }

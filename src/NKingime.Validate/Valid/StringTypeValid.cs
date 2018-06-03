@@ -40,7 +40,7 @@ namespace NKingime.Validate
         /// <returns></returns>
         public IStringTypeValid MinLength(int minValue)
         {
-            SetTypeRule(StringRangeOption.String, minValue, 0);
+            SetTypeRuleRange(StringRangeOption.String, minValue, 0);
             return this;
         }
 
@@ -51,7 +51,7 @@ namespace NKingime.Validate
         /// <returns></returns>
         public IStringTypeValid MaxLength(int maxValue)
         {
-            SetTypeRule(StringRangeOption.String, 0, maxValue);
+            SetTypeRuleRange(StringRangeOption.String, 0, maxValue);
             return this;
         }
 
@@ -63,7 +63,7 @@ namespace NKingime.Validate
         /// <returns></returns>
         public IStringTypeValid Range(int minValue, int maxValue)
         {
-            SetTypeRule(StringRangeOption.String, minValue, maxValue);
+            SetTypeRuleRange(StringRangeOption.String, minValue, maxValue);
             return this;
         }
 
@@ -74,7 +74,7 @@ namespace NKingime.Validate
         /// <returns></returns>
         public IStringTypeValid CharMinLength(int minValue)
         {
-            SetTypeRule(StringRangeOption.Char, minValue, 0);
+            SetTypeRuleRange(StringRangeOption.Char, minValue, 0);
             return this;
         }
 
@@ -85,7 +85,7 @@ namespace NKingime.Validate
         /// <returns></returns>
         public IStringTypeValid CharMaxLength(int maxValue)
         {
-            SetTypeRule(StringRangeOption.Char, 0, maxValue);
+            SetTypeRuleRange(StringRangeOption.Char, 0, maxValue);
             return this;
         }
 
@@ -97,34 +97,83 @@ namespace NKingime.Validate
         /// <returns></returns>
         public IStringTypeValid CharRange(int minValue, int maxValue)
         {
-            SetTypeRule(StringRangeOption.Char, minValue, maxValue);
+            SetTypeRuleRange(StringRangeOption.Char, minValue, maxValue);
+            return this;
+        }
+
+        /// <summary>
+        ///  配置正则式。
+        /// </summary>
+        /// <param name="regexTypes">正则式类型选项数组。</param>
+        /// <returns></returns>
+        public IStringTypeValid Match(params RegexTypeOption[] regexTypes)
+        {
+            _validRule.RegexTypes = regexTypes;
+            return this;
+        }
+
+        /// <summary>
+        /// 自定义验证。
+        /// </summary>
+        /// <param name="valid">自定义验证函数。</param>
+        /// <returns></returns>
+        public IStringTypeValid Custom(Func<object, string, ValidResult> valid)
+        {
+            _validRule.CustomValid = valid;
             return this;
         }
 
         /// <summary>
         /// 验证数据是否满足规则。
         /// </summary>
-        /// <param name="obj">需要验证的数据。</param>
+        /// <param name="value">需要验证的值。</param>
+        /// <param name="root">需要验证的根对象，如果没有，则为 null。</param>
         /// <returns></returns>
-        public ValidResult Validate(object obj)
+        public ValidResult Validate(object value, object root = null)
         {
             var validResult = new ValidResult(false);
-            string value = obj as string;
-            if (_validRule.IsRequired && value.IsNullOrWhiteSpace())
+            string str = (value as string) ?? string.Empty;
+            //必填
+            if (_validRule.IsRequired && str.IsNullOrWhiteSpace())
             {
                 validResult.SetMessage("");
                 return validResult;
             }
-            throw new NotImplementedException();
+            //字符串长度范围
+            if (_validRule.RangeOption.HasValue)
+            {
+                switch (_validRule.RangeOption.Value)
+                {
+                    case StringRangeOption.String:
+
+                        break;
+                    case StringRangeOption.Char:
+
+                        break;
+                    default:
+                        throw new Exception("未处理的字符串范围选项。");
+                }
+            }
+            //匹配正则式类型选项
+            if (_validRule.RegexTypes.IsNotEmpty())
+            {
+
+            }
+            //自定义验证函数
+            if (_validRule.CustomValid.IsNotNull())
+            {
+                validResult = _validRule.CustomValid(root, str);
+            }
+            return validResult;
         }
 
         /// <summary>
-        /// 设置类型验证规则。
+        /// 设置类型验证规则范围。
         /// </summary>
         /// <param name="rangeOption">字符串范围选项。</param>
         /// <param name="minValue">最小值。</param>
         /// <param name="maxValue">最大值。</param>
-        private void SetTypeRule(StringRangeOption rangeOption, int minValue, int maxValue)
+        private void SetTypeRuleRange(StringRangeOption rangeOption, int minValue, int maxValue)
         {
             _validRule.RangeOption = rangeOption;
             _validRule.MinValue = minValue;

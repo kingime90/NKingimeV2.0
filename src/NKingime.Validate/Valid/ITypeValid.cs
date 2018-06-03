@@ -15,8 +15,9 @@ namespace NKingime.Validate
         /// <summary>
         /// 验证数据是否满足规则。
         /// </summary>
-        /// <param name="obj">需要验证的数据。</param>
+        /// <param name="value">需要验证的值。</param>
+        /// <param name="root">需要验证的根对象，如果没有，则为 null。</param>
         /// <returns></returns>
-        ValidResult Validate(object obj);
+        ValidResult Validate(object value, object root = null);
     }
 }

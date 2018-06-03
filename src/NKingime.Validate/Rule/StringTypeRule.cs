@@ -21,5 +21,15 @@ namespace NKingime.Validate
         /// 最大值。
         /// </summary>
         public int MaxValue { get; set; }
+
+        /// <summary>
+        /// 匹配正则式类型选项数组。
+        /// </summary>
+        public RegexTypeOption[] RegexTypes { get; set; }
+
+        /// <summary>
+        /// 自定义验证函数。
+        /// </summary>
+        public Func<object, string, ValidResult> CustomValid { get; set; }
     }
 }

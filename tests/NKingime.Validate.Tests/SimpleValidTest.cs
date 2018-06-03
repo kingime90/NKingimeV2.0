@@ -17,11 +17,17 @@ namespace NKingime.Validate.Tests
         public void Test()
         {
             //var simpleValid = new SimpleValid<User>();
-            //simpleValid.StringType(s => s.Email).Required();
-            //simpleValid.Validate(new User()
+            //simpleValid.StringType(s => s.Email).Required().Range(10, 20).Match(RegexTypeOption.Email).Custom((sd, s) =>
             //{
-
+            //    return null;
             //});
+            //var validResults = simpleValid.Validate(new User()
+            //{
+            //    Email = "1",
+            //});
+
+            var stringTypeValid = new StringTypeValid().Required().Range(10, 20).Match(RegexTypeOption.Email);
+            stringTypeValid.Validate(null);
         }
     }
 }
