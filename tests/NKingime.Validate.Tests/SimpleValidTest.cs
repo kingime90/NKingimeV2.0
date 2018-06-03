@@ -16,12 +16,12 @@ namespace NKingime.Validate.Tests
         [Test]
         public void Test()
         {
-            var simpleValid = new SimpleValid<User>();
-            simpleValid.StringType(s => s.Email).Required();
-            simpleValid.Validate(new User()
-            {
+            //var simpleValid = new SimpleValid<User>();
+            //simpleValid.StringType(s => s.Email).Required();
+            //simpleValid.Validate(new User()
+            //{
 
-            });
+            //});
         }
     }
 }

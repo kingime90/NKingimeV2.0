@@ -15,8 +15,8 @@ namespace NKingime.Validate
         /// <summary>
         /// 验证数据是否满足规则。
         /// </summary>
-        /// <param name="value">值。</param>
+        /// <param name="obj">需要验证的数据。</param>
         /// <returns></returns>
-        ValidResult Validate(object value);
+        ValidResult Validate(object obj);
     }
 }

@@ -16,9 +16,9 @@ namespace NKingime.Validate
         private readonly IDictionary<PropertyInfo, ITypeValid> ValidRuleSet = new Dictionary<PropertyInfo, ITypeValid>();
 
         /// <summary>
-        /// 
+        /// 字符串类型验证。
         /// </summary>
-        /// <param name="propertySelector"></param>
+        /// <param name="propertySelector">选择字符串类型属性函数。</param>
         /// <returns></returns>
         public IStringTypeValid StringType(Expression<Func<TEntity, string>> propertySelector)
         {
@@ -48,8 +48,14 @@ namespace NKingime.Validate
 
         }
 
-        public ValidResult Validate(TEntity entity)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="entity"></param>
+        /// <returns></returns>
+        public ValidResult[] Validate(TEntity entity)
         {
+
             object value;
             foreach (var item in ValidRuleSet)
             {

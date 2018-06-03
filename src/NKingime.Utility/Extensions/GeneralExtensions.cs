@@ -65,12 +65,12 @@ namespace NKingime.Utility.Extensions
         /// <param name="value">要测试的值。</param>
         /// <param name="minValue">最小值。</param>
         /// <param name="maxValue">最大值。</param>
-        /// <param name="CompareOption">比较标识，默认大于等于和小于等于。</param>
+        /// <param name="compareOption">比较选项，默认大于等于和小于等于。</param>
         /// <returns></returns>
-        public static bool IsRange<T>(this T value, T minValue, T maxValue, CompareOption CompareOption = CompareOption.GreaterEqualAndLessEqual) where T : struct, IComparable
+        public static bool IsRange<T>(this T value, T minValue, T maxValue, CompareOption compareOption = CompareOption.GreaterEqualAndLessEqual) where T : struct, IComparable
         {
             bool result = false;
-            switch (CompareOption)
+            switch (compareOption)
             {
                 case CompareOption.GreaterAndLess:
                     result = value.IsGreater(minValue) && value.IsLess(maxValue);

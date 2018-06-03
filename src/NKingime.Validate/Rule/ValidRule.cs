@@ -3,12 +3,12 @@
 namespace NKingime.Validate
 {
     /// <summary>
-    /// 验证规则。
+    /// 验证规则基类。
     /// </summary>
     public abstract class ValidRule
     {
         /// <summary>
-        /// 
+        /// 初始化一个<see cref="ValidRule"/>类型的新实例。
         /// </summary>
         /// <param name="isRequired"></param>
         public ValidRule(bool isRequired = false)
