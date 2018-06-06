@@ -41,7 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Option\RegexTypeOption.cs" />
-    <Compile Include="Option\StringRangeOption.cs" />
+    <Compile Include="Option\StringTypeOption.cs" />
     <Compile Include="Range.cs" />
     <Compile Include="Rule\StringTypeRule.cs" />
     <Compile Include="ValidResult.cs" />

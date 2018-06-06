@@ -8,9 +8,9 @@ namespace NKingime.Validate
     public class StringTypeRule : ValidRule
     {
         /// <summary>
-        /// 字符串范围选项。
+        /// 字符串类型选项。
         /// </summary>
-        public StringRangeOption? RangeOption { get; set; }
+        public StringTypeOption? StringType { get; set; }
 
         /// <summary>
         /// 最小值。

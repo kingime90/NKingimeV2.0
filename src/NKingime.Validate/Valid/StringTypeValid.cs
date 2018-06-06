@@ -40,7 +40,7 @@ namespace NKingime.Validate
         /// <returns></returns>
         public IStringTypeValid MinLength(int minValue)
         {
-            SetTypeRuleRange(StringRangeOption.String, minValue, 0);
+            SetTypeRuleRange(StringTypeOption.String, minValue, 0);
             return this;
         }
 
@@ -51,7 +51,7 @@ namespace NKingime.Validate
         /// <returns></returns>
         public IStringTypeValid MaxLength(int maxValue)
         {
-            SetTypeRuleRange(StringRangeOption.String, 0, maxValue);
+            SetTypeRuleRange(StringTypeOption.String, 0, maxValue);
             return this;
         }
 
@@ -63,7 +63,7 @@ namespace NKingime.Validate
         /// <returns></returns>
         public IStringTypeValid Range(int minValue, int maxValue)
         {
-            SetTypeRuleRange(StringRangeOption.String, minValue, maxValue);
+            SetTypeRuleRange(StringTypeOption.String, minValue, maxValue);
             return this;
         }
 
@@ -74,7 +74,7 @@ namespace NKingime.Validate
         /// <returns></returns>
         public IStringTypeValid CharMinLength(int minValue)
         {
-            SetTypeRuleRange(StringRangeOption.Char, minValue, 0);
+            SetTypeRuleRange(StringTypeOption.Char, minValue, 0);
             return this;
         }
 
@@ -85,7 +85,7 @@ namespace NKingime.Validate
         /// <returns></returns>
         public IStringTypeValid CharMaxLength(int maxValue)
         {
-            SetTypeRuleRange(StringRangeOption.Char, 0, maxValue);
+            SetTypeRuleRange(StringTypeOption.Char, 0, maxValue);
             return this;
         }
 
@@ -97,7 +97,7 @@ namespace NKingime.Validate
         /// <returns></returns>
         public IStringTypeValid CharRange(int minValue, int maxValue)
         {
-            SetTypeRuleRange(StringRangeOption.Char, minValue, maxValue);
+            SetTypeRuleRange(StringTypeOption.Char, minValue, maxValue);
             return this;
         }
 
@@ -140,18 +140,18 @@ namespace NKingime.Validate
                 return validResult;
             }
             //字符串长度范围
-            if (_validRule.RangeOption.HasValue)
+            if (_validRule.StringType.HasValue)
             {
-                switch (_validRule.RangeOption.Value)
+                switch (_validRule.StringType.Value)
                 {
-                    case StringRangeOption.String:
+                    case StringTypeOption.String:
 
                         break;
-                    case StringRangeOption.Char:
+                    case StringTypeOption.Char:
 
                         break;
                     default:
-                        throw new Exception("未处理的字符串范围选项。");
+                        throw new Exception("未处理的字符串类型选项。");
                 }
             }
             //匹配正则式类型选项
@@ -170,12 +170,12 @@ namespace NKingime.Validate
         /// <summary>
         /// 设置类型验证规则范围。
         /// </summary>
-        /// <param name="rangeOption">字符串范围选项。</param>
+        /// <param name="stringType">字符串类型选项。</param>
         /// <param name="minValue">最小值。</param>
         /// <param name="maxValue">最大值。</param>
-        private void SetTypeRuleRange(StringRangeOption rangeOption, int minValue, int maxValue)
+        private void SetTypeRuleRange(StringTypeOption stringType, int minValue, int maxValue)
         {
-            _validRule.RangeOption = rangeOption;
+            _validRule.StringType = stringType;
             _validRule.MinValue = minValue;
             _validRule.MaxValue = maxValue;
         }

@@ -13,7 +13,7 @@ namespace NKingime.Validate
         /// <summary>
         /// 属性类型验证集合。
         /// </summary>
-        private readonly IDictionary<PropertyInfo, ITypeValid> ValidRuleSet = new Dictionary<PropertyInfo, ITypeValid>();
+        private readonly IDictionary<PropertyInfo, ITypeValid> TypeValidSet = new Dictionary<PropertyInfo, ITypeValid>();
 
         /// <summary>
         /// 字符串类型验证。
@@ -24,7 +24,7 @@ namespace NKingime.Validate
         {
             var propertyInfo = (PropertyInfo)(propertySelector.Body as MemberExpression).Member;
             var typeValid = new StringTypeValid();
-            ValidRuleSet.Add(propertyInfo, typeValid);
+            TypeValidSet.Add(propertyInfo, typeValid);
             return typeValid;
         }
 
@@ -57,7 +57,7 @@ namespace NKingime.Validate
         {
 
             object value;
-            foreach (var item in ValidRuleSet)
+            foreach (var item in TypeValidSet)
             {
                 value = item.Key.GetValue(entity);
                 item.Value.Validate(value, entity);

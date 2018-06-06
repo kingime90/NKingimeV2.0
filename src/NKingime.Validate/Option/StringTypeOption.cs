@@ -3,9 +3,9 @@
 namespace NKingime.Validate
 {
     /// <summary>
-    /// 字符串长度范围选项。
+    /// 字符串类型选项。
     /// </summary>
-    public enum StringRangeOption
+    public enum StringTypeOption
     {
         /// <summary>
         /// 字符串。
