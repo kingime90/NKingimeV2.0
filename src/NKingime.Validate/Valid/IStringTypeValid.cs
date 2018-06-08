@@ -15,55 +15,36 @@ namespace NKingime.Validate
         IStringTypeValid Required(bool isRequired = true);
 
         /// <summary>
-        /// 字符串最小长度。
+        /// 指定的字符串类型最小长度。
         /// </summary>
         /// <param name="minValue">最小长度。</param>
+        /// <param name="stringType">字符串类型选项，默认 <see cref="StringTypeOption.String"/>。</param>
         /// <returns></returns>
-        IStringTypeValid MinLength(int minValue);
+        IStringTypeValid MinLength(int minValue, StringTypeOption stringType = StringTypeOption.String);
 
         /// <summary>
-        /// 字符串最大长度。
+        /// 指定的字符串类型最大长度。
         /// </summary>
         /// <param name="maxValue">最大长度。</param>
+        /// <param name="stringType">字符串类型选项，默认 <see cref="StringTypeOption.String"/>。</param>
         /// <returns></returns>
-        IStringTypeValid MaxLength(int maxValue);
+        IStringTypeValid MaxLength(int maxValue, StringTypeOption stringType = StringTypeOption.String);
 
         /// <summary>
-        /// 字符串长度范围。
+        /// 指定的字符串类型长度范围。
         /// </summary>
         /// <param name="minValue">最小长度。</param>
         /// <param name="maxValue">最大长度。</param>
+        /// <param name="stringType">字符串类型选项，默认 <see cref="StringTypeOption.String"/>。</param>
         /// <returns></returns>
-        IStringTypeValid Range(int minValue, int maxValue);
-
-        /// <summary>
-        /// 字符最小个数。
-        /// </summary>
-        /// <param name="minValue">最小个数。</param>
-        /// <returns></returns>
-        IStringTypeValid CharMinLength(int minValue);
-
-        /// <summary>
-        /// 字符最大个数。
-        /// </summary>
-        /// <param name="maxValue">最大个数。</param>
-        /// <returns></returns>
-        IStringTypeValid CharMaxLength(int maxValue);
-
-        /// <summary>
-        /// 字符个数范围。
-        /// </summary>
-        /// <param name="minValue">最小个数。</param>
-        /// <param name="maxValue">最大个数。</param>
-        /// <returns></returns>
-        IStringTypeValid CharRange(int minValue, int maxValue);
+        IStringTypeValid LengthRange(int minValue, int maxValue, StringTypeOption stringType = StringTypeOption.String);
 
         /// <summary>
         ///  配置正则式。
         /// </summary>
         /// <param name="regexTypes">正则式类型选项数组。</param>
         /// <returns></returns>
-        IStringTypeValid Match(params RegexTypeOption[] regexTypes);
+        IStringTypeValid Matchs(params RegexTypeOption[] regexTypes);
 
         /// <summary>
         /// 自定义验证。

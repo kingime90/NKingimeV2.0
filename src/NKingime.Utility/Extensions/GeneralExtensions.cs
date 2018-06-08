@@ -269,6 +269,8 @@ namespace NKingime.Utility.Extensions
 
         #endregion
 
+        #region 可空日期（DateTime?）
+
         /// <summary>
         /// 格式化时间。
         /// </summary>
@@ -287,7 +289,7 @@ namespace NKingime.Utility.Extensions
         /// <param name="value">要转换的值。</param>
         /// <param name="defVal">默认值，字符串 ""。</param>
         /// <returns></returns>
-        public static string ToLongTime(this DateTime? value, string defVal = "")
+        public static string ToLongTimeFormat(this DateTime? value, string defVal = "")
         {
             return value.FormatTime(ValueTypeExtensions.LongTimeFormat, defVal);
         }
@@ -302,6 +304,8 @@ namespace NKingime.Utility.Extensions
         {
             return value.FormatTime(ValueTypeExtensions.DateFormat, defVal);
         }
+
+        #endregion
 
         #endregion
 

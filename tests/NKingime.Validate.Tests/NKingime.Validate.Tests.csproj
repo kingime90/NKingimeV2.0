@@ -55,6 +55,16 @@
   <ItemGroup>
     <Compile Include="Entity\User.cs" />
     <Compile Include="Option\GenderOption.cs" />
+    <Compile Include="Properties\EN.Designer.cs">
+      <DependentUpon>EN.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Properties\ZH-CN.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ZH-CN.resx</DependentUpon>
+    </Compile>
     <Compile Include="SimpleValidTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -66,6 +76,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\EN.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>EN.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>NKingime.Validate.Tests.Properties</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\ZH-CN.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ZH-CN.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>NKingime.Validate.Tests.Properties</CustomToolNamespace>
+    </EmbeddedResource>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

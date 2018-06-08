@@ -8,11 +8,6 @@ namespace NKingime.Validate
     public interface ITypeValid
     {
         /// <summary>
-        /// 获取 验证规则。
-        /// </summary>
-        ValidRule ValidRule { get; }
-
-        /// <summary>
         /// 验证数据是否满足规则。
         /// </summary>
         /// <param name="value">需要验证的值。</param>

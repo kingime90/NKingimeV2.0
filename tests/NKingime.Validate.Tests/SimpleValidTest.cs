@@ -1,6 +1,8 @@
 ﻿using System;
 using NUnit.Framework;
 using NKingime.Validate.Tests.Entity;
+using System.Threading;
+using System.Resources;
 
 namespace NKingime.Validate.Tests
 {
@@ -26,7 +28,12 @@ namespace NKingime.Validate.Tests
             //    Email = "1",
             //});
 
-            var stringTypeValid = new StringTypeValid().Required().Range(10, 20).Match(RegexTypeOption.Email);
+            var currentCulture = Thread.CurrentThread.CurrentCulture;
+
+            var resourceManager = new ResourceManager("NKingime.Validate.Tests.Properties.EN", this.GetType().Assembly);
+            string value = resourceManager.GetString("RequiredError");
+
+            var stringTypeValid = new StringTypeValid().Required().LengthRange(10, 20).Matchs(RegexTypeOption.Email);
             stringTypeValid.Validate(null);
         }
     }

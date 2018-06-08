@@ -1,5 +1,5 @@
-﻿using NKingime.Utility.Option;
-using System;
+﻿using System;
+using NKingime.Utility.Option;
 
 namespace NKingime.Utility.Extensions
 {

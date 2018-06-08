@@ -12,92 +12,50 @@ namespace NKingime.Validate
         private StringTypeRule _validRule = new StringTypeRule();
 
         /// <summary>
-        /// 获取 验证规则。
-        /// </summary>
-        public ValidRule ValidRule
-        {
-            get
-            {
-                return _validRule;
-            }
-        }
-
-        /// <summary>
         /// 设置是否必填，默认必填。
         /// </summary>
         /// <param name="isRequired">是否必填。</param>
         /// <returns></returns>
         public IStringTypeValid Required(bool isRequired = true)
         {
-            _validRule.IsRequired = true;
+            _validRule.IsRequired = isRequired;
             return this;
         }
 
         /// <summary>
-        /// 字符串最小长度。
+        /// 指定的字符串类型最小长度。
         /// </summary>
         /// <param name="minValue">最小长度。</param>
+        /// <param name="stringType">字符串类型选项，默认 <see cref="StringTypeOption.String"/>。</param>
         /// <returns></returns>
-        public IStringTypeValid MinLength(int minValue)
+        public IStringTypeValid MinLength(int minValue, StringTypeOption stringType = StringTypeOption.String)
         {
-            SetTypeRuleRange(StringTypeOption.String, minValue, 0);
+            SetTypeRuleRange(stringType, minValue, 0);
             return this;
         }
 
         /// <summary>
-        /// 字符串最大长度。
+        /// 指定的字符串类型最大长度。
         /// </summary>
         /// <param name="maxValue">最大长度。</param>
+        /// <param name="stringType">字符串类型选项，默认 <see cref="StringTypeOption.String"/>。</param>
         /// <returns></returns>
-        public IStringTypeValid MaxLength(int maxValue)
+        public IStringTypeValid MaxLength(int maxValue, StringTypeOption stringType = StringTypeOption.String)
         {
-            SetTypeRuleRange(StringTypeOption.String, 0, maxValue);
+            SetTypeRuleRange(stringType, 0, maxValue);
             return this;
         }
 
         /// <summary>
-        /// 字符串长度范围。
+        /// 指定的字符串类型长度范围。
         /// </summary>
         /// <param name="minValue">最小长度。</param>
         /// <param name="maxValue">最大长度。</param>
+        /// <param name="stringType">字符串类型选项，默认 <see cref="StringTypeOption.String"/>。</param>
         /// <returns></returns>
-        public IStringTypeValid Range(int minValue, int maxValue)
+        public IStringTypeValid LengthRange(int minValue, int maxValue, StringTypeOption stringType = StringTypeOption.String)
         {
-            SetTypeRuleRange(StringTypeOption.String, minValue, maxValue);
-            return this;
-        }
-
-        /// <summary>
-        /// 字符最小个数。
-        /// </summary>
-        /// <param name="minValue">最小个数。</param>
-        /// <returns></returns>
-        public IStringTypeValid CharMinLength(int minValue)
-        {
-            SetTypeRuleRange(StringTypeOption.Char, minValue, 0);
-            return this;
-        }
-
-        /// <summary>
-        /// 字符最大个数。
-        /// </summary>
-        /// <param name="maxValue">最大个数。</param>
-        /// <returns></returns>
-        public IStringTypeValid CharMaxLength(int maxValue)
-        {
-            SetTypeRuleRange(StringTypeOption.Char, 0, maxValue);
-            return this;
-        }
-
-        /// <summary>
-        /// 字符个数范围。
-        /// </summary>
-        /// <param name="minValue">最小个数。</param>
-        /// <param name="maxValue">最大个数。</param>
-        /// <returns></returns>
-        public IStringTypeValid CharRange(int minValue, int maxValue)
-        {
-            SetTypeRuleRange(StringTypeOption.Char, minValue, maxValue);
+            SetTypeRuleRange(stringType, minValue, maxValue);
             return this;
         }
 
@@ -106,7 +64,7 @@ namespace NKingime.Validate
         /// </summary>
         /// <param name="regexTypes">正则式类型选项数组。</param>
         /// <returns></returns>
-        public IStringTypeValid Match(params RegexTypeOption[] regexTypes)
+        public IStringTypeValid Matchs(params RegexTypeOption[] regexTypes)
         {
             _validRule.RegexTypes = regexTypes;
             return this;

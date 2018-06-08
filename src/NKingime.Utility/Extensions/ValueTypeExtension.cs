@@ -91,7 +91,7 @@ namespace NKingime.Utility.Extensions
         /// </summary>
         /// <param name="value">要转换的值。</param>
         /// <returns></returns>
-        public static string ToLongTime(this DateTime value)
+        public static string ToLongTimeFormat(this DateTime value)
         {
             return value.FormatTime(LongTimeFormat);
         }

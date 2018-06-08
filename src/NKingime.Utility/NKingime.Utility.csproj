@@ -49,6 +49,7 @@
     <Compile Include="Extensions\ValidationExtensions.cs" />
     <Compile Include="Extensions\ValueTypeExtension.cs" />
     <Compile Include="General\Cloneable.cs" />
+    <Compile Include="General\I18nResourceBase.cs" />
     <Compile Include="General\IPagedResult.cs" />
     <Compile Include="General\MessageResult.cs" />
     <Compile Include="General\OrderSelector.cs" />

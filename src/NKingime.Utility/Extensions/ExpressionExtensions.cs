@@ -1,7 +1,7 @@
-﻿using NKingime.Utility.General;
-using System;
+﻿using System;
 using System.Linq;
 using System.Linq.Expressions;
+using NKingime.Utility.General;
 
 namespace NKingime.Utility.Extensions
 {
