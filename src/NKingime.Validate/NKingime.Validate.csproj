@@ -40,6 +40,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Properties\Valid_zh_CN.Designer.cs">
+      <DependentUpon>Valid_zh_CN.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="ValidResource.cs" />
     <Compile Include="Option\RegexTypeOption.cs" />
     <Compile Include="Option\StringTypeOption.cs" />
     <Compile Include="Range.cs" />
@@ -51,6 +57,7 @@
     <Compile Include="Valid\IStringTypeValid.cs" />
     <Compile Include="Valid\ITypeValid.cs" />
     <Compile Include="Valid\StringTypeValid.cs" />
+    <Compile Include="Valid\TypeValidBase.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\NKingime.Utility\NKingime.Utility.csproj">
@@ -58,7 +65,13 @@
       <Name>NKingime.Utility</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Valid_zh_CN.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Valid_zh_CN.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>NKingime.Validate.Properties</CustomToolNamespace>
+    </EmbeddedResource>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

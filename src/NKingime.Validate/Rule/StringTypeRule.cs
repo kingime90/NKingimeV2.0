@@ -30,6 +30,6 @@ namespace NKingime.Validate
         /// <summary>
         /// 自定义验证函数。
         /// </summary>
-        public Func<object, string, ValidResult> CustomValid { get; set; }
+        public Func<string, object, ValidResult> CustomValid { get; set; }
     }
 }

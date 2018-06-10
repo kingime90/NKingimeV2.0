@@ -1,4 +1,5 @@
 ﻿using System;
+using NKingime.Utility.General;
 
 namespace NKingime.Validate
 {
@@ -8,11 +9,17 @@ namespace NKingime.Validate
     public interface ITypeValid
     {
         /// <summary>
-        /// 验证数据是否满足规则。
+        /// 全球化资源。
+        /// </summary>
+        I18nResourceBase I18nResource { get; }
+
+        /// <summary>
+        /// 验证值是否满足规则。
         /// </summary>
         /// <param name="value">需要验证的值。</param>
-        /// <param name="root">需要验证的根对象，如果没有，则为 null。</param>
+        /// <param name="description">需要验证的值的描述。</param>
+        /// <param name="root">需要验证的值的根对象，如果没有，则为 null。</param>
         /// <returns></returns>
-        ValidResult Validate(object value, object root = null);
+        ValidResult Validate(object value, string description, object root = null);
     }
 }

@@ -69,6 +69,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\src\NKingime.Utility\NKingime.Utility.csproj">
+      <Project>{3f63c2d8-1670-45d2-a0ad-5748b344fa98}</Project>
+      <Name>NKingime.Utility</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\src\NKingime.Validate\NKingime.Validate.csproj">
       <Project>{587b7f2b-d03f-4bfc-9799-2426f770cfb2}</Project>
       <Name>NKingime.Validate</Name>

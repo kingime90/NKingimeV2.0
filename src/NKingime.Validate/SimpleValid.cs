@@ -2,6 +2,8 @@
 using System.Reflection;
 using System.Linq.Expressions;
 using System.Collections.Generic;
+using NKingime.Utility.Extensions;
+using System.ComponentModel;
 
 namespace NKingime.Validate
 {
@@ -10,6 +12,11 @@ namespace NKingime.Validate
     /// </summary>
     public class SimpleValid<TEntity> where TEntity : class
     {
+        /// <summary>
+        /// 描述特性类型信息。
+        /// </summary>
+        private Type _descriptionType;
+
         /// <summary>
         /// 属性类型验证集合。
         /// </summary>
@@ -55,12 +62,17 @@ namespace NKingime.Validate
         /// <returns></returns>
         public ValidResult[] Validate(TEntity entity)
         {
-
-            object value;
-            foreach (var item in TypeValidSet)
+            if (_descriptionType == null)
             {
-                value = item.Key.GetValue(entity);
-                item.Value.Validate(value, entity);
+                _descriptionType = typeof(DescriptionAttribute);
+            }
+            object value;
+            string description;
+            foreach (var typeValid in TypeValidSet)
+            {
+                value = typeValid.Key.GetValue(entity);
+                description = typeValid.Key.GetDescription(_descriptionType).IfNullOrWhiteSpace(typeValid.Key.Name);
+                typeValid.Value.Validate(value, description, entity);
             }
             return null;
         }

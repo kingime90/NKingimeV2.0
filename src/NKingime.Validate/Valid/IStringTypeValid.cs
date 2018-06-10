@@ -51,6 +51,6 @@ namespace NKingime.Validate
         /// </summary>
         /// <param name="valid">自定义验证函数。</param>
         /// <returns></returns>
-        IStringTypeValid Custom(Func<object, string, ValidResult> valid);
+        IStringTypeValid Custom(Func<string, object, ValidResult> valid);
     }
 }

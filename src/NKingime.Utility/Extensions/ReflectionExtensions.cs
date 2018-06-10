@@ -1,14 +1,17 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Collections.Generic;
+using System.Reflection;
 
 namespace NKingime.Utility.Extensions
 {
     /// <summary>
-    /// 类型扩展方法。
+    /// 反射扩展方法。
     /// </summary>
-    public static class TypeExtensions
+    public static class ReflectionExtensions
     {
+        #region Type
+
         /// <summary>
         /// 判断类型是否为Nullable类型。
         /// </summary>
@@ -117,5 +120,27 @@ namespace NKingime.Utility.Extensions
             }
             return baseType.IsAssignableFrom(type);
         }
+
+        #endregion
+
+        #region MemberInfo
+
+        /// <summary>
+        /// 获取成员信息的描述。
+        /// </summary>
+        /// <param name="memberInfo">成员信息。</param>
+        /// <param name="attributeType">特性信息。</param>
+        /// <returns></returns>
+        public static string GetDescription(this MemberInfo memberInfo, Type attributeType = null)
+        {
+            if (attributeType == null)
+            {
+                attributeType = typeof(DescriptionAttribute);
+            }
+            var attribute = memberInfo.GetCustomAttribute(attributeType) as DescriptionAttribute;
+            return attribute?.Description;
+        }
+
+        #endregion
     }
 }

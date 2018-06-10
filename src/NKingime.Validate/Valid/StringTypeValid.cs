@@ -1,12 +1,15 @@
 ﻿using System;
+using System.Collections.Generic;
+using NKingime.Utility;
 using NKingime.Utility.Extensions;
+using NKingime.Validate.Properties;
 
 namespace NKingime.Validate
 {
     /// <summary>
     /// 字符串类型验证。
     /// </summary>
-    public class StringTypeValid : IStringTypeValid
+    public class StringTypeValid : TypeValidBase, IStringTypeValid
     {
 
         private StringTypeRule _validRule = new StringTypeRule();
@@ -75,30 +78,31 @@ namespace NKingime.Validate
         /// </summary>
         /// <param name="valid">自定义验证函数。</param>
         /// <returns></returns>
-        public IStringTypeValid Custom(Func<object, string, ValidResult> valid)
+        public IStringTypeValid Custom(Func<string, object, ValidResult> valid)
         {
             _validRule.CustomValid = valid;
             return this;
         }
 
         /// <summary>
-        /// 验证数据是否满足规则。
+        /// 验证值是否满足规则。
         /// </summary>
         /// <param name="value">需要验证的值。</param>
-        /// <param name="root">需要验证的根对象，如果没有，则为 null。</param>
+        /// <param name="description">需要验证的值的描述。</param>
+        /// <param name="root">需要验证的值的根对象，如果没有，则为 null。</param>
         /// <returns></returns>
-        public ValidResult Validate(object value, object root = null)
+        public override ValidResult Validate(object value, string description, object root = null)
         {
             var validResult = new ValidResult(false);
             string str = (value as string) ?? string.Empty;
             //必填
             if (_validRule.IsRequired && str.IsNullOrWhiteSpace())
             {
-                validResult.SetMessage("");
+                validResult.SetMessage(STUtil.GetString(I18nResource.GetString(nameof(Valid_zh_CN.RequiredError)), PropertyName, description));
                 return validResult;
             }
             //字符串长度范围
-            if (_validRule.StringType.HasValue)
+            if (!str.IsNullOrWhiteSpace() && _validRule.StringType.HasValue)
             {
                 switch (_validRule.StringType.Value)
                 {
@@ -120,7 +124,7 @@ namespace NKingime.Validate
             //自定义验证函数
             if (_validRule.CustomValid.IsNotNull())
             {
-                validResult = _validRule.CustomValid(root, str);
+                validResult = _validRule.CustomValid(str, root);
             }
             return validResult;
         }
