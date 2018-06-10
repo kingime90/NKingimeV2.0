@@ -9,7 +9,7 @@ namespace NKingime.Validate
     public class ValidResult : MessageResult<bool>
     {
         /// <summary>
-        /// 初始化一个<see cref="ValidResult"/>成功实例。
+        /// 初始化一个<see cref="ValidResult"/>类型的成功实例。
         /// </summary>
         public ValidResult() : base(true)
         {
@@ -17,7 +17,7 @@ namespace NKingime.Validate
         }
 
         /// <summary>
-        /// 初始化一个<see cref="ValidResult"/>新实例。
+        /// 初始化一个<see cref="ValidResult"/>类型的新实例。
         /// </summary>
         /// <param name="result">结果。</param>
         public ValidResult(bool result) : base(result)
@@ -26,7 +26,7 @@ namespace NKingime.Validate
         }
 
         /// <summary>
-        /// 初始化一个<see cref="ValidResult"/>新实例。
+        /// 初始化一个<see cref="ValidResult"/>类型的新实例。
         /// </summary>
         /// <param name="result">结果。</param>
         /// <param name="message">消息。</param>

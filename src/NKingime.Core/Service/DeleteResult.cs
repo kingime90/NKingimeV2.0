@@ -10,7 +10,7 @@ namespace NKingime.Core.Service
     public class DeleteResult : MessageResult<DeleteResultOption>
     {
         /// <summary>
-        /// 初始化一个<see cref="DeleteResult"/>成功实例。
+        /// 初始化一个<see cref="DeleteResult"/>类型的成功实例。
         /// </summary>
         public DeleteResult() : base(DeleteResultOption.Success)
         {
@@ -18,7 +18,7 @@ namespace NKingime.Core.Service
         }
 
         /// <summary>
-        /// 初始化一个<see cref="DeleteResult"/>新实例。
+        /// 初始化一个<see cref="DeleteResult"/>类型的新实例。
         /// </summary>
         /// <param name="result">结果。</param>
         public DeleteResult(DeleteResultOption result) : base(result)
@@ -27,7 +27,7 @@ namespace NKingime.Core.Service
         }
 
         /// <summary>
-        /// 初始化一个<see cref="DeleteResult"/>新实例。
+        /// 初始化一个<see cref="DeleteResult"/>类型的新实例。
         /// </summary>
         /// <param name="result">结果。</param>
         /// <param name="message">消息。</param>

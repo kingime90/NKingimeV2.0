@@ -1,6 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using NKingime.Utility;
+using NKingime.Utility.General;
 using NKingime.Utility.Extensions;
 using NKingime.Validate.Properties;
 
@@ -11,8 +11,27 @@ namespace NKingime.Validate
     /// </summary>
     public class StringTypeValid : TypeValidBase, IStringTypeValid
     {
-
+        /// <summary>
+        /// 验证规则。
+        /// </summary>
         private StringTypeRule _validRule = new StringTypeRule();
+
+        /// <summary>
+        /// 初始化一个<see cref="StringTypeValid"/>类型的新实例。
+        /// </summary>
+        public StringTypeValid() : base()
+        {
+
+        }
+
+        /// <summary>
+        /// 初始化一个<see cref="StringTypeValid"/>类型的新实例。
+        /// </summary>
+        /// <param name="i18nResource">全球化资源。</param>
+        public StringTypeValid(I18nResourceBase i18nResource) : base(i18nResource)
+        {
+
+        }
 
         /// <summary>
         /// 设置是否必填，默认必填。

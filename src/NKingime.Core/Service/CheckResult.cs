@@ -10,7 +10,7 @@ namespace NKingime.Core.Service
     public class CheckResult : MessageResult<CheckResultOption>
     {
         /// <summary>
-        /// 初始化一个<see cref="CheckResult"/>通过实例。
+        /// 初始化一个<see cref="CheckResult"/>类型的通过实例。
         /// </summary>
         public CheckResult() : base(CheckResultOption.Pass)
         {
@@ -18,7 +18,7 @@ namespace NKingime.Core.Service
         }
 
         /// <summary>
-        /// 初始化一个<see cref="CheckResult"/>新实例。
+        /// 初始化一个<see cref="CheckResult"/>类型的新实例。
         /// </summary>
         /// <param name="result">结果。</param>
         public CheckResult(CheckResultOption result) : base(result)
@@ -27,7 +27,7 @@ namespace NKingime.Core.Service
         }
 
         /// <summary>
-        /// 初始化一个<see cref="CheckResult"/>新实例。
+        /// 初始化一个<see cref="CheckResult"/>类型的新实例。
         /// </summary>
         /// <param name="result">结果。</param>
         /// <param name="message">消息。</param>

@@ -14,7 +14,7 @@ namespace NKingime.Validate
         public const string PropertyName = "name";
 
         /// <summary>
-        /// 初始化一个<see cref="TypeValidBase"/>实例。
+        /// 初始化一个<see cref="TypeValidBase"/>类型的新实例。
         /// </summary>
         public TypeValidBase() : this(new ValidResource())
         {
@@ -22,9 +22,9 @@ namespace NKingime.Validate
         }
 
         /// <summary>
-        /// 初始化一个<see cref="TypeValidBase"/>实例。
+        /// 初始化一个<see cref="TypeValidBase"/>类型的新实例。
         /// </summary>
-        /// <param name="i18nResource"></param>
+        /// <param name="i18nResource">全球化资源。</param>
         public TypeValidBase(I18nResourceBase i18nResource)
         {
             I18nResource = i18nResource;
