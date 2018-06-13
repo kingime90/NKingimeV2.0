@@ -31,13 +31,13 @@ namespace NKingime.Validate
         IStringTypeValid MaxLength(int maxValue, StringTypeOption stringType = StringTypeOption.String);
 
         /// <summary>
-        /// 指定的字符串类型长度范围。
+        /// 指定的字符串类型长度或字符个数范围。
         /// </summary>
         /// <param name="minValue">最小长度。</param>
         /// <param name="maxValue">最大长度。</param>
         /// <param name="stringType">字符串类型选项，默认 <see cref="StringTypeOption.String"/>。</param>
         /// <returns></returns>
-        IStringTypeValid LengthRange(int minValue, int maxValue, StringTypeOption stringType = StringTypeOption.String);
+        IStringTypeValid Range(int minValue, int maxValue, StringTypeOption stringType = StringTypeOption.String);
 
         /// <summary>
         ///  配置正则式。

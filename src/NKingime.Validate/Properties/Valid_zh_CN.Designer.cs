@@ -61,11 +61,65 @@ namespace NKingime.Validate.Properties {
         }
         
         /// <summary>
+        ///   查找类似 $name$字符个数必须在 $minValue$ 到 $maxValue$ 之间！ 的本地化字符串。
+        /// </summary>
+        internal static string CharNumberRangeError {
+            get {
+                return ResourceManager.GetString("CharNumberRangeError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似  的本地化字符串。
+        /// </summary>
+        internal static string MaxCharNumberError {
+            get {
+                return ResourceManager.GetString("MaxCharNumberError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似  的本地化字符串。
+        /// </summary>
+        internal static string MinCharNumberError {
+            get {
+                return ResourceManager.GetString("MinCharNumberError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 $name$必填！ 的本地化字符串。
         /// </summary>
         internal static string RequiredError {
             get {
                 return ResourceManager.GetString("RequiredError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 $name$字符串长度必须在 $minValue$ 到 $maxValue$ 之间！ 的本地化字符串。
+        /// </summary>
+        internal static string StringLengthRangeError {
+            get {
+                return ResourceManager.GetString("StringLengthRangeError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 $name$不能超过 $maxValue$ 个字符！ 的本地化字符串。
+        /// </summary>
+        internal static string StringMaxLengthError {
+            get {
+                return ResourceManager.GetString("StringMaxLengthError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 $name$不能少于 $minValue$ 个字符！ 的本地化字符串。
+        /// </summary>
+        internal static string StringMinLengthError {
+            get {
+                return ResourceManager.GetString("StringMinLengthError", resourceCulture);
             }
         }
     }

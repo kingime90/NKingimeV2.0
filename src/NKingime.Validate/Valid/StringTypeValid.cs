@@ -70,13 +70,13 @@ namespace NKingime.Validate
         }
 
         /// <summary>
-        /// 指定的字符串类型长度范围。
+        /// 指定的字符串类型长度或字符个数范围。
         /// </summary>
         /// <param name="minValue">最小长度。</param>
         /// <param name="maxValue">最大长度。</param>
         /// <param name="stringType">字符串类型选项，默认 <see cref="StringTypeOption.String"/>。</param>
         /// <returns></returns>
-        public IStringTypeValid LengthRange(int minValue, int maxValue, StringTypeOption stringType = StringTypeOption.String)
+        public IStringTypeValid Range(int minValue, int maxValue, StringTypeOption stringType = StringTypeOption.String)
         {
             SetTypeRuleRange(stringType, minValue, maxValue);
             return this;
@@ -131,12 +131,14 @@ namespace NKingime.Validate
                     case StringTypeOption.String:
                         length = str.Length;
                         rangeErrorName = nameof(Valid_zh_CN.StringLengthRangeError);
-                        minValueErrorName = nameof(Valid_zh_CN.MinLengthError);
-                        //maxValueErrorName= nameof(Valid_zh_CN);
+                        minValueErrorName = nameof(Valid_zh_CN.StringMinLengthError);
+                        maxValueErrorName = nameof(Valid_zh_CN.StringMaxLengthError);
                         break;
                     case StringTypeOption.Char:
                         length = str.GetByteLength();
                         rangeErrorName = nameof(Valid_zh_CN.CharNumberRangeError);
+                        minValueErrorName = nameof(Valid_zh_CN.MinCharNumberError);
+                        maxValueErrorName = nameof(Valid_zh_CN.MaxCharNumberError);
                         break;
                     default:
                         throw new Exception("未处理的字符串类型选项。");
@@ -148,21 +150,21 @@ namespace NKingime.Validate
                     new KeyValuePair<string, object>(MaxValueName,_validRule.MaxValue),
                 };
                 //范围
-                if (_validRule.MinValue > 0 && _validRule.MaxValue > 0 && length.IsRange(_validRule.MinValue, _validRule.MaxValue))
+                if (_validRule.MinValue > 0 && _validRule.MaxValue > 0 && !length.IsRange(_validRule.MinValue, _validRule.MaxValue))
                 {
                     validResult.SetMessage(STUtil.GetString(I18nResource.GetString(rangeErrorName), parameters));
                     return validResult;
                 }
                 //最小长度
-                if (_validRule.MinValue > 0)
+                if (_validRule.MinValue > 0 && length.IsLess(_validRule.MinValue))
                 {
-
+                    validResult.SetMessage(STUtil.GetString(I18nResource.GetString(minValueErrorName), parameters));
                     return validResult;
                 }
                 //最大长度
-                if (_validRule.MaxValue > 0)
+                if (_validRule.MaxValue > 0 && length.IsGreater(_validRule.MaxValue))
                 {
-
+                    validResult.SetMessage(STUtil.GetString(I18nResource.GetString(maxValueErrorName), parameters));
                     return validResult;
                 }
             }

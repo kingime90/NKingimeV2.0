@@ -20,13 +20,13 @@ namespace NKingime.Validate.Tests
         public void Test()
         {
             var simpleValid = new SimpleValid<User>();
-            simpleValid.StringType(s => s.Email).Required().LengthRange(10, 20).Matchs(RegexTypeOption.Email).Custom((sd, s) =>
+            simpleValid.StringType(s => s.Email).Required().Range(10, 20).Matchs(RegexTypeOption.Email).Custom((sd, s) =>
             {
                 return null;
             });
             var validResults = simpleValid.Validate(new User()
             {
-                //Email = "1",
+                Email = "1",
             });
 
             //var currentCulture = Thread.CurrentThread.CurrentCulture;

@@ -41,9 +41,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\Valid_zh_CN.Designer.cs">
-      <DependentUpon>Valid_zh_CN.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
+      <DependentUpon>Valid_zh_CN.resx</DependentUpon>
     </Compile>
     <Compile Include="ValidResource.cs" />
     <Compile Include="Option\RegexTypeOption.cs" />

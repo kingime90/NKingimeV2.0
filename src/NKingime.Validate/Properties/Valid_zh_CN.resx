@@ -117,8 +117,32 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="CharNumberRangeError" xml:space="preserve">
+    <value>$name$字符个数必须在 $minValue$ 到 $maxValue$ 之间！</value>
+    <comment>字符个数范围</comment>
+  </data>
+  <data name="MaxCharNumberError" xml:space="preserve">
+    <value />
+    <comment>最大字符个数</comment>
+  </data>
+  <data name="MinCharNumberError" xml:space="preserve">
+    <value />
+    <comment>最小字符个数</comment>
+  </data>
   <data name="RequiredError" xml:space="preserve">
     <value>$name$必填！</value>
-    <comment>dg</comment>
+    <comment>必填</comment>
+  </data>
+  <data name="StringLengthRangeError" xml:space="preserve">
+    <value>$name$字符串长度必须在 $minValue$ 到 $maxValue$ 之间！</value>
+    <comment>字符串长度范围</comment>
+  </data>
+  <data name="StringMaxLengthError" xml:space="preserve">
+    <value>$name$不能超过 $maxValue$ 个字符！</value>
+    <comment>字符串最大长度</comment>
+  </data>
+  <data name="StringMinLengthError" xml:space="preserve">
+    <value>$name$不能少于 $minValue$ 个字符！</value>
+    <comment>字符串最小长度</comment>
   </data>
 </root>
