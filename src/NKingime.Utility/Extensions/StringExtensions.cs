@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 using NKingime.Utility.Option;
 
 namespace NKingime.Utility.Extensions
@@ -49,6 +50,16 @@ namespace NKingime.Utility.Extensions
         public static string GetString(this string value, StingRemoveOption removeOption, params char[] trimChars)
         {
             return value.GetString(string.Empty, removeOption, trimChars);
+        }
+
+        /// <summary>
+        /// 获取指定字符串字节长度。
+        /// </summary>
+        /// <param name="value">要获取的字符串。</param>
+        /// <returns></returns>
+        public static int GetByteLength(this string value)
+        {
+            return Encoding.Default.GetBytes(value.GetString()).Length;
         }
 
         /// <summary>

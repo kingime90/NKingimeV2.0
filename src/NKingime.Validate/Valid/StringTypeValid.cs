@@ -123,16 +123,35 @@ namespace NKingime.Validate
             //字符串长度范围
             if (!str.IsNullOrWhiteSpace() && _validRule.StringType.HasValue)
             {
+                int strLen;
                 switch (_validRule.StringType.Value)
                 {
                     case StringTypeOption.String:
-
+                        strLen = str.Length;
                         break;
                     case StringTypeOption.Char:
-
+                        strLen = str.GetByteLength();
                         break;
                     default:
                         throw new Exception("未处理的字符串类型选项。");
+                }
+                //范围
+                if (_validRule.MinValue > 0 && _validRule.MaxValue > 0)
+                {
+
+                    return validResult;
+                }
+                //最小长度
+                if (_validRule.MinValue > 0)
+                {
+
+                    return validResult;
+                }
+                //最大长度
+                if (_validRule.MaxValue > 0)
+                {
+
+                    return validResult;
                 }
             }
             //匹配正则式类型选项
