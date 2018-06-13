@@ -3,6 +3,7 @@ using NKingime.Utility;
 using NKingime.Utility.General;
 using NKingime.Utility.Extensions;
 using NKingime.Validate.Properties;
+using System.Collections.Generic;
 
 namespace NKingime.Validate
 {
@@ -123,22 +124,33 @@ namespace NKingime.Validate
             //字符串长度范围
             if (!str.IsNullOrWhiteSpace() && _validRule.StringType.HasValue)
             {
-                int strLen;
+                int length;
+                string rangeErrorName, minValueErrorName, maxValueErrorName;
                 switch (_validRule.StringType.Value)
                 {
                     case StringTypeOption.String:
-                        strLen = str.Length;
+                        length = str.Length;
+                        rangeErrorName = nameof(Valid_zh_CN.StringLengthRangeError);
+                        minValueErrorName = nameof(Valid_zh_CN.MinLengthError);
+                        //maxValueErrorName= nameof(Valid_zh_CN);
                         break;
                     case StringTypeOption.Char:
-                        strLen = str.GetByteLength();
+                        length = str.GetByteLength();
+                        rangeErrorName = nameof(Valid_zh_CN.CharNumberRangeError);
                         break;
                     default:
                         throw new Exception("未处理的字符串类型选项。");
                 }
-                //范围
-                if (_validRule.MinValue > 0 && _validRule.MaxValue > 0)
+                var parameters = new KeyValuePair<string, object>[]
                 {
-
+                    new KeyValuePair<string, object>(PropertyName,description),
+                    new KeyValuePair<string, object>(MinValueName,_validRule.MinValue),
+                    new KeyValuePair<string, object>(MaxValueName,_validRule.MaxValue),
+                };
+                //范围
+                if (_validRule.MinValue > 0 && _validRule.MaxValue > 0 && length.IsRange(_validRule.MinValue, _validRule.MaxValue))
+                {
+                    validResult.SetMessage(STUtil.GetString(I18nResource.GetString(rangeErrorName), parameters));
                     return validResult;
                 }
                 //最小长度

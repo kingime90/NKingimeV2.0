@@ -14,6 +14,16 @@ namespace NKingime.Validate
         public const string PropertyName = "name";
 
         /// <summary>
+        /// 最小值名称。
+        /// </summary>
+        public const string MinValueName = "minValue";
+
+        /// <summary>
+        /// 最大值名称。
+        /// </summary>
+        public const string MaxValueName = "maxValue";
+
+        /// <summary>
         /// 初始化一个<see cref="TypeValidBase"/>类型的新实例。
         /// </summary>
         public TypeValidBase() : this(new ValidResource())
