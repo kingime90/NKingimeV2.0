@@ -143,11 +143,11 @@ namespace NKingime.Validate
                     default:
                         throw new Exception("未处理的字符串类型选项。");
                 }
-                var parameters = new KeyValuePair<string, object>[]
+                var parameters = new STAttribute<object>[]
                 {
-                    new KeyValuePair<string, object>(PropertyName,description),
-                    new KeyValuePair<string, object>(MinValueName,_validRule.MinValue),
-                    new KeyValuePair<string, object>(MaxValueName,_validRule.MaxValue),
+                    new STAttribute<object>(PropertyName,description),
+                    new STAttribute<object>(MinValueName,_validRule.MinValue),
+                    new STAttribute<object>(MaxValueName,_validRule.MaxValue),
                 };
                 //范围
                 if (_validRule.MinValue > 0 && _validRule.MaxValue > 0 && !length.IsRange(_validRule.MinValue, _validRule.MaxValue))

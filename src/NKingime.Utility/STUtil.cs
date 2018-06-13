@@ -1,6 +1,7 @@
 ﻿using System;
 using Antlr3.ST;
 using System.Collections.Generic;
+using NKingime.Utility.General;
 using NKingime.Utility.Extensions;
 
 namespace NKingime.Utility
@@ -17,12 +18,12 @@ namespace NKingime.Utility
         /// <param name="template">字符串模板。</param>
         /// <param name="parameters">参数集合。</param>
         /// <returns></returns>
-        public static string GetString<T>(string template, IDictionary<string, T> parameters)
+        public static string GetString<T>(string template, IDictionary<string, T> attributes)
         {
             var sTemplate = new StringTemplate(template);
-            if (parameters.IsNotNull())
+            if (attributes.IsNotNull())
             {
-                foreach (var item in parameters)
+                foreach (var item in attributes)
                 {
                     sTemplate.SetAttribute(item.Key, item.Value);
                 }
@@ -37,12 +38,12 @@ namespace NKingime.Utility
         /// <param name="template">字符串模板。</param>
         /// <param name="parameters">参数数组。</param>
         /// <returns></returns>
-        public static string GetString<T>(string template, params KeyValuePair<string, T>[] parameters)
+        public static string GetString<T>(string template, params STAttribute<T>[] attributes)
         {
             var sTemplate = new StringTemplate(template);
-            if (parameters.IsNotNull())
+            if (attributes.IsNotNull())
             {
-                foreach (var parameter in parameters)
+                foreach (var parameter in attributes)
                 {
                     sTemplate.SetAttribute(parameter.Key, parameter.Value);
                 }
@@ -60,7 +61,7 @@ namespace NKingime.Utility
         /// <returns></returns>
         public static string GetString<T>(string template, string name, T value)
         {
-            return GetString(template, new KeyValuePair<string, T>(name, value));
+            return GetString(template, new STAttribute<T>(name, value));
         }
     }
 }
