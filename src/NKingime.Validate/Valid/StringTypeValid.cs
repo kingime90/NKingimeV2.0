@@ -108,12 +108,13 @@ namespace NKingime.Validate
         /// 验证值是否满足规则。
         /// </summary>
         /// <param name="value">需要验证的值。</param>
+        /// <param name="name">需要验证的值的名称。</param>
         /// <param name="description">需要验证的值的描述。</param>
         /// <param name="root">需要验证的值的根对象，如果没有，则为 null。</param>
         /// <returns></returns>
-        public override ValidResult Validate(object value, string description, object root = null)
+        public override ValidResult Validate(object value,string name, string description, object root = null)
         {
-            var validResult = new ValidResult(false);
+            var validResult = new ValidResult(false, name, description);
             string str = (value as string) ?? string.Empty;
             //必填
             if (_validRule.IsRequired && str.IsNullOrWhiteSpace())

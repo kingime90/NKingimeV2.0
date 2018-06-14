@@ -83,7 +83,7 @@ namespace NKingime.Validate
         /// </summary>
         /// <param name="entity"></param>
         /// <returns></returns>
-        public ValidResult[] Validate(TEntity entity)
+        public ValidResult Validate(TEntity entity)
         {
             if (_descriptionType == null)
             {
@@ -92,13 +92,19 @@ namespace NKingime.Validate
             //
             object value;
             string description;
+            var validResult = new ValidResult();
             foreach (var typeValid in TypeValidSet)
             {
                 value = typeValid.Key.GetValue(entity);
                 description = typeValid.Key.GetDescription(_descriptionType).IfNullOrWhiteSpace(typeValid.Key.Name);
-                typeValid.Value.Validate(value, description, entity);
+                validResult = typeValid.Value.Validate(value, typeValid.Key.Name, description, entity);
+                //
+                if (!validResult.Result)
+                {
+                    return validResult;
+                }
             }
-            return null;
+            return validResult.SetResult(true, null, null, null);
         }
     }
 }

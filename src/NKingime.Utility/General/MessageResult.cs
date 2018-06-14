@@ -30,12 +30,12 @@ namespace NKingime.Utility.General
         /// <summary>
         /// 获取 结果。
         /// </summary>
-        public TResult Result { get; private set; }
+        public TResult Result { get; protected set; }
 
         /// <summary>
         /// 获取 消息。
         /// </summary>
-        public string Message { get; private set; }
+        public string Message { get; protected set; }
 
         /// <summary>
         /// 设置结果。
