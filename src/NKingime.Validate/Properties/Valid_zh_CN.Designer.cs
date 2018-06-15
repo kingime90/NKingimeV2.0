@@ -70,6 +70,24 @@ namespace NKingime.Validate.Properties {
         }
         
         /// <summary>
+        ///   查找类似 不是正确的中文格式！ 的本地化字符串。
+        /// </summary>
+        internal static string ChineseError {
+            get {
+                return ResourceManager.GetString("ChineseError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 不是正确的邮箱格式！ 的本地化字符串。
+        /// </summary>
+        internal static string EmailError {
+            get {
+                return ResourceManager.GetString("EmailError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似  的本地化字符串。
         /// </summary>
         internal static string MaxCharNumberError {
@@ -120,6 +138,15 @@ namespace NKingime.Validate.Properties {
         internal static string StringMinLengthError {
             get {
                 return ResourceManager.GetString("StringMinLengthError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 不是正确的统一资源定位符格式 ！ 的本地化字符串。
+        /// </summary>
+        internal static string URLError {
+            get {
+                return ResourceManager.GetString("URLError", resourceCulture);
             }
         }
     }

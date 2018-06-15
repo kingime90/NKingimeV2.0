@@ -12,5 +12,14 @@ namespace NKingime.Validate
         /// </summary>
         Email,
 
+        /// <summary>
+        /// 中文。
+        /// </summary>
+        Chinese,
+
+        /// <summary>
+        /// 统一资源定位符。
+        /// </summary>
+        URL
     }
 }

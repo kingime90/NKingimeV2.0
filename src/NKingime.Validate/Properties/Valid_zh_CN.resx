@@ -121,6 +121,14 @@
     <value>$name$字符个数必须在 $minValue$ 到 $maxValue$ 之间！</value>
     <comment>字符个数范围</comment>
   </data>
+  <data name="ChineseError" xml:space="preserve">
+    <value>不是正确的中文格式！</value>
+    <comment>中文格式</comment>
+  </data>
+  <data name="EmailError" xml:space="preserve">
+    <value>不是正确的邮箱格式！</value>
+    <comment>邮箱格式</comment>
+  </data>
   <data name="MaxCharNumberError" xml:space="preserve">
     <value />
     <comment>最大字符个数</comment>
@@ -144,5 +152,9 @@
   <data name="StringMinLengthError" xml:space="preserve">
     <value>$name$不能少于 $minValue$ 个字符！</value>
     <comment>字符串最小长度</comment>
+  </data>
+  <data name="URLError" xml:space="preserve">
+    <value>不是正确的统一资源定位符格式 ！</value>
+    <comment>资源定位符格式</comment>
   </data>
 </root>

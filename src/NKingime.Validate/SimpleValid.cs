@@ -79,7 +79,7 @@ namespace NKingime.Validate
         }
 
         /// <summary>
-        /// 
+        /// 验证实体是否满足规则。
         /// </summary>
         /// <param name="entity"></param>
         /// <returns></returns>
