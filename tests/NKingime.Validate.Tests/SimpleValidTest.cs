@@ -1,9 +1,6 @@
 ﻿using System;
 using NUnit.Framework;
 using NKingime.Validate.Tests.Entity;
-using System.Threading;
-using System.Resources;
-using NKingime.Validate;
 
 namespace NKingime.Validate.Tests
 {
@@ -20,13 +17,13 @@ namespace NKingime.Validate.Tests
         public void Test()
         {
             var simpleValid = new SimpleValid<User>();
-            simpleValid.StringType(s => s.Email).Required().MinLength(15)/*.MaxLength(10)*//*.Range(10, 20)*/.Matchs(RegexTypeOption.Email).Custom((sd, s) =>
+            simpleValid.StringType(s => s.Email).Required().MinLength(10)/*.MaxLength(20)*//*.Range(10, 20)*/.Matchs(RegexTypeOption.Email).Custom((value, root) =>
             {
-                return null;
+                return new ValidMessageResult(true);
             });
             var validResults = simpleValid.Validate(new User()
             {
-                Email = "12345678910",
+                Email = "12345678910@163.com",
             });
 
             //var currentCulture = Thread.CurrentThread.CurrentCulture;

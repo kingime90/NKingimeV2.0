@@ -38,9 +38,9 @@ namespace NKingime.Validate.Valid
         /// <param name="name"></param>
         /// <param name="description"></param>
         /// <returns></returns>
-        public ValidResult Validate(string value, string name, string description)
+        public ValidMessageResult Validate(string value)
         {
-            var validResult = new ValidResult(false, name, description);
+            var messageResult = new ValidMessageResult(false);
             foreach (var regexType in RegexTypes)
             {
                 switch (regexType)
@@ -48,29 +48,30 @@ namespace NKingime.Validate.Valid
                     case RegexTypeOption.Email:
                         if (!RegexUtil.IsEmail(value))
                         {
-                            validResult.SetMessage(I18nResource.GetString(nameof(Valid_zh_CN.EmailError)));
-                            return validResult;
+                            messageResult.SetMessage(I18nResource.GetString(nameof(Valid_zh_CN.EmailError)));
+                            return messageResult;
                         }
                         break;
                     case RegexTypeOption.Chinese:
                         if (!RegexUtil.IsChinese(value))
                         {
-                            validResult.SetMessage(I18nResource.GetString(nameof(Valid_zh_CN.ChineseError)));
-                            return validResult;
+                            messageResult.SetMessage(I18nResource.GetString(nameof(Valid_zh_CN.ChineseError)));
+                            return messageResult;
                         }
                         break;
                     case RegexTypeOption.URL:
                         if (!RegexUtil.IsURL(value))
                         {
-                            validResult.SetMessage(I18nResource.GetString(nameof(Valid_zh_CN.URLError)));
-                            return validResult;
+                            messageResult.SetMessage(I18nResource.GetString(nameof(Valid_zh_CN.URLError)));
+                            return messageResult;
                         }
                         break;
                     default:
                         throw new Exception("未处理的正则式类型选项。");
                 }
             }
-            return validResult.SetResult(true, null, null, null);
+            messageResult.SetResult(true);
+            return messageResult;
         }
     }
 }

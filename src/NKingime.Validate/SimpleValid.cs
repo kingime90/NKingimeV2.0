@@ -104,7 +104,7 @@ namespace NKingime.Validate
                     return validResult;
                 }
             }
-            return validResult.SetResult(true, null, null, null);
+            return validResult.Reset(true);
         }
     }
 }

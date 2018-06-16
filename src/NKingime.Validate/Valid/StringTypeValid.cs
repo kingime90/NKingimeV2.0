@@ -1,9 +1,9 @@
 ﻿using System;
 using NKingime.Utility;
+using NKingime.Validate.Valid;
 using NKingime.Utility.General;
 using NKingime.Utility.Extensions;
 using NKingime.Validate.Properties;
-using System.Collections.Generic;
 
 namespace NKingime.Validate
 {
@@ -98,7 +98,7 @@ namespace NKingime.Validate
         /// </summary>
         /// <param name="valid">自定义验证函数。</param>
         /// <returns></returns>
-        public IStringTypeValid Custom(Func<string, object, ValidResult> valid)
+        public IStringTypeValid Custom(Func<string, object, ValidMessageResult> valid)
         {
             _validRule.CustomValid = valid;
             return this;
@@ -170,16 +170,28 @@ namespace NKingime.Validate
                 }
             }
             //匹配正则式类型选项
+            ValidMessageResult messageResult;
             if (_validRule.RegexTypes.IsNotEmpty())
             {
-
+                var regexValid = new RegexValid(I18nResource, _validRule.RegexTypes);
+                messageResult = regexValid.Validate(str);
+                if (!messageResult.Result)
+                {
+                    validResult.SetMessage(messageResult.Message);
+                    return validResult;
+                }
             }
             //自定义验证函数
             if (_validRule.CustomValid.IsNotNull())
             {
-                validResult = _validRule.CustomValid(str, root);
+                messageResult = _validRule.CustomValid(str, root);
+                if (!messageResult.Result)
+                {
+                    validResult.SetMessage(messageResult.Message);
+                    return validResult;
+                }
             }
-            return validResult;
+            return validResult.Reset(true);
         }
 
         /// <summary>

@@ -1,12 +1,12 @@
 ﻿using System;
-using NKingime.Utility.General;
+using NKingime.Utility.Extensions;
 
 namespace NKingime.Validate
 {
     /// <summary>
-    /// 验证消息结果。
+    /// 验证结果。
     /// </summary>
-    public class ValidResult : MessageResult<bool>
+    public sealed class ValidResult : ValidMessageResult
     {
         /// <summary>
         /// 初始化一个<see cref="ValidResult"/>类型的true实例。
@@ -50,18 +50,18 @@ namespace NKingime.Validate
         /// <summary>
         /// 验证的值的名称。
         /// </summary>
-        public string Name { get; protected set; }
+        public string Name { get; private set; }
 
         /// <summary>
         /// 验证的值的描述。
         /// </summary>
-        public string Description { get; protected set; }
+        public string Description { get; private set; }
 
         /// <summary>
         /// 设置验证的值的名称。
         /// </summary>
         /// <param name="name">验证的值的名称。</param>
-        public virtual void SetName(string name)
+        public void SetName(string name)
         {
             Name = name;
         }
@@ -70,7 +70,7 @@ namespace NKingime.Validate
         /// 设置验证的值的描述。
         /// </summary>
         /// <param name="description">验证的值的描述。</param>
-        public virtual void SetDescription(string description)
+        public void SetDescription(string description)
         {
             Description = description;
         }
@@ -82,12 +82,22 @@ namespace NKingime.Validate
         /// <param name="name">验证的值的名称。</param>
         /// <param name="description">验证的值的描述。</param>
         /// <param name="message">消息。</param>
-        public virtual ValidResult SetResult(bool result, string name, string description, string message)
+        public ValidResult SetResult(bool result, string name, string description, string message)
         {
             Result = result;
             Name = name;
             Description = description;
             Message = message;
+            return this;
+        }
+
+        /// <summary>
+        /// 重置。
+        /// </summary>
+        /// <param name="result">结果。</param>
+        public ValidResult Reset(bool? result = false)
+        {
+            SetResult(result.IsTrue(), null, null, null);
             return this;
         }
     }
