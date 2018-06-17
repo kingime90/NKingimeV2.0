@@ -3,6 +3,7 @@ using NKingime.Utility;
 using NKingime.Validate.Valid;
 using NKingime.Utility.General;
 using NKingime.Utility.Extensions;
+using NKingime.Utility.Exceptions;
 using NKingime.Validate.Properties;
 
 namespace NKingime.Validate
@@ -142,7 +143,7 @@ namespace NKingime.Validate
                         maxValueErrorName = nameof(Valid_zh_CN.MaxCharNumberError);
                         break;
                     default:
-                        throw new Exception("未处理的字符串类型选项。");
+                        throw new UnhandledTypeException(_validRule.StringType.Value.GetType().FullName, typeof(StringTypeOption).GetDescription());
                 }
                 var parameters = new STAttribute<object>[]
                 {

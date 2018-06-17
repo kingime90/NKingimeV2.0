@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Exceptions\UnhandledTypeException.cs" />
     <Compile Include="ExceptionUtil.cs" />
     <Compile Include="Extensions\ExpressionExtensions.cs" />
     <Compile Include="Extensions\GeneralExtensions.cs" />
@@ -75,12 +76,25 @@
     <Compile Include="OrderUtil.cs" />
     <Compile Include="PagedResultUtil.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Utility_zh_CN.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Utility_zh_CN.resx</DependentUpon>
+    </Compile>
     <Compile Include="RegexUtil.cs" />
     <Compile Include="STUtil.cs" />
     <Compile Include="TypeConvertUtil.cs" />
+    <Compile Include="UtilityResource.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Utility_zh_CN.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Utility_zh_CN.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>NKingime.Utility.Properties</CustomToolNamespace>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
