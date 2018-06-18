@@ -54,7 +54,7 @@ namespace NKingime.Validate
         {
             var propertyInfo = (PropertyInfo)(propertySelector.Body as MemberExpression).Member;
             var typeValid = new StringTypeValid(I18nResource);
-            TypeValidSet.Add(propertyInfo, typeValid);
+            AddTypeValid(propertyInfo, typeValid);
             return typeValid;
         }
 
@@ -105,6 +105,23 @@ namespace NKingime.Validate
                 }
             }
             return validResult.Reset(true);
+        }
+
+        /// <summary>
+        /// 添加类型验证。
+        /// </summary>
+        /// <param name="propertyInfo">属性信息。</param>
+        /// <param name="typeValid">类型验证。</param>
+        protected void AddTypeValid(PropertyInfo propertyInfo, ITypeValid typeValid)
+        {
+            if (TypeValidSet.ContainsKey(propertyInfo))
+            {
+                TypeValidSet[propertyInfo] = typeValid;
+            }
+            else
+            {
+                TypeValidSet.Add(propertyInfo, typeValid);
+            }
         }
     }
 }
