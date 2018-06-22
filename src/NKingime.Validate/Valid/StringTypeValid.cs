@@ -143,7 +143,7 @@ namespace NKingime.Validate
                         maxValueErrorName = nameof(Valid_zh_CN.MaxCharNumberError);
                         break;
                     default:
-                        throw new UnhandledTypeException(_validRule.StringType.Value.GetType().FullName, typeof(StringTypeOption).GetDescription());
+                        throw new UnhandledTypeException(_validRule.StringType.Value.GetFullName(), _validRule.StringType.Value.GetType().GetDescription());
                 }
                 var parameters = new STAttribute<object>[]
                 {

@@ -23,7 +23,7 @@ namespace NKingime.Entity.Initialize
     public abstract class DbContextInitializerBase<TDbContext> : DbContextInitializerBase where TDbContext : DbContext, IUnitOfWork, new()
     {
         /// <summary>
-        /// 初始化一个<see cref="DbContextInitializerBase{TDbContext}"/>新实例。
+        /// 初始化一个<see cref="DbContextInitializerBase{TDbContext}"/>类型的新实例。
         /// </summary>
         public DbContextInitializerBase()
         {

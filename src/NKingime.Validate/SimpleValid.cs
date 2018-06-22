@@ -13,10 +13,11 @@ namespace NKingime.Validate
     /// </summary>
     public class SimpleValid<TEntity> where TEntity : class
     {
+
         /// <summary>
-        /// 描述特性类型信息。
+        /// 描述特性的类型信息。
         /// </summary>
-        private Type _descriptionType;
+        private readonly Type _descriptionType = typeof(DescriptionAttribute);
 
         /// <summary>
         /// 属性类型验证集合。
@@ -85,11 +86,6 @@ namespace NKingime.Validate
         /// <returns></returns>
         public ValidResult Validate(TEntity entity)
         {
-            if (_descriptionType == null)
-            {
-                _descriptionType = typeof(DescriptionAttribute);
-            }
-            //
             object value;
             string description;
             var validResult = new ValidResult();

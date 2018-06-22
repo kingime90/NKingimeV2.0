@@ -12,7 +12,7 @@ namespace NKingime.Utility.General
         private readonly Dictionary<ParameterExpression, ParameterExpression> _parameterSet;
 
         /// <summary>
-        /// 初始化一个<see cref="ParameterRebinder"/>新实例。
+        /// 初始化一个<see cref="ParameterRebinder"/>类型的新实例。
         /// </summary>
         /// <param name="parameterSet"></param>
         private ParameterRebinder(Dictionary<ParameterExpression, ParameterExpression> parameterSet)
@@ -21,7 +21,7 @@ namespace NKingime.Utility.General
         }
 
         /// <summary>
-        /// 初始化一个<see cref="ParameterRebinder"/>新实例。
+        /// 初始化一个<see cref="ParameterRebinder"/>类型的新实例。
         /// </summary>
         /// <param name="parameterSet"></param>
         /// <param name="exp"></param>

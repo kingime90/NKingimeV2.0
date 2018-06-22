@@ -13,7 +13,7 @@ namespace NKingime.Utility.General
     public class OrderSelector<TEntity> where TEntity : class
     {
         /// <summary>
-        /// 初始化一个<see cref="OrderSelector{TEntity}"/>新实例。
+        /// 初始化一个<see cref="OrderSelector{TEntity}"/>类型的新实例。
         /// </summary>
         /// <param name="keySelector">用于从元素中提取键的函数列表。</param>
         public OrderSelector(IList<Expression<Func<TEntity, object>>> keySelectors)
@@ -22,7 +22,7 @@ namespace NKingime.Utility.General
         }
 
         /// <summary>
-        /// 初始化一个<see cref="OrderSelector{TEntity}"/>新实例。
+        /// 初始化一个<see cref="OrderSelector{TEntity}"/>类型的新实例。
         /// </summary>
         /// <param name="keySelector">用于从元素中提取键的函数列表。</param>
         public OrderSelector(ListSortDirection sortDirection, IList<Expression<Func<TEntity, object>>> keySelectors) : this(keySelectors)
@@ -31,7 +31,7 @@ namespace NKingime.Utility.General
         }
 
         /// <summary>
-        /// 初始化一个<see cref="OrderSelector{TEntity}"/>新实例。
+        /// 初始化一个<see cref="OrderSelector{TEntity}"/>类型的新实例。
         /// </summary>
         /// <param name="keySelectors"></param>
         public OrderSelector(params Expression<Func<TEntity, object>>[] keySelectors)
@@ -43,7 +43,7 @@ namespace NKingime.Utility.General
         }
 
         /// <summary>
-        /// 初始化一个<see cref="OrderSelector{TEntity}"/>新实例。
+        /// 初始化一个<see cref="OrderSelector{TEntity}"/>类型的新实例。
         /// </summary>
         /// <param name="sortDirection"></param>
         /// <param name="keySelectors"></param>

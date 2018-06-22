@@ -17,7 +17,7 @@ namespace NKingime.App.Service
         protected IUserRepository EntityRepository { get; }
 
         /// <summary>
-        /// 初始化一个<see cref="UserService"/>新实例。
+        /// 初始化一个<see cref="UserService"/>类型的新实例。
         /// </summary>
         /// <param name="userRepository"></param>
         public UserService(IUserRepository entityRepository) : base(entityRepository)

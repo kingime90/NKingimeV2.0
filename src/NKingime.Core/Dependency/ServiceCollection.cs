@@ -10,7 +10,7 @@ namespace NKingime.Core.Dependency
     public class ServiceCollection : IServiceCollection
     {
         /// <summary>
-        /// 初始化一个<see cref="ServiceCollection"/>新实例。
+        /// 初始化一个<see cref="ServiceCollection"/>类型的新实例。
         /// </summary>
         public ServiceCollection()
         {

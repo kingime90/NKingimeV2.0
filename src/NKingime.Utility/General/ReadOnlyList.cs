@@ -13,7 +13,7 @@ namespace NKingime.Utility.General
         private readonly IList<T> source;
 
         /// <summary>
-        /// 初始化一个<see cref="ReadOnlyList{T}"/>新实例。
+        /// 初始化一个<see cref="ReadOnlyList{T}"/>类型的新实例。
         /// </summary>
         /// <param name="source"></param>
         public ReadOnlyList(IList<T> source)

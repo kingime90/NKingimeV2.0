@@ -129,7 +129,7 @@ namespace NKingime.Utility.Extensions
         /// 获取成员信息的描述。
         /// </summary>
         /// <param name="memberInfo">成员信息。</param>
-        /// <param name="attributeType">特性信息。</param>
+        /// <param name="attributeType">描述特性的类型信息。</param>
         /// <returns></returns>
         public static string GetDescription(this MemberInfo memberInfo, Type attributeType = null)
         {

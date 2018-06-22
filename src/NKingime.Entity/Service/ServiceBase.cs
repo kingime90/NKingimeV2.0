@@ -25,7 +25,7 @@ namespace NKingime.Entity.Service
         private IRepository<TEntity, TKey> _entityRepository;
 
         /// <summary>
-        /// 初始化一个<see cref="ServiceBase{TEntity,TKey}"/>新实例。
+        /// 初始化一个<see cref="ServiceBase{TEntity,TKey}"/>类型的新实例。
         /// </summary>
         /// <param name="entityRepository"></param>
         public ServiceBase(IRepository<TEntity, TKey> entityRepository)

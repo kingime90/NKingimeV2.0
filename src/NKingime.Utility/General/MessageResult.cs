@@ -9,7 +9,7 @@ namespace NKingime.Utility.General
     public abstract class MessageResult<TResult> where TResult : struct
     {
         /// <summary>
-        /// 初始化一个<see cref="MessageResult{TResult}"/>新实例。
+        /// 初始化一个<see cref="MessageResult{TResult}"/>类型的新实例。
         /// </summary>
         /// <param name="result">结果。</param>
         public MessageResult(TResult result = default(TResult))
@@ -18,7 +18,7 @@ namespace NKingime.Utility.General
         }
 
         /// <summary>
-        /// 初始化一个<see cref="MessageResult{TResult}"/>新实例。
+        /// 初始化一个<see cref="MessageResult{TResult}"/>类型的新实例。
         /// </summary>
         /// <param name="result">结果。</param>
         /// <param name="message">消息。</param>

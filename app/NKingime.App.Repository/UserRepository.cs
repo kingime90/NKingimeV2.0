@@ -12,7 +12,7 @@ namespace NKingime.App.Repository
     public class UserRepository : Repository<User, long>, IUserRepository
     {
         /// <summary>
-        /// 初始化一个<see cref="UserRepository"/>新实例。
+        /// 初始化一个<see cref="UserRepository"/>类型的新实例。
         /// </summary>
         public UserRepository(IDbContextTypeResolver contextTypeResolver) : base(contextTypeResolver)
         {

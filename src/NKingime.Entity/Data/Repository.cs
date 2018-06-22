@@ -25,7 +25,7 @@ namespace NKingime.Entity.Data
         private readonly DbSet<TEntity> _dbSet;
 
         /// <summary>
-        /// 初始化一个<see cref="EFRepository{TEntity}"/>新实例。
+        /// 初始化一个<see cref="EFRepository{TEntity}"/>类型的新实例。
         /// </summary>
         public Repository(IDbContextTypeResolver contextTypeResolver)
         {

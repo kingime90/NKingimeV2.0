@@ -32,7 +32,7 @@ namespace NKingime.Entity.Data
         }
 
         /// <summary>
-        /// 初始化一个<see cref="DbContextBase{TDbContext}"/>新实例。
+        /// 初始化一个<see cref="DbContextBase{TDbContext}"/>类型的新实例。
         /// </summary>
         protected DbContextBase() : base(GetConnectionStringName())
         {
@@ -40,7 +40,7 @@ namespace NKingime.Entity.Data
         }
 
         /// <summary>
-        /// 初始化一个<see cref="DbContextBase{TDbContext}"/>新实例。
+        /// 初始化一个<see cref="DbContextBase{TDbContext}"/>类型的新实例。
         /// </summary>
         /// <param name="nameOrConnectionString"></param>
         protected DbContextBase(string nameOrConnectionString) : base(nameOrConnectionString)
@@ -49,7 +49,7 @@ namespace NKingime.Entity.Data
         }
 
         /// <summary>
-        /// 初始化一个<see cref="DbContextBase{TDbContext}"/>新实例。
+        /// 初始化一个<see cref="DbContextBase{TDbContext}"/>类型的新实例。
         /// </summary>
         /// <param name="model"></param>
         protected DbContextBase(DbCompiledModel model) : base(model)
@@ -58,7 +58,7 @@ namespace NKingime.Entity.Data
         }
 
         /// <summary>
-        /// 初始化一个<see cref="DbContextBase{TDbContext}"/>新实例。
+        /// 初始化一个<see cref="DbContextBase{TDbContext}"/>类型的新实例。
         /// </summary>
         /// <param name="nameOrConnectionString"></param>
         /// <param name="model"></param>
@@ -68,7 +68,7 @@ namespace NKingime.Entity.Data
         }
 
         /// <summary>
-        /// 初始化一个<see cref="DbContextBase{TDbContext}"/>新实例。
+        /// 初始化一个<see cref="DbContextBase{TDbContext}"/>类型的新实例。
         /// </summary>
         /// <param name="existingConnection"></param>
         /// <param name="contextOwnsConnection"></param>
@@ -78,7 +78,7 @@ namespace NKingime.Entity.Data
         }
 
         /// <summary>
-        /// 初始化一个<see cref="DbContextBase{TDbContext}"/>新实例。
+        /// 初始化一个<see cref="DbContextBase{TDbContext}"/>类型的新实例。
         /// </summary>
         /// <param name="objectContext"></param>
         /// <param name="dbContextOwnsObjectContext"></param>
@@ -88,7 +88,7 @@ namespace NKingime.Entity.Data
         }
 
         /// <summary>
-        /// 初始化一个<see cref="DbContextBase{TDbContext}"/>新实例。
+        /// 初始化一个<see cref="DbContextBase{TDbContext}"/>类型的新实例。
         /// </summary>
         /// <param name="existingConnection"></param>
         /// <param name="model"></param>

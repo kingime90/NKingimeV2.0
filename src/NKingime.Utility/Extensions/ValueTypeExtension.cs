@@ -107,5 +107,31 @@ namespace NKingime.Utility.Extensions
         }
 
         #endregion
+
+        #region 枚举（）
+
+        /// <summary>
+        /// 获取枚举项的全名称。
+        /// </summary>
+        /// <param name="value">枚举项。</param>
+        /// <returns></returns>
+        public static string GetFullName(this Enum value)
+        {
+            return $"{value.GetType().FullName}.{value}";
+        }
+
+        /// <summary>
+        /// 获取枚举项的描述。
+        /// </summary>
+        /// <param name="value">枚举项。</param>
+        /// <param name="attributeType">描述特性的类型信息。</param>
+        /// <returns></returns>
+        public static string GetDescription(this Enum value, Type attributeType = null)
+        {
+            var fieldInfo = value.GetType().GetField(value.ToString());
+            return fieldInfo?.GetDescription(attributeType);
+        }
+
+        #endregion
     }
 }

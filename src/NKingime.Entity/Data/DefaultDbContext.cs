@@ -8,7 +8,7 @@ namespace NKingime.Entity.Data
     public class DefaultDbContext : DbContextBase<DefaultDbContext>
     {
         /// <summary>
-        /// 初始化一个<see cref="DefaultDbContext"/>新实例。
+        /// 初始化一个<see cref="DefaultDbContext"/>类型的新实例。
         /// </summary>
         public DefaultDbContext()
         {
@@ -16,7 +16,7 @@ namespace NKingime.Entity.Data
         }
 
         /// <summary>
-        /// 初始化一个<see cref="DefaultDbContext"/>新实例。
+        /// 初始化一个<see cref="DefaultDbContext"/>类型的新实例。
         /// </summary>
         /// <param name="nameOrConnectionString"></param>
         public DefaultDbContext(string nameOrConnectionString) : base(nameOrConnectionString)

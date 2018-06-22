@@ -13,7 +13,7 @@ namespace NKingime.Core.Dependency
         #region 构造函数
 
         /// <summary>
-        /// 初始化一个<see cref="ServiceDescriptor"/>新实例。
+        /// 初始化一个<see cref="ServiceDescriptor"/>类型的新实例。
         /// </summary>
         /// <param name="serviceType">服务类型。</param>
         /// <param name="implementationType">服务实现类型。</param>
@@ -24,7 +24,7 @@ namespace NKingime.Core.Dependency
         }
 
         /// <summary>
-        /// 初始化一个<see cref="ServiceDescriptor"/>新实例。
+        /// 初始化一个<see cref="ServiceDescriptor"/>类型的新实例。
         /// </summary>
         /// <param name="serviceType">服务类型。</param>
         /// <param name="implementationInstance">服务实现实例。</param>
@@ -35,7 +35,7 @@ namespace NKingime.Core.Dependency
         }
 
         /// <summary>
-        /// 初始化一个<see cref="ServiceDescriptor"/>新实例。
+        /// 初始化一个<see cref="ServiceDescriptor"/>类型的新实例。
         /// </summary>
         /// <param name="serviceType">服务类型。</param>
         /// <param name="implementationFactory">服务实现实例工厂。</param>
@@ -46,7 +46,7 @@ namespace NKingime.Core.Dependency
         }
 
         /// <summary>
-        /// 初始化一个<see cref="ServiceDescriptor"/>新实例。
+        /// 初始化一个<see cref="ServiceDescriptor"/>类型的新实例。
         /// </summary>
         /// <param name="serviceType">服务类型。</param>
         /// <param name="lifetime">生命周期。</param>

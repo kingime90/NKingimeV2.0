@@ -2,6 +2,8 @@
 using NKingime.Utility;
 using NKingime.Utility.General;
 using NKingime.Validate.Properties;
+using NKingime.Utility.Exceptions;
+using NKingime.Utility.Extensions;
 
 namespace NKingime.Validate.Valid
 {
@@ -67,7 +69,7 @@ namespace NKingime.Validate.Valid
                         }
                         break;
                     default:
-                        throw new Exception("未处理的正则式类型选项。");
+                        throw new UnhandledTypeException(regexType.GetFullName(), regexType.GetType().GetDescription());
                 }
             }
             messageResult.SetResult(true);
