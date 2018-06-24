@@ -26,7 +26,7 @@ namespace NKingime.Validate
         /// <summary>
         /// 初始化一个<see cref="TypeValidBase"/>类型的新实例。
         /// </summary>
-        public TypeValidBase() : this(new ValidResource())
+        public TypeValidBase() : this(new ValidateResource())
         {
 
         }
@@ -41,7 +41,7 @@ namespace NKingime.Validate
         }
 
         /// <summary>
-        /// 全球化资源。
+        /// 获取 全球化资源。
         /// </summary>
         public I18nResourceBase I18nResource { get; }
 

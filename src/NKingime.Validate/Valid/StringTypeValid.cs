@@ -47,7 +47,7 @@ namespace NKingime.Validate
         }
 
         /// <summary>
-        /// 指定的字符串类型最小长度。
+        /// 设置指定的字符串类型最小长度。
         /// </summary>
         /// <param name="minValue">最小长度。</param>
         /// <param name="stringType">字符串类型选项，默认 <see cref="StringTypeOption.String"/>。</param>
@@ -59,7 +59,7 @@ namespace NKingime.Validate
         }
 
         /// <summary>
-        /// 指定的字符串类型最大长度。
+        /// 设置指定的字符串类型最大长度。
         /// </summary>
         /// <param name="maxValue">最大长度。</param>
         /// <param name="stringType">字符串类型选项，默认 <see cref="StringTypeOption.String"/>。</param>
@@ -71,7 +71,7 @@ namespace NKingime.Validate
         }
 
         /// <summary>
-        /// 指定的字符串类型长度或字符个数范围。
+        /// 设置指定的字符串类型长度或字符个数范围。
         /// </summary>
         /// <param name="minValue">最小长度。</param>
         /// <param name="maxValue">最大长度。</param>
@@ -84,7 +84,7 @@ namespace NKingime.Validate
         }
 
         /// <summary>
-        ///  配置正则式。
+        ///  设置配置正则式。
         /// </summary>
         /// <param name="regexTypes">正则式类型选项数组。</param>
         /// <returns></returns>
@@ -95,7 +95,7 @@ namespace NKingime.Validate
         }
 
         /// <summary>
-        /// 自定义验证。
+        /// 设置自定义验证。
         /// </summary>
         /// <param name="valid">自定义验证函数。</param>
         /// <returns></returns>

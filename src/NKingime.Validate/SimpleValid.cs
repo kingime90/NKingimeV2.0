@@ -27,7 +27,7 @@ namespace NKingime.Validate
         /// <summary>
         /// 初始化一个<see cref="SimpleValid{TEntity}"/>类型的新实例。
         /// </summary>
-        public SimpleValid() : this(new ValidResource())
+        public SimpleValid() : this(new ValidateResource())
         {
 
         }

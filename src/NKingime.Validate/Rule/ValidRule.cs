@@ -5,7 +5,7 @@ namespace NKingime.Validate
     /// <summary>
     /// 验证规则基类。
     /// </summary>
-    public abstract class ValidRule
+    public abstract class ValidRule: IValidRule
     {
         /// <summary>
         /// 初始化一个<see cref="ValidRule"/>类型的新实例。

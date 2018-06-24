@@ -9,7 +9,7 @@ namespace NKingime.Validate
     public interface ITypeValid
     {
         /// <summary>
-        /// 全球化资源。
+        /// 获取 全球化资源。
         /// </summary>
         I18nResourceBase I18nResource { get; }
 
