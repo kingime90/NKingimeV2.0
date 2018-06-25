@@ -1,6 +1,5 @@
 ﻿using System;
 using NKingime.Utility;
-using NKingime.Validate.Valid;
 using NKingime.Utility.General;
 using NKingime.Utility.Extensions;
 using NKingime.Utility.Exceptions;
@@ -120,7 +119,7 @@ namespace NKingime.Validate
             //必填
             if (_validRule.IsRequired && str.IsNullOrWhiteSpace())
             {
-                validResult.SetMessage(STUtil.GetString(I18nResource.GetString(nameof(Valid_zh_CN.RequiredError)), PropertyName, description));
+                validResult.SetMessage(GetString(I18nResource.GetString(nameof(Valid_zh_CN.RequiredError)), PropertyName, description));
                 return validResult;
             }
             //字符串长度范围
@@ -154,19 +153,19 @@ namespace NKingime.Validate
                 //范围
                 if (_validRule.MinValue > 0 && _validRule.MaxValue > 0 && !length.IsRange(_validRule.MinValue, _validRule.MaxValue))
                 {
-                    validResult.SetMessage(STUtil.GetString(I18nResource.GetString(rangeErrorName), parameters));
+                    validResult.SetMessage(GetString(I18nResource.GetString(rangeErrorName), parameters));
                     return validResult;
                 }
                 //最小长度
                 if (_validRule.MinValue > 0 && length.IsLess(_validRule.MinValue))
                 {
-                    validResult.SetMessage(STUtil.GetString(I18nResource.GetString(minValueErrorName), parameters));
+                    validResult.SetMessage(GetString(I18nResource.GetString(minValueErrorName), parameters));
                     return validResult;
                 }
                 //最大长度
                 if (_validRule.MaxValue > 0 && length.IsGreater(_validRule.MaxValue))
                 {
-                    validResult.SetMessage(STUtil.GetString(I18nResource.GetString(maxValueErrorName), parameters));
+                    validResult.SetMessage(GetString(I18nResource.GetString(maxValueErrorName), parameters));
                     return validResult;
                 }
             }

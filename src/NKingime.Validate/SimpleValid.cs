@@ -13,7 +13,6 @@ namespace NKingime.Validate
     /// </summary>
     public class SimpleValid<TEntity> where TEntity : class
     {
-
         /// <summary>
         /// 描述特性的类型信息。
         /// </summary>
@@ -60,13 +59,15 @@ namespace NKingime.Validate
         }
 
         /// <summary>
-        /// 
+        /// 值类型验证。
         /// </summary>
-        /// <param name="propertySelector"></param>
-        public void ValueType<TProperty>(Expression<Func<TEntity, TProperty>> propertySelector) where TProperty : struct
+        /// <param name="propertySelector">选择值类型属性函数。</param>
+        public IValueTypeValid<TProperty> ValueType<TProperty>(Expression<Func<TEntity, TProperty>> propertySelector) where TProperty : struct
         {
             var propertyInfo = (PropertyInfo)(propertySelector.Body as MemberExpression).Member;
-
+            var typeValid = new ValueTypeValid<TProperty>(I18nResource);
+            AddTypeValid(propertyInfo, typeValid);
+            return typeValid;
         }
 
         /// <summary>

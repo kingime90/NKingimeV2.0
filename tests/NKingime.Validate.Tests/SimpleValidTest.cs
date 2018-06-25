@@ -21,6 +21,7 @@ namespace NKingime.Validate.Tests
             {
                 return new ValidMessageResult(true);
             });
+            simpleValid.ValueType(s => s.Grade).MinValue(1);
             var validResults = simpleValid.Validate(new User()
             {
                 Email = "12345678910@163.com",

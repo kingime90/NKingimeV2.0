@@ -40,6 +40,12 @@ namespace NKingime.Validate.Tests.Entity
         public string Email { get; set; }
 
         /// <summary>
+        /// 等级。
+        /// </summary>
+        [Description("等级")]
+        public int Grade { get; set; }
+
+        /// <summary>
         /// 注册时间。
         /// </summary>
         [Description("注册时间")]

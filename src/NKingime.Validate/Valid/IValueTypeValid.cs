@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace NKingime.Validate.Valid
+namespace NKingime.Validate
 {
     /// <summary>
     /// 定义值类型验证接口。
@@ -29,5 +29,12 @@ namespace NKingime.Validate.Valid
         /// <param name="maxValue">最大值。</param>
         /// <returns></returns>
         IValueTypeValid<T> Range(T minValue, T maxValue);
+
+        /// <summary>
+        /// 设置自定义验证。
+        /// </summary>
+        /// <param name="valid">自定义验证函数。</param>
+        /// <returns></returns>
+        IValueTypeValid<T> Custom(Func<T, object, ValidMessageResult> valid);
     }
 }

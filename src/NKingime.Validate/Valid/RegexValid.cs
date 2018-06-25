@@ -5,7 +5,7 @@ using NKingime.Validate.Properties;
 using NKingime.Utility.Exceptions;
 using NKingime.Utility.Extensions;
 
-namespace NKingime.Validate.Valid
+namespace NKingime.Validate
 {
     /// <summary>
     /// 正则表达式验证。

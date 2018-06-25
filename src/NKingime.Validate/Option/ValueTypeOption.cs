@@ -4,9 +4,9 @@ using System.ComponentModel;
 namespace NKingime.Validate
 {
     /// <summary>
-    /// 值类型验证选项。
+    /// 值类型比较选项。
     /// </summary>
-    [Description("值类型验证选项")]
+    [Description("值类型比较选项")]
     public enum ValueTypeOption
     {
         /// <summary>

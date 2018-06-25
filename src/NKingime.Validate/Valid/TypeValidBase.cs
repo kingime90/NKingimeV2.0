@@ -1,4 +1,5 @@
 ﻿using System;
+using NKingime.Utility;
 using NKingime.Utility.General;
 
 namespace NKingime.Validate
@@ -54,5 +55,30 @@ namespace NKingime.Validate
         /// <param name="root">需要验证的值的根对象，如果没有，则为 null。</param>
         /// <returns></returns>
         public abstract ValidResult Validate(object value, string name, string description, object root = null);
+
+        /// <summary>
+        /// 获取字符串模板内容。
+        /// </summary>
+        /// <typeparam name="T">值类型。</typeparam>
+        /// <param name="template">字符串模板。</param>
+        /// <param name="name">参数名称。</param>
+        /// <param name="value">参数值。</param>
+        /// <returns></returns>
+        protected virtual string GetString<T>(string template, string name, T value)
+        {
+            return STUtil.GetString(template, name, value);
+        }
+
+        /// <summary>
+        /// 获取字符串模板内容。
+        /// </summary>
+        /// <typeparam name="T">值类型。</typeparam>
+        /// <param name="template">字符串模板。</param>
+        /// <param name="parameters">参数数组。</param>
+        /// <returns></returns>
+        public virtual string GetString<T>(string template, params STAttribute<T>[] attributes)
+        {
+            return STUtil.GetString(template, attributes);
+        }
     }
 }
