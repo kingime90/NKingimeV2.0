@@ -40,7 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Option\ValueTypeOption.cs" />
+    <Compile Include="Option\ValueTypeCompareOption.cs" />
     <Compile Include="Rule\IValidRule.cs" />
     <Compile Include="Rule\ValueTypeRule.cs" />
     <Compile Include="ValidMessageResult.cs" />

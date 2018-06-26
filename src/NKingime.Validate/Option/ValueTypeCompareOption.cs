@@ -7,7 +7,7 @@ namespace NKingime.Validate
     /// 值类型比较选项。
     /// </summary>
     [Description("值类型比较选项")]
-    public enum ValueTypeOption
+    public enum ValueTypeCompareOption
     {
         /// <summary>
         /// 最小值。

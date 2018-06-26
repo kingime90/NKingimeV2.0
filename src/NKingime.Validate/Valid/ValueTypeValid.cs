@@ -41,7 +41,7 @@ namespace NKingime.Validate
         /// <returns></returns>
         public IValueTypeValid<T> MinValue(T value)
         {
-            SetTypeRuleRange(ValueTypeOption.MinValue, value, default(T));
+            SetTypeRuleRange(ValueTypeCompareOption.MinValue, value, default(T));
             return this;
         }
 
@@ -52,7 +52,7 @@ namespace NKingime.Validate
         /// <returns></returns>
         public IValueTypeValid<T> MaxValue(T value)
         {
-            SetTypeRuleRange(ValueTypeOption.MaxValue, default(T), value);
+            SetTypeRuleRange(ValueTypeCompareOption.MaxValue, default(T), value);
             return this;
         }
 
@@ -64,7 +64,7 @@ namespace NKingime.Validate
         /// <returns></returns>
         public IValueTypeValid<T> Range(T minValue, T maxValue)
         {
-            SetTypeRuleRange(ValueTypeOption.Range, minValue, maxValue);
+            SetTypeRuleRange(ValueTypeCompareOption.Range, minValue, maxValue);
             return this;
         }
 
@@ -91,7 +91,7 @@ namespace NKingime.Validate
         {
             var validResult = new ValidResult(false, name, description);
             var t = (T)value;
-            if (_validRule.ValueType.HasValue)
+            if (_validRule.CompareOption.HasValue)
             {
                 var parameters = new STAttribute<object>[]
                 {
@@ -99,23 +99,23 @@ namespace NKingime.Validate
                     new STAttribute<object>(MinValueName,_validRule.MinValue),
                     new STAttribute<object>(MaxValueName,_validRule.MaxValue),
                 };
-                switch (_validRule.ValueType.Value)
+                switch (_validRule.CompareOption.Value)
                 {
-                    case ValueTypeOption.MinValue:
+                    case ValueTypeCompareOption.MinValue:
                         if (t.IsLess(_validRule.MinValue))
                         {
                             validResult.SetMessage(GetI18nString(nameof(Validate_zh_CN.ValueTypeMinValueError), parameters));
                             return validResult;
                         }
                         break;
-                    case ValueTypeOption.MaxValue:
+                    case ValueTypeCompareOption.MaxValue:
                         if (t.IsGreater(_validRule.MaxValue))
                         {
                             validResult.SetMessage(GetI18nString(nameof(Validate_zh_CN.ValueTypeMaxValueError), parameters));
                             return validResult;
                         }
                         break;
-                    case ValueTypeOption.Range:
+                    case ValueTypeCompareOption.Range:
                         if (!t.IsRange(_validRule.MinValue, _validRule.MaxValue))
                         {
                             validResult.SetMessage(GetI18nString(nameof(Validate_zh_CN.ValueTypeRangeError), parameters));
@@ -123,7 +123,7 @@ namespace NKingime.Validate
                         }
                         break;
                     default:
-                        throw new UnhandledTypeException(_validRule.ValueType.Value.GetFullName(), _validRule.ValueType.Value.GetType().GetDescription());
+                        throw new UnhandledTypeException(_validRule.CompareOption.Value.GetFullName(), _validRule.CompareOption.Value.GetType().GetDescription());
                 }
             }
             //自定义验证函数
@@ -142,12 +142,12 @@ namespace NKingime.Validate
         /// <summary>
         /// 设置类型验证规则范围。
         /// </summary>
-        /// <param name="valueType">值类型比较选项。</param>
+        /// <param name="compareOption">值类型比较选项。</param>
         /// <param name="minValue">最小值。</param>
         /// <param name="maxValue">最大值。</param>
-        private void SetTypeRuleRange(ValueTypeOption valueType, T minValue, T maxValue)
+        private void SetTypeRuleRange(ValueTypeCompareOption compareOption, T minValue, T maxValue)
         {
-            _validRule.ValueType = valueType;
+            _validRule.CompareOption = compareOption;
             _validRule.MinValue = minValue;
             _validRule.MaxValue = maxValue;
         }

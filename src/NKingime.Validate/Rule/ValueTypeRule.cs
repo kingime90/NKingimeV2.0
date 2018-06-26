@@ -8,9 +8,9 @@ namespace NKingime.Validate
     public class ValueTypeRule<T> : IValidRule where T : struct
     {
         /// <summary>
-        /// 值类型比较选项。
+        /// 比较选项。
         /// </summary>
-        public ValueTypeOption? ValueType { get; set; }
+        public ValueTypeCompareOption? CompareOption { get; set; }
 
         /// <summary>
         /// 获取或设置 最小值。

@@ -25,6 +25,6 @@ namespace NKingime.Validate
         /// 统一资源定位符。
         /// </summary>
         [Description("统一资源定位符")]
-        URL
+        URL,
     }
 }
