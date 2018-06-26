@@ -44,10 +44,10 @@
     <Compile Include="Rule\IValidRule.cs" />
     <Compile Include="Rule\ValueTypeRule.cs" />
     <Compile Include="ValidMessageResult.cs" />
-    <Compile Include="Properties\Valid_zh_CN.Designer.cs">
+    <Compile Include="Properties\Validate_zh_CN.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Valid_zh_CN.resx</DependentUpon>
+      <DependentUpon>Validate_zh_CN.resx</DependentUpon>
     </Compile>
     <Compile Include="ValidateResource.cs" />
     <Compile Include="Option\RegexTypeOption.cs" />
@@ -73,10 +73,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Properties\Valid_zh_CN.resx">
+    <EmbeddedResource Include="Properties\Validate_zh_CN.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Valid_zh_CN.Designer.cs</LastGenOutput>
       <CustomToolNamespace>NKingime.Validate.Properties</CustomToolNamespace>
+      <LastGenOutput>Validate_zh_CN2.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

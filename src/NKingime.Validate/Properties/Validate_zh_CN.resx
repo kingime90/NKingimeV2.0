@@ -117,44 +117,56 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="CharNumberRangeError" xml:space="preserve">
-    <value>$name$字符个数必须在 $minValue$ 到 $maxValue$ 之间！</value>
-    <comment>字符个数范围</comment>
+  <data name="ByteLengthRangeError" xml:space="preserve">
+    <value>字节长度必须在 $minValue$ 到 $maxValue$ 之间（汉字占两个字节）</value>
+    <comment>字节长度范围</comment>
   </data>
   <data name="ChineseError" xml:space="preserve">
-    <value>不是正确的中文格式！</value>
+    <value>不是正确的中文格式</value>
     <comment>中文格式</comment>
   </data>
   <data name="EmailError" xml:space="preserve">
-    <value>不是正确的邮箱格式！</value>
+    <value>不是正确的邮箱格式</value>
     <comment>邮箱格式</comment>
   </data>
-  <data name="MaxCharNumberError" xml:space="preserve">
-    <value />
-    <comment>最大字符个数</comment>
+  <data name="MaxByteLengthError" xml:space="preserve">
+    <value>不能超过 $maxValue$ 个字节（汉字占两个字节）</value>
+    <comment>最大字节长度</comment>
   </data>
-  <data name="MinCharNumberError" xml:space="preserve">
-    <value />
-    <comment>最小字符个数</comment>
+  <data name="MinByteLengthError" xml:space="preserve">
+    <value>不能少于 $minValue$ 个字节（汉字占两个字节）</value>
+    <comment>最小字节长度</comment>
   </data>
   <data name="RequiredError" xml:space="preserve">
-    <value>$name$必填！</value>
+    <value>必填</value>
     <comment>必填</comment>
   </data>
   <data name="StringLengthRangeError" xml:space="preserve">
-    <value>$name$字符串长度必须在 $minValue$ 到 $maxValue$ 之间！</value>
-    <comment>字符串长度范围</comment>
+    <value>字符长度必须在 $minValue$ 到 $maxValue$ 之间</value>
+    <comment>字符长度范围</comment>
   </data>
   <data name="StringMaxLengthError" xml:space="preserve">
-    <value>$name$不能超过 $maxValue$ 个字符！</value>
-    <comment>字符串最大长度</comment>
+    <value>不能超过 $maxValue$ 个字符</value>
+    <comment>最大字符长度</comment>
   </data>
   <data name="StringMinLengthError" xml:space="preserve">
-    <value>$name$不能少于 $minValue$ 个字符！</value>
-    <comment>字符串最小长度</comment>
+    <value>不能少于 $minValue$ 个字符</value>
+    <comment>最小字符长度</comment>
   </data>
   <data name="URLError" xml:space="preserve">
-    <value>不是正确的统一资源定位符格式 ！</value>
+    <value>不是正确的URL格式</value>
     <comment>资源定位符格式</comment>
+  </data>
+  <data name="ValueTypeMaxValueError" xml:space="preserve">
+    <value>不能大于  $maxValue$</value>
+    <comment>值类型最大值</comment>
+  </data>
+  <data name="ValueTypeMinValueError" xml:space="preserve">
+    <value>不能小于  $minValue$</value>
+    <comment>值类型最小值</comment>
+  </data>
+  <data name="ValueTypeRangeError" xml:space="preserve">
+    <value>必须在 $minValue$ 到 $maxValue$ 之间</value>
+    <comment>值类型范围</comment>
   </data>
 </root>

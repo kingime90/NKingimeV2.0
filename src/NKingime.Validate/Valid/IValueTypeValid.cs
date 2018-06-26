@@ -6,7 +6,7 @@ namespace NKingime.Validate
     /// 定义值类型验证接口。
     /// </summary>
     /// <typeparam name="T">值类型类型。</typeparam>
-    public interface IValueTypeValid<T> where T : struct
+    public interface IValueTypeValid<T> where T : struct, IComparable
     {
         /// <summary>
         /// 设置验证最小值。

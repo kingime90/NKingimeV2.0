@@ -22,14 +22,14 @@ namespace NKingime.Validate.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Valid_zh_CN {
+    internal class Validate_zh_CN {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Valid_zh_CN() {
+        internal Validate_zh_CN() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace NKingime.Validate.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("NKingime.Validate.Properties.Valid_zh_CN", typeof(Valid_zh_CN).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("NKingime.Validate.Properties.Validate_zh_CN", typeof(Validate_zh_CN).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,16 +61,16 @@ namespace NKingime.Validate.Properties {
         }
         
         /// <summary>
-        ///   查找类似 $name$字符个数必须在 $minValue$ 到 $maxValue$ 之间！ 的本地化字符串。
+        ///   查找类似 字符个数必须在 $minValue$ 到 $maxValue$ 之间 的本地化字符串。
         /// </summary>
-        internal static string CharNumberRangeError {
+        internal static string ByteLengthRangeError {
             get {
-                return ResourceManager.GetString("CharNumberRangeError", resourceCulture);
+                return ResourceManager.GetString("ByteLengthRangeError", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   查找类似 不是正确的中文格式！ 的本地化字符串。
+        ///   查找类似 不是正确的中文格式 的本地化字符串。
         /// </summary>
         internal static string ChineseError {
             get {
@@ -79,7 +79,7 @@ namespace NKingime.Validate.Properties {
         }
         
         /// <summary>
-        ///   查找类似 不是正确的邮箱格式！ 的本地化字符串。
+        ///   查找类似 不是正确的邮箱格式 的本地化字符串。
         /// </summary>
         internal static string EmailError {
             get {
@@ -88,25 +88,25 @@ namespace NKingime.Validate.Properties {
         }
         
         /// <summary>
-        ///   查找类似  的本地化字符串。
+        ///   查找类似 不能超过 $maxValue$ 个字符，一个汉字占两个字符 的本地化字符串。
         /// </summary>
-        internal static string MaxCharNumberError {
+        internal static string MaxByteLengthError {
             get {
-                return ResourceManager.GetString("MaxCharNumberError", resourceCulture);
+                return ResourceManager.GetString("MaxByteLengthError", resourceCulture);
             }
         }
         
         /// <summary>
         ///   查找类似  的本地化字符串。
         /// </summary>
-        internal static string MinCharNumberError {
+        internal static string MinByteLengthError {
             get {
-                return ResourceManager.GetString("MinCharNumberError", resourceCulture);
+                return ResourceManager.GetString("MinByteLengthError", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   查找类似 $name$必填！ 的本地化字符串。
+        ///   查找类似 必填 的本地化字符串。
         /// </summary>
         internal static string RequiredError {
             get {
@@ -115,7 +115,7 @@ namespace NKingime.Validate.Properties {
         }
         
         /// <summary>
-        ///   查找类似 $name$字符串长度必须在 $minValue$ 到 $maxValue$ 之间！ 的本地化字符串。
+        ///   查找类似 字符长度必须在 {0} 到 {1} 之间 的本地化字符串。
         /// </summary>
         internal static string StringLengthRangeError {
             get {
@@ -124,7 +124,7 @@ namespace NKingime.Validate.Properties {
         }
         
         /// <summary>
-        ///   查找类似 $name$不能超过 $maxValue$ 个字符！ 的本地化字符串。
+        ///   查找类似 不能超过 $maxValue$ 个字符 的本地化字符串。
         /// </summary>
         internal static string StringMaxLengthError {
             get {
@@ -133,7 +133,7 @@ namespace NKingime.Validate.Properties {
         }
         
         /// <summary>
-        ///   查找类似 $name$不能少于 $minValue$ 个字符！ 的本地化字符串。
+        ///   查找类似 不能少于 $minValue$ 个字符 的本地化字符串。
         /// </summary>
         internal static string StringMinLengthError {
             get {
@@ -142,11 +142,38 @@ namespace NKingime.Validate.Properties {
         }
         
         /// <summary>
-        ///   查找类似 不是正确的统一资源定位符格式 ！ 的本地化字符串。
+        ///   查找类似 不是正确的URL格式 的本地化字符串。
         /// </summary>
         internal static string URLError {
             get {
                 return ResourceManager.GetString("URLError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 不能大于  $minValue$ 的本地化字符串。
+        /// </summary>
+        internal static string ValueTypeMaxValueError {
+            get {
+                return ResourceManager.GetString("ValueTypeMaxValueError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 不能小于  $minValue$ 的本地化字符串。
+        /// </summary>
+        internal static string ValueTypeMinValueError {
+            get {
+                return ResourceManager.GetString("ValueTypeMinValueError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 必须在 $minValue$ 到 $minValue$ 之间 的本地化字符串。
+        /// </summary>
+        internal static string ValueTypeRangeError {
+            get {
+                return ResourceManager.GetString("ValueTypeRangeError", resourceCulture);
             }
         }
     }

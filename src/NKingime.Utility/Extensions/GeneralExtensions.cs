@@ -76,13 +76,13 @@ namespace NKingime.Utility.Extensions
                     result = value.IsGreater(minValue) && value.IsLess(maxValue);
                     break;
                 case CompareOption.GreaterEqualAndLessEqual:
-                    result = value.IsGreaterEqual(maxValue) && value.IsLessEqual(maxValue);
+                    result = value.IsGreaterEqual(minValue) && value.IsLessEqual(maxValue);
                     break;
                 case CompareOption.GreaterAndLessEqual:
                     result = value.IsGreater(minValue) && value.IsLessEqual(maxValue);
                     break;
                 case CompareOption.GreaterEqualAndLess:
-                    result = value.IsGreaterEqual(maxValue) && value.IsLess(maxValue);
+                    result = value.IsGreaterEqual(minValue) && value.IsLess(maxValue);
                     break;
             }
             return result;

@@ -21,10 +21,14 @@ namespace NKingime.Validate.Tests
             {
                 return new ValidMessageResult(true);
             });
-            simpleValid.ValueType(s => s.Grade).MinValue(1);
+            simpleValid.ValueType(s => s.Grade)/*.MinValue(1)*//*.MaxValue(10)*/.Range(2, 5).Custom((value, root) =>
+            {
+                return new ValidMessageResult(true);
+            });
             var validResults = simpleValid.Validate(new User()
             {
                 Email = "12345678910@163.com",
+                Grade = 4,
             });
 
             //var currentCulture = Thread.CurrentThread.CurrentCulture;

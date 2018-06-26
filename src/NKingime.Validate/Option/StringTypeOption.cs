@@ -16,9 +16,9 @@ namespace NKingime.Validate
         String,
 
         /// <summary>
-        /// 字符。
+        /// 字节（汉字占两个字节）。
         /// </summary>
-        [Description("字符")]
-        Char,
+        [Description("字节")]
+        Byte,
     }
 }

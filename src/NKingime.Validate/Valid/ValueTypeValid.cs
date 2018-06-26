@@ -1,5 +1,8 @@
 ﻿using System;
 using NKingime.Utility.General;
+using NKingime.Utility.Exceptions;
+using NKingime.Utility.Extensions;
+using NKingime.Validate.Properties;
 
 namespace NKingime.Validate
 {
@@ -7,7 +10,7 @@ namespace NKingime.Validate
     /// 值类型验证。
     /// </summary>
     /// <typeparam name="T">值类型类型。</typeparam>
-    public class ValueTypeValid<T> : TypeValidBase, IValueTypeValid<T> where T : struct
+    public class ValueTypeValid<T> : TypeValidBase, IValueTypeValid<T> where T : struct, IComparable
     {
         /// <summary>
         /// 验证规则。
@@ -86,7 +89,54 @@ namespace NKingime.Validate
         /// <returns></returns>
         public override ValidResult Validate(object value, string name, string description, object root = null)
         {
-            throw new NotImplementedException();
+            var validResult = new ValidResult(false, name, description);
+            var t = (T)value;
+            if (_validRule.ValueType.HasValue)
+            {
+                var parameters = new STAttribute<object>[]
+                {
+                    new STAttribute<object>(PropertyName,description),
+                    new STAttribute<object>(MinValueName,_validRule.MinValue),
+                    new STAttribute<object>(MaxValueName,_validRule.MaxValue),
+                };
+                switch (_validRule.ValueType.Value)
+                {
+                    case ValueTypeOption.MinValue:
+                        if (t.IsLess(_validRule.MinValue))
+                        {
+                            validResult.SetMessage(GetI18nString(nameof(Validate_zh_CN.ValueTypeMinValueError), parameters));
+                            return validResult;
+                        }
+                        break;
+                    case ValueTypeOption.MaxValue:
+                        if (t.IsGreater(_validRule.MaxValue))
+                        {
+                            validResult.SetMessage(GetI18nString(nameof(Validate_zh_CN.ValueTypeMaxValueError), parameters));
+                            return validResult;
+                        }
+                        break;
+                    case ValueTypeOption.Range:
+                        if (!t.IsRange(_validRule.MinValue, _validRule.MaxValue))
+                        {
+                            validResult.SetMessage(GetI18nString(nameof(Validate_zh_CN.ValueTypeRangeError), parameters));
+                            return validResult;
+                        }
+                        break;
+                    default:
+                        throw new UnhandledTypeException(_validRule.ValueType.Value.GetFullName(), _validRule.ValueType.Value.GetType().GetDescription());
+                }
+            }
+            //自定义验证函数
+            if (_validRule.CustomValid.IsNotNull())
+            {
+                var messageResult = _validRule.CustomValid(t, root);
+                if (!messageResult.Result)
+                {
+                    validResult.SetMessage(messageResult.Message);
+                    return validResult;
+                }
+            }
+            return validResult.Reset(true);
         }
 
         /// <summary>

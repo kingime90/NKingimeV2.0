@@ -62,7 +62,7 @@ namespace NKingime.Validate
         /// 值类型验证。
         /// </summary>
         /// <param name="propertySelector">选择值类型属性函数。</param>
-        public IValueTypeValid<TProperty> ValueType<TProperty>(Expression<Func<TEntity, TProperty>> propertySelector) where TProperty : struct
+        public IValueTypeValid<TProperty> ValueType<TProperty>(Expression<Func<TEntity, TProperty>> propertySelector) where TProperty : struct, IComparable
         {
             var propertyInfo = (PropertyInfo)(propertySelector.Body as MemberExpression).Member;
             var typeValid = new ValueTypeValid<TProperty>(I18nResource);

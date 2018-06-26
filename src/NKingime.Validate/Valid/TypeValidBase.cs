@@ -74,11 +74,36 @@ namespace NKingime.Validate
         /// </summary>
         /// <typeparam name="T">值类型。</typeparam>
         /// <param name="template">字符串模板。</param>
-        /// <param name="parameters">参数数组。</param>
+        /// <param name="parameters">属性数组。</param>
         /// <returns></returns>
-        public virtual string GetString<T>(string template, params STAttribute<T>[] attributes)
+        protected virtual string GetString<T>(string template, params STAttribute<T>[] attributes)
         {
             return STUtil.GetString(template, attributes);
+        }
+
+        /// <summary>
+        /// 获取全球化资源字符串。
+        /// </summary>
+        /// <typeparam name="T">值类型。</typeparam>
+        /// <param name="templateName">模板名称。</param>
+        /// <param name="name">参数名称。</param>
+        /// <param name="value">参数值。</param>
+        /// <returns></returns>
+        protected virtual string GetI18nString<T>(string templateName, string name, T value)
+        {
+            return GetString(templateName, name, value);
+        }
+
+        /// <summary>
+        /// 获取全球化资源字符串。
+        /// </summary>
+        /// <typeparam name="T">值类型。</typeparam>
+        /// <param name="templateName">模板名称。</param>
+        /// <param name="attributes">属性数组。</param>
+        /// <returns></returns>
+        protected virtual string GetI18nString<T>(string templateName, params STAttribute<T>[] attributes)
+        {
+            return GetString(I18nResource.GetString(templateName), attributes);
         }
     }
 }

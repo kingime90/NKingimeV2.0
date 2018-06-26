@@ -119,7 +119,7 @@ namespace NKingime.Validate
             //必填
             if (_validRule.IsRequired && str.IsNullOrWhiteSpace())
             {
-                validResult.SetMessage(GetString(I18nResource.GetString(nameof(Valid_zh_CN.RequiredError)), PropertyName, description));
+                validResult.SetMessage(GetI18nString(nameof(Validate_zh_CN.RequiredError), PropertyName, description));
                 return validResult;
             }
             //字符串长度范围
@@ -131,15 +131,15 @@ namespace NKingime.Validate
                 {
                     case StringTypeOption.String:
                         length = str.Length;
-                        rangeErrorName = nameof(Valid_zh_CN.StringLengthRangeError);
-                        minValueErrorName = nameof(Valid_zh_CN.StringMinLengthError);
-                        maxValueErrorName = nameof(Valid_zh_CN.StringMaxLengthError);
+                        rangeErrorName = nameof(Validate_zh_CN.StringLengthRangeError);
+                        minValueErrorName = nameof(Validate_zh_CN.StringMinLengthError);
+                        maxValueErrorName = nameof(Validate_zh_CN.StringMaxLengthError);
                         break;
-                    case StringTypeOption.Char:
+                    case StringTypeOption.Byte:
                         length = str.GetByteLength();
-                        rangeErrorName = nameof(Valid_zh_CN.CharNumberRangeError);
-                        minValueErrorName = nameof(Valid_zh_CN.MinCharNumberError);
-                        maxValueErrorName = nameof(Valid_zh_CN.MaxCharNumberError);
+                        rangeErrorName = nameof(Validate_zh_CN.ByteLengthRangeError);
+                        minValueErrorName = nameof(Validate_zh_CN.MinByteLengthError);
+                        maxValueErrorName = nameof(Validate_zh_CN.MaxByteLengthError);
                         break;
                     default:
                         throw new UnhandledTypeException(_validRule.StringType.Value.GetFullName(), _validRule.StringType.Value.GetType().GetDescription());
@@ -153,19 +153,19 @@ namespace NKingime.Validate
                 //范围
                 if (_validRule.MinValue > 0 && _validRule.MaxValue > 0 && !length.IsRange(_validRule.MinValue, _validRule.MaxValue))
                 {
-                    validResult.SetMessage(GetString(I18nResource.GetString(rangeErrorName), parameters));
+                    validResult.SetMessage(GetI18nString(I18nResource.GetString(rangeErrorName), parameters));
                     return validResult;
                 }
                 //最小长度
                 if (_validRule.MinValue > 0 && length.IsLess(_validRule.MinValue))
                 {
-                    validResult.SetMessage(GetString(I18nResource.GetString(minValueErrorName), parameters));
+                    validResult.SetMessage(GetI18nString(minValueErrorName, parameters));
                     return validResult;
                 }
                 //最大长度
                 if (_validRule.MaxValue > 0 && length.IsGreater(_validRule.MaxValue))
                 {
-                    validResult.SetMessage(GetString(I18nResource.GetString(maxValueErrorName), parameters));
+                    validResult.SetMessage(GetI18nString(maxValueErrorName, parameters));
                     return validResult;
                 }
             }

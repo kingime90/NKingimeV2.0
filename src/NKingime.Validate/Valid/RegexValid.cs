@@ -50,21 +50,21 @@ namespace NKingime.Validate
                     case RegexTypeOption.Email:
                         if (!RegexUtil.IsEmail(value))
                         {
-                            messageResult.SetMessage(I18nResource.GetString(nameof(Valid_zh_CN.EmailError)));
+                            messageResult.SetMessage(I18nResource.GetString(nameof(Validate_zh_CN.EmailError)));
                             return messageResult;
                         }
                         break;
                     case RegexTypeOption.Chinese:
                         if (!RegexUtil.IsChinese(value))
                         {
-                            messageResult.SetMessage(I18nResource.GetString(nameof(Valid_zh_CN.ChineseError)));
+                            messageResult.SetMessage(I18nResource.GetString(nameof(Validate_zh_CN.ChineseError)));
                             return messageResult;
                         }
                         break;
                     case RegexTypeOption.URL:
                         if (!RegexUtil.IsURL(value))
                         {
-                            messageResult.SetMessage(I18nResource.GetString(nameof(Valid_zh_CN.URLError)));
+                            messageResult.SetMessage(I18nResource.GetString(nameof(Validate_zh_CN.URLError)));
                             return messageResult;
                         }
                         break;
