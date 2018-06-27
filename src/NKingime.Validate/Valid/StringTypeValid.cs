@@ -1,5 +1,4 @@
 ﻿using System;
-using NKingime.Utility;
 using NKingime.Utility.General;
 using NKingime.Utility.Extensions;
 using NKingime.Utility.Exceptions;
@@ -98,7 +97,7 @@ namespace NKingime.Validate
         /// </summary>
         /// <param name="valid">自定义验证函数。</param>
         /// <returns></returns>
-        public IStringTypeValid Custom(Func<string, object, ValidMessageResult> valid)
+        public IStringTypeValid Custom(Func<string, object, BooleanResult> valid)
         {
             _validRule.CustomValid = valid;
             return this;
@@ -170,7 +169,7 @@ namespace NKingime.Validate
                 }
             }
             //匹配正则式类型选项
-            ValidMessageResult messageResult;
+            BooleanResult messageResult;
             if (_validRule.RegexTypes.IsNotEmpty())
             {
                 var regexValid = new RegexValid(I18nResource, _validRule.RegexTypes);

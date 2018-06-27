@@ -91,7 +91,7 @@ namespace NKingime.Validate
         /// <returns></returns>
         protected virtual string GetI18nString<T>(string templateName, string name, T value)
         {
-            return GetString(templateName, name, value);
+            return GetString(I18nResource.GetString(templateName), name, value);
         }
 
         /// <summary>

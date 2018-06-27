@@ -17,7 +17,7 @@ namespace NKingime.Validate
         }
 
         /// <summary>
-        /// 是否必填。
+        /// 获取或设置 是否必填。
         /// </summary>
         public bool IsRequired { get; set; }
     }

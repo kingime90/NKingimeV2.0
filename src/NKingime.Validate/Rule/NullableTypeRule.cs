@@ -4,13 +4,13 @@ using NKingime.Utility.General;
 namespace NKingime.Validate
 {
     /// <summary>
-    /// 值类型验证规则。
+    /// 可空类型验证规则。
     /// </summary>
-    /// <typeparam name="T">值类型。</typeparam>
-    public class ValueTypeRule<T> : IValidRule where T : struct
+    /// <typeparam name="T">可空类型。</typeparam>
+    public class NullableTypeRule<T> : ValidRule where T : struct
     {
         /// <summary>
-        /// 比较选项。
+        /// 获取或设置 比较选项。
         /// </summary>
         public ValueTypeCompareOption? CompareOption { get; set; }
 
@@ -27,6 +27,6 @@ namespace NKingime.Validate
         /// <summary>
         /// 自定义验证函数。
         /// </summary>
-        public Func<T, object, BooleanResult> CustomValid { get; set; }
+        public Func<T?, object, BooleanResult> CustomValid { get; set; }
     }
 }

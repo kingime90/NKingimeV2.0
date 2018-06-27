@@ -1,4 +1,5 @@
 ﻿using System;
+using NKingime.Utility.General;
 
 namespace NKingime.Validate
 {
@@ -51,6 +52,6 @@ namespace NKingime.Validate
         /// </summary>
         /// <param name="valid">自定义验证函数。</param>
         /// <returns></returns>
-        IStringTypeValid Custom(Func<string, object, ValidMessageResult> valid);
+        IStringTypeValid Custom(Func<string, object, BooleanResult> valid);
     }
 }

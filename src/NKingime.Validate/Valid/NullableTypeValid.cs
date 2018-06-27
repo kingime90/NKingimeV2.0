@@ -7,31 +7,42 @@ using NKingime.Validate.Properties;
 namespace NKingime.Validate
 {
     /// <summary>
-    /// 值类型验证。
+    /// 可空类型验证。
     /// </summary>
-    /// <typeparam name="T">值类型。</typeparam>
-    public class ValueTypeValid<T> : TypeValidBase, IValueTypeValid<T> where T : struct, IComparable
+    /// <typeparam name="T">可空类型。</typeparam>
+    public class NullableTypeValid<T> : TypeValidBase, INullableTypeValid<T> where T : struct, IComparable
     {
         /// <summary>
         /// 验证规则。
         /// </summary>
-        private ValueTypeRule<T> _validRule = new ValueTypeRule<T>();
+        private NullableTypeRule<T> _validRule = new NullableTypeRule<T>();
 
         /// <summary>
-        /// 初始化一个<see cref="ValueTypeValid"/>类型的新实例。
+        /// 初始化一个<see cref="NullableTypeValid"/>类型的新实例。
         /// </summary>
-        public ValueTypeValid() : base()
+        public NullableTypeValid() : base()
         {
 
         }
 
         /// <summary>
-        /// 初始化一个<see cref="ValueTypeValid"/>类型的新实例。
+        /// 初始化一个<see cref="NullableTypeValid"/>类型的新实例。
         /// </summary>
         /// <param name="i18nResource">全球化资源。</param>
-        public ValueTypeValid(I18nResourceBase i18nResource) : base(i18nResource)
+        public NullableTypeValid(I18nResourceBase i18nResource) : base(i18nResource)
         {
 
+        }
+
+        /// <summary>
+        /// 设置是否必填，默认必填。
+        /// </summary>
+        /// <param name="isRequired">是否必填。</param>
+        /// <returns></returns>
+        public INullableTypeValid<T> Required(bool isRequired = true)
+        {
+            _validRule.IsRequired = isRequired;
+            return this;
         }
 
         /// <summary>
@@ -39,7 +50,7 @@ namespace NKingime.Validate
         /// </summary>
         /// <param name="value">最小值。</param>
         /// <returns></returns>
-        public IValueTypeValid<T> MinValue(T value)
+        public INullableTypeValid<T> MinValue(T value)
         {
             SetTypeRuleRange(ValueTypeCompareOption.MinValue, value, default(T));
             return this;
@@ -50,7 +61,7 @@ namespace NKingime.Validate
         /// </summary>
         /// <param name="value">最大值。</param>
         /// <returns></returns>
-        public IValueTypeValid<T> MaxValue(T value)
+        public INullableTypeValid<T> MaxValue(T value)
         {
             SetTypeRuleRange(ValueTypeCompareOption.MaxValue, default(T), value);
             return this;
@@ -62,7 +73,7 @@ namespace NKingime.Validate
         /// <param name="minValue">最小值。</param>
         /// <param name="maxValue">最大值。</param>
         /// <returns></returns>
-        public IValueTypeValid<T> Range(T minValue, T maxValue)
+        public INullableTypeValid<T> Range(T minValue, T maxValue)
         {
             SetTypeRuleRange(ValueTypeCompareOption.Range, minValue, maxValue);
             return this;
@@ -73,7 +84,7 @@ namespace NKingime.Validate
         /// </summary>
         /// <param name="valid">自定义验证函数。</param>
         /// <returns></returns>
-        public IValueTypeValid<T> Custom(Func<T, object, BooleanResult> valid)
+        public INullableTypeValid<T> Custom(Func<T?, object, BooleanResult> valid)
         {
             _validRule.CustomValid = valid;
             return this;
@@ -90,8 +101,14 @@ namespace NKingime.Validate
         public override ValidResult Validate(object value, string name, string description, object root = null)
         {
             var validResult = new ValidResult(false, name, description);
-            var t = (T)value;
-            if (_validRule.CompareOption.HasValue)
+            //必填
+            if (_validRule.IsRequired && value.IsNull())
+            {
+                validResult.SetMessage(GetI18nString(nameof(Validate_zh_CN.RequiredError), PropertyName, description));
+                return validResult;
+            }
+            var t = (T?)value;
+            if (t.IsNotNull() && _validRule.CompareOption.HasValue)
             {
                 var parameters = new STAttribute<object>[]
                 {
@@ -102,21 +119,21 @@ namespace NKingime.Validate
                 switch (_validRule.CompareOption.Value)
                 {
                     case ValueTypeCompareOption.MinValue:
-                        if (t.IsLess(_validRule.MinValue))
+                        if (t.Value.IsLess(_validRule.MinValue))
                         {
                             validResult.SetMessage(GetI18nString(nameof(Validate_zh_CN.ValueTypeMinValueError), parameters));
                             return validResult;
                         }
                         break;
                     case ValueTypeCompareOption.MaxValue:
-                        if (t.IsGreater(_validRule.MaxValue))
+                        if (t.Value.IsGreater(_validRule.MaxValue))
                         {
                             validResult.SetMessage(GetI18nString(nameof(Validate_zh_CN.ValueTypeMaxValueError), parameters));
                             return validResult;
                         }
                         break;
                     case ValueTypeCompareOption.Range:
-                        if (!t.IsRange(_validRule.MinValue, _validRule.MaxValue))
+                        if (!t.Value.IsRange(_validRule.MinValue, _validRule.MaxValue))
                         {
                             validResult.SetMessage(GetI18nString(nameof(Validate_zh_CN.ValueTypeRangeError), parameters));
                             return validResult;

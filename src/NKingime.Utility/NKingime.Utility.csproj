@@ -57,6 +57,7 @@
     <Compile Include="Extensions\ReflectionExtensions.cs" />
     <Compile Include="Extensions\ValidationExtensions.cs" />
     <Compile Include="Extensions\ValueTypeExtension.cs" />
+    <Compile Include="General\BooleanResult.cs" />
     <Compile Include="General\ReadOnlyKeyValue.cs" />
     <Compile Include="General\Cloneable.cs" />
     <Compile Include="General\I18nResourceBase.cs" />

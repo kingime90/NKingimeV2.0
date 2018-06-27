@@ -42,8 +42,8 @@
   <ItemGroup>
     <Compile Include="Option\ValueTypeCompareOption.cs" />
     <Compile Include="Rule\IValidRule.cs" />
+    <Compile Include="Rule\NullableTypeRule.cs" />
     <Compile Include="Rule\ValueTypeRule.cs" />
-    <Compile Include="ValidMessageResult.cs" />
     <Compile Include="Properties\Validate_zh_CN.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -58,9 +58,11 @@
     <Compile Include="Rule\ValidRule.cs" />
     <Compile Include="SimpleValid.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Valid\INullableTypeValid.cs" />
     <Compile Include="Valid\IStringTypeValid.cs" />
     <Compile Include="Valid\ITypeValid.cs" />
     <Compile Include="Valid\IValueTypeValid.cs" />
+    <Compile Include="Valid\NullableTypeValid.cs" />
     <Compile Include="Valid\RegexValid.cs" />
     <Compile Include="Valid\StringTypeValid.cs" />
     <Compile Include="Valid\TypeValidBase.cs" />

@@ -40,9 +40,9 @@ namespace NKingime.Validate
         /// <param name="name"></param>
         /// <param name="description"></param>
         /// <returns></returns>
-        public ValidMessageResult Validate(string value)
+        public BooleanResult Validate(string value)
         {
-            var messageResult = new ValidMessageResult(false);
+            var messageResult = new BooleanResult(false);
             foreach (var regexType in RegexTypes)
             {
                 switch (regexType)

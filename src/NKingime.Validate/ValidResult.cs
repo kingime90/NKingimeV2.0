@@ -1,4 +1,5 @@
 ﻿using System;
+using NKingime.Utility.General;
 using NKingime.Utility.Extensions;
 
 namespace NKingime.Validate
@@ -6,7 +7,7 @@ namespace NKingime.Validate
     /// <summary>
     /// 验证结果。
     /// </summary>
-    public sealed class ValidResult : ValidMessageResult
+    public sealed class ValidResult : BooleanResult
     {
         /// <summary>
         /// 初始化一个<see cref="ValidResult"/>类型的true实例。

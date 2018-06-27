@@ -73,6 +73,20 @@ namespace NKingime.Validate
         /// <summary>
         /// 
         /// </summary>
+        /// <typeparam name="TProperty"></typeparam>
+        /// <param name="propertySelector"></param>
+        /// <returns></returns>
+        public INullableTypeValid<TProperty> NullableType<TProperty>(Expression<Func<TEntity, TProperty?>> propertySelector) where TProperty : struct, IComparable
+        {
+            var propertyInfo = (PropertyInfo)(propertySelector.Body as MemberExpression).Member;
+            var typeValid = new NullableTypeValid<TProperty>(I18nResource);
+            AddTypeValid(propertyInfo, typeValid);
+            return typeValid;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
         /// <param name="propertySelector"></param>
         public void ReferenceType<TProperty>(Expression<Func<TEntity, TProperty>> propertySelector) where TProperty : class
         {
@@ -101,7 +115,8 @@ namespace NKingime.Validate
                     return validResult;
                 }
             }
-            return validResult.Reset(true);
+            validResult.SetResult(true);
+            return validResult;
         }
 
         /// <summary>
