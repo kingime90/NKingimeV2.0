@@ -26,7 +26,7 @@ namespace NKingime.Validate.Tests
             {
                 return new BooleanResult(true);
             });
-            simpleValid.NullableType(s => s.Birthday).Required().MinValue(new DateTime(1992, 01, 01)).Custom((value, root) =>
+            simpleValid.NullableType(s => s.Birthday).Required()/*.MinValue(new DateTime(1992, 01, 01))*//*.MaxValue(new DateTime(1990, 01, 01))*/.Range(new DateTime(1995, 01, 01), new DateTime(1996, 01, 01)).Custom((value, root) =>
             {
                 return new BooleanResult(true);
             });

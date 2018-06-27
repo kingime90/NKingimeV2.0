@@ -7,7 +7,7 @@ namespace NKingime.Validate
     /// 值类型验证规则。
     /// </summary>
     /// <typeparam name="T">值类型。</typeparam>
-    public class ValueTypeRule<T> : IValidRule where T : struct
+    public class ValueTypeRule<T> : IValidRule where T : struct, IComparable
     {
         /// <summary>
         /// 比较选项。
