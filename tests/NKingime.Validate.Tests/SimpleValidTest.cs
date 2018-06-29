@@ -30,11 +30,12 @@ namespace NKingime.Validate.Tests
             {
                 return new BooleanResult(true);
             });
+            simpleValid.StringType(s => s.Mobile).Matchs(RegexTypeOption.Cellphone);
             var validResults = simpleValid.Validate(new User()
             {
                 Email = "12345678910@163.com",
                 Grade = 4,
-                Birthday = new DateTime(1991, 04, 05),
+                Birthday = new DateTime(1995, 04, 05),
             });
 
             //var currentCulture = Thread.CurrentThread.CurrentCulture;

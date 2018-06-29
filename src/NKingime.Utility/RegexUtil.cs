@@ -24,6 +24,26 @@ namespace NKingime.Utility
         public const string URLPattern = @"^(https?|ftp|file|ws)://([\w-]+\.)+[\w-]+(/[\w- ./?%&=]*)?$";
 
         /// <summary>
+        /// 英文字母正则表达式模式。
+        /// </summary>
+        public const string LetterPattern = @"^[A-Za-z]+$";
+
+        /// <summary>
+        /// 小写英文字母正则表达式模式。
+        /// </summary>
+        public const string LowerLetterPattern = @"^[a-z]+$";
+
+        /// <summary>
+        /// 大写英文字母正则表达式模式。
+        /// </summary>
+        public const string UpperLetterPattern = @"^[A-Z]+$";
+
+        /// <summary>
+        /// 手机号码正则表达式模式。
+        /// </summary>
+        public const string CellphonePattern = @"^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\d{8}$";
+
+        /// <summary>
         /// 指示指定的字符串是不是电子邮箱。
         /// </summary>
         /// <param name="input">要搜索匹配项的字符串。</param>
@@ -51,6 +71,46 @@ namespace NKingime.Utility
         public static bool IsURL(string input)
         {
             return IsMatch(input, URLPattern);
+        }
+
+        /// <summary>
+        /// 指示指定的字符串是不是由英文字母组成。
+        /// </summary>
+        /// <param name="input">要搜索匹配项的字符串。</param>
+        /// <returns></returns>
+        public static bool IsLetter(string input)
+        {
+            return IsMatch(input, LetterPattern);
+        }
+
+        /// <summary>
+        /// 指示指定的字符串是不是由小写英文字母组成。
+        /// </summary>
+        /// <param name="input">要搜索匹配项的字符串。</param>
+        /// <returns></returns>
+        public static bool IsLowerLetter(string input)
+        {
+            return IsMatch(input, LowerLetterPattern);
+        }
+
+        /// <summary>
+        /// 指示指定的字符串是不是由大写英文字母组成。
+        /// </summary>
+        /// <param name="input">要搜索匹配项的字符串。</param>
+        /// <returns></returns>
+        public static bool IsUpperLetter(string input)
+        {
+            return IsMatch(input, UpperLetterPattern);
+        }
+
+        /// <summary>
+        /// 指示指定的字符串是不是手机号码。
+        /// </summary>
+        /// <param name="input">要搜索匹配项的字符串。</param>
+        /// <returns></returns>
+        public static bool IsCellphone(string input)
+        {
+            return IsMatch(input, CellphonePattern);
         }
 
         /// <summary>

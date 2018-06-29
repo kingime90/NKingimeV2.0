@@ -23,6 +23,11 @@ namespace NKingime.Validate
         public StringTypeOption? StringType { get; set; }
 
         /// <summary>
+        /// 比较选项。
+        /// </summary>
+        public ValueTypeCompareOption? CompareOption { get; set; }
+
+        /// <summary>
         /// 最小值。
         /// </summary>
         public int MinValue { get; set; }

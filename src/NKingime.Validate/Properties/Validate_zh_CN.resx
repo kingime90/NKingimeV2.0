@@ -121,6 +121,10 @@
     <value>字节长度必须在 $minValue$ 到 $maxValue$ 之间（汉字占两个字节）</value>
     <comment>字节长度范围</comment>
   </data>
+  <data name="CellphoneError" xml:space="preserve">
+    <value>不是正确的手机号码格式</value>
+    <comment>手机号码格式</comment>
+  </data>
   <data name="ChineseError" xml:space="preserve">
     <value>不是正确的中文格式</value>
     <comment>中文格式</comment>
@@ -128,6 +132,14 @@
   <data name="EmailError" xml:space="preserve">
     <value>不是正确的邮箱格式</value>
     <comment>邮箱格式</comment>
+  </data>
+  <data name="LetterError" xml:space="preserve">
+    <value>不是正确的英文字母格式</value>
+    <comment>英文字母格式</comment>
+  </data>
+  <data name="LowerLetterError" xml:space="preserve">
+    <value>不是正确的小写英文字母格式</value>
+    <comment>小写英文字母格式</comment>
   </data>
   <data name="MaxByteLengthError" xml:space="preserve">
     <value>不能超过 $maxValue$ 个字节（汉字占两个字节）</value>
@@ -152,6 +164,10 @@
   <data name="StringMinLengthError" xml:space="preserve">
     <value>不能少于 $minValue$ 个字符</value>
     <comment>最小字符长度</comment>
+  </data>
+  <data name="UpperLetterError" xml:space="preserve">
+    <value>不是正确的大写英文字母格式</value>
+    <comment>大写英文字母格式</comment>
   </data>
   <data name="URLError" xml:space="preserve">
     <value>不是正确的URL格式</value>

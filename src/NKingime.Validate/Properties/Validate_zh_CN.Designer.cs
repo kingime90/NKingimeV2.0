@@ -176,5 +176,49 @@ namespace NKingime.Validate.Properties {
                 return ResourceManager.GetString("ValueTypeRangeError", resourceCulture);
             }
         }
+
+        /// <summary>
+        ///   查找类似 不是正确的手机号码格式 的本地化字符串。
+        /// </summary>
+        internal static string CellphoneError
+        {
+            get
+            {
+                return ResourceManager.GetString("CellphoneError", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   查找类似 不是正确的英文字母格式 的本地化字符串。
+        /// </summary>
+        internal static string LetterError
+        {
+            get
+            {
+                return ResourceManager.GetString("LetterError", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   查找类似 不是正确的小写英文字母格式 的本地化字符串。
+        /// </summary>
+        internal static string LowerLetterError
+        {
+            get
+            {
+                return ResourceManager.GetString("LowerLetterError", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   查找类似 不是正确的大写英文字母格式 的本地化字符串。
+        /// </summary>
+        internal static string UpperLetterError
+        {
+            get
+            {
+                return ResourceManager.GetString("UpperLetterError", resourceCulture);
+            }
+        }
     }
 }

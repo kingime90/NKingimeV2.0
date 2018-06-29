@@ -52,7 +52,7 @@ namespace NKingime.Validate
         /// <returns></returns>
         public IStringTypeValid MinLength(int minValue, StringTypeOption stringType = StringTypeOption.String)
         {
-            SetTypeRuleRange(stringType, minValue, 0);
+            SetTypeRuleRange(stringType, ValueTypeCompareOption.MinValue, minValue, 0);
             return this;
         }
 
@@ -64,7 +64,7 @@ namespace NKingime.Validate
         /// <returns></returns>
         public IStringTypeValid MaxLength(int maxValue, StringTypeOption stringType = StringTypeOption.String)
         {
-            SetTypeRuleRange(stringType, 0, maxValue);
+            SetTypeRuleRange(stringType, ValueTypeCompareOption.MaxValue, 0, maxValue);
             return this;
         }
 
@@ -77,7 +77,7 @@ namespace NKingime.Validate
         /// <returns></returns>
         public IStringTypeValid Range(int minValue, int maxValue, StringTypeOption stringType = StringTypeOption.String)
         {
-            SetTypeRuleRange(stringType, minValue, maxValue);
+            SetTypeRuleRange(stringType, ValueTypeCompareOption.Range, minValue, maxValue);
             return this;
         }
 
@@ -116,68 +116,83 @@ namespace NKingime.Validate
             var validResult = new ValidResult(false, name, description);
             string str = (value as string) ?? string.Empty;
             //必填
-            if (_validRule.IsRequired && str.IsNullOrWhiteSpace())
+            var isNullOrWhiteSpace = str.IsNullOrWhiteSpace();
+            if (_validRule.IsRequired && isNullOrWhiteSpace)
             {
                 validResult.SetMessage(GetI18nString(nameof(Validate_zh_CN.RequiredError), PropertyName, description));
                 return validResult;
             }
+            BooleanResult messageResult;
             //字符串长度范围
-            if (!str.IsNullOrWhiteSpace() && _validRule.StringType.HasValue)
+            if (!isNullOrWhiteSpace)
             {
-                int length;
-                string rangeErrorName, minValueErrorName, maxValueErrorName;
-                switch (_validRule.StringType.Value)
+                if (_validRule.StringType.HasValue && _validRule.CompareOption.HasValue)
                 {
-                    case StringTypeOption.String:
-                        length = str.Length;
-                        rangeErrorName = nameof(Validate_zh_CN.StringLengthRangeError);
-                        minValueErrorName = nameof(Validate_zh_CN.StringMinLengthError);
-                        maxValueErrorName = nameof(Validate_zh_CN.StringMaxLengthError);
-                        break;
-                    case StringTypeOption.Byte:
-                        length = str.GetByteLength();
-                        rangeErrorName = nameof(Validate_zh_CN.ByteLengthRangeError);
-                        minValueErrorName = nameof(Validate_zh_CN.MinByteLengthError);
-                        maxValueErrorName = nameof(Validate_zh_CN.MaxByteLengthError);
-                        break;
-                    default:
-                        throw new UnhandledTypeException(_validRule.StringType.Value.GetFullName(), _validRule.StringType.Value.GetType().GetDescription());
-                }
-                var parameters = new STAttribute<object>[]
-                {
+                    int length;
+                    string rangeErrorName, minValueErrorName, maxValueErrorName;
+                    switch (_validRule.StringType.Value)
+                    {
+                        case StringTypeOption.String:
+                            length = str.Length;
+                            rangeErrorName = nameof(Validate_zh_CN.StringLengthRangeError);
+                            minValueErrorName = nameof(Validate_zh_CN.StringMinLengthError);
+                            maxValueErrorName = nameof(Validate_zh_CN.StringMaxLengthError);
+                            break;
+                        case StringTypeOption.Byte:
+                            length = str.GetByteLength();
+                            rangeErrorName = nameof(Validate_zh_CN.ByteLengthRangeError);
+                            minValueErrorName = nameof(Validate_zh_CN.MinByteLengthError);
+                            maxValueErrorName = nameof(Validate_zh_CN.MaxByteLengthError);
+                            break;
+                        default:
+                            throw new UnhandledTypeException(_validRule.StringType.Value.GetFullName(), _validRule.StringType.Value.GetType().GetDescription());
+                    }
+                    var parameters = new STAttribute<object>[]
+                    {
                     new STAttribute<object>(PropertyName,description),
                     new STAttribute<object>(MinValueName,_validRule.MinValue),
                     new STAttribute<object>(MaxValueName,_validRule.MaxValue),
-                };
-                //范围
-                if (_validRule.MinValue > 0 && _validRule.MaxValue > 0 && !length.IsRange(_validRule.MinValue, _validRule.MaxValue))
-                {
-                    validResult.SetMessage(GetI18nString(I18nResource.GetString(rangeErrorName), parameters));
-                    return validResult;
+                    };
+                    switch (_validRule.CompareOption.Value)
+                    {
+                        //最小长度
+                        case ValueTypeCompareOption.MinValue:
+                            if (length.IsLess(_validRule.MinValue))
+                            {
+                                validResult.SetMessage(GetI18nString(minValueErrorName, parameters));
+                                return validResult;
+                            }
+                            break;
+                        //最大长度
+                        case ValueTypeCompareOption.MaxValue:
+                            if (length.IsGreater(_validRule.MaxValue))
+                            {
+                                validResult.SetMessage(GetI18nString(maxValueErrorName, parameters));
+                                return validResult;
+                            }
+                            break;
+                        //范围
+                        case ValueTypeCompareOption.Range:
+                            if (!length.IsRange(_validRule.MinValue, _validRule.MaxValue))
+                            {
+                                validResult.SetMessage(GetI18nString(I18nResource.GetString(rangeErrorName), parameters));
+                                return validResult;
+                            }
+                            break;
+                        default:
+                            throw new UnhandledTypeException(_validRule.CompareOption.Value.GetFullName(), _validRule.CompareOption.Value.GetType().GetDescription());
+                    }
                 }
-                //最小长度
-                if (_validRule.MinValue > 0 && length.IsLess(_validRule.MinValue))
+                //匹配正则式类型选项
+                if (_validRule.RegexTypes.IsNotEmpty())
                 {
-                    validResult.SetMessage(GetI18nString(minValueErrorName, parameters));
-                    return validResult;
-                }
-                //最大长度
-                if (_validRule.MaxValue > 0 && length.IsGreater(_validRule.MaxValue))
-                {
-                    validResult.SetMessage(GetI18nString(maxValueErrorName, parameters));
-                    return validResult;
-                }
-            }
-            //匹配正则式类型选项
-            BooleanResult messageResult;
-            if (_validRule.RegexTypes.IsNotEmpty())
-            {
-                var regexValid = new RegexValid(I18nResource, _validRule.RegexTypes);
-                messageResult = regexValid.Validate(str);
-                if (!messageResult.Result)
-                {
-                    validResult.SetMessage(messageResult.Message);
-                    return validResult;
+                    var regexValid = new RegexValid(I18nResource, _validRule.RegexTypes);
+                    messageResult = regexValid.Validate(str);
+                    if (!messageResult.Result)
+                    {
+                        validResult.SetMessage(messageResult.Message);
+                        return validResult;
+                    }
                 }
             }
             //自定义验证函数
@@ -199,9 +214,10 @@ namespace NKingime.Validate
         /// <param name="stringType">字符串类型选项。</param>
         /// <param name="minValue">最小值。</param>
         /// <param name="maxValue">最大值。</param>
-        private void SetTypeRuleRange(StringTypeOption stringType, int minValue, int maxValue)
+        private void SetTypeRuleRange(StringTypeOption stringType, ValueTypeCompareOption compareOption, int minValue, int maxValue)
         {
             _validRule.StringType = stringType;
+            _validRule.CompareOption = compareOption;
             _validRule.MinValue = minValue;
             _validRule.MaxValue = maxValue;
         }

@@ -52,7 +52,6 @@
     <Compile Include="ValidateResource.cs" />
     <Compile Include="Option\RegexTypeOption.cs" />
     <Compile Include="Option\StringTypeOption.cs" />
-    <Compile Include="Range.cs" />
     <Compile Include="Rule\StringTypeRule.cs" />
     <Compile Include="ValidResult.cs" />
     <Compile Include="Rule\ValidRule.cs" />

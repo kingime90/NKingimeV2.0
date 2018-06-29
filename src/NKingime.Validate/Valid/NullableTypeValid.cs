@@ -102,13 +102,14 @@ namespace NKingime.Validate
         {
             var validResult = new ValidResult(false, name, description);
             //必填
-            if (_validRule.IsRequired && value.IsNull())
+            var tValue = value as T?;
+            var isNull = tValue.IsNull();
+            if (_validRule.IsRequired && isNull)
             {
                 validResult.SetMessage(GetI18nString(nameof(Validate_zh_CN.RequiredError), PropertyName, description));
                 return validResult;
             }
-            var t = (T?)value;
-            if (t.IsNotNull() && _validRule.CompareOption.HasValue)
+            if (!isNull && _validRule.CompareOption.HasValue)
             {
                 var parameters = new STAttribute<object>[]
                 {
@@ -119,21 +120,21 @@ namespace NKingime.Validate
                 switch (_validRule.CompareOption.Value)
                 {
                     case ValueTypeCompareOption.MinValue:
-                        if (t.Value.IsLess(_validRule.MinValue))
+                        if (tValue.Value.IsLess(_validRule.MinValue))
                         {
                             validResult.SetMessage(GetI18nString(nameof(Validate_zh_CN.ValueTypeMinValueError), parameters));
                             return validResult;
                         }
                         break;
                     case ValueTypeCompareOption.MaxValue:
-                        if (t.Value.IsGreater(_validRule.MaxValue))
+                        if (tValue.Value.IsGreater(_validRule.MaxValue))
                         {
                             validResult.SetMessage(GetI18nString(nameof(Validate_zh_CN.ValueTypeMaxValueError), parameters));
                             return validResult;
                         }
                         break;
                     case ValueTypeCompareOption.Range:
-                        if (!t.Value.IsRange(_validRule.MinValue, _validRule.MaxValue))
+                        if (!tValue.Value.IsRange(_validRule.MinValue, _validRule.MaxValue))
                         {
                             validResult.SetMessage(GetI18nString(nameof(Validate_zh_CN.ValueTypeRangeError), parameters));
                             return validResult;
@@ -146,7 +147,7 @@ namespace NKingime.Validate
             //自定义验证函数
             if (_validRule.CustomValid.IsNotNull())
             {
-                var messageResult = _validRule.CustomValid(t, root);
+                var messageResult = _validRule.CustomValid(tValue, root);
                 if (!messageResult.Result)
                 {
                     validResult.SetMessage(messageResult.Message);

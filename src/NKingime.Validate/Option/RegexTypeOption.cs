@@ -26,5 +26,29 @@ namespace NKingime.Validate
         /// </summary>
         [Description("统一资源定位符")]
         URL,
+
+        /// <summary>
+        /// 英文字母。
+        /// </summary>
+        [Description("英文字母")]
+        Letter,
+
+        /// <summary>
+        /// 小写英文字母。
+        /// </summary>
+        [Description("小写英文字母")]
+        LowerLetter,
+
+        /// <summary>
+        /// 大写英文字母。
+        /// </summary>
+        [Description("大写英文字母")]
+        UpperLetter,
+
+        /// <summary>
+        /// 手机号码。
+        /// </summary>
+        [Description("手机号码")]
+        Cellphone,
     }
 }

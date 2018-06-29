@@ -68,6 +68,34 @@ namespace NKingime.Validate
                             return messageResult;
                         }
                         break;
+                    case RegexTypeOption.Letter:
+                        if (!RegexUtil.IsLetter(value))
+                        {
+                            messageResult.SetMessage(I18nResource.GetString(nameof(Validate_zh_CN.LetterError)));
+                            return messageResult;
+                        }
+                        break;
+                    case RegexTypeOption.LowerLetter:
+                        if (!RegexUtil.IsLowerLetter(value))
+                        {
+                            messageResult.SetMessage(I18nResource.GetString(nameof(Validate_zh_CN.LowerLetterError)));
+                            return messageResult;
+                        }
+                        break;
+                    case RegexTypeOption.UpperLetter:
+                        if (!RegexUtil.IsUpperLetter(value))
+                        {
+                            messageResult.SetMessage(I18nResource.GetString(nameof(Validate_zh_CN.UpperLetterError)));
+                            return messageResult;
+                        }
+                        break;
+                    case RegexTypeOption.Cellphone:
+                        if (!RegexUtil.IsCellphone(value))
+                        {
+                            messageResult.SetMessage(I18nResource.GetString(nameof(Validate_zh_CN.CellphoneError)));
+                            return messageResult;
+                        }
+                        break;
                     default:
                         throw new UnhandledTypeException(regexType.GetFullName(), regexType.GetType().GetDescription());
                 }
