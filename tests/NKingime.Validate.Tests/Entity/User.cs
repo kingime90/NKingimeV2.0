@@ -7,7 +7,7 @@ namespace NKingime.Validate.Tests.Entity
     /// <summary>
     /// 用户信息实体。
     /// </summary>
-    public class User
+    public class User : IEntity
     {
         /// <summary>
         /// 用户名。
@@ -44,6 +44,12 @@ namespace NKingime.Validate.Tests.Entity
         /// </summary>
         [Description("等级")]
         public int Grade { get; set; }
+
+        /// <summary>
+        /// 收件人。
+        /// </summary>
+        [Description("收件人")]
+        public AddresseeInfo Addressee { get; set; }
 
         /// <summary>
         /// 注册时间。

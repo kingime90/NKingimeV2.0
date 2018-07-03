@@ -40,6 +40,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CompoundValid.cs" />
+    <Compile Include="ICompoundValid.cs" />
     <Compile Include="IValid.cs" />
     <Compile Include="Option\ValueTypeCompareOption.cs" />
     <Compile Include="Rule\IValidRule.cs" />
@@ -54,6 +56,7 @@
     <Compile Include="Option\RegexTypeOption.cs" />
     <Compile Include="Option\StringTypeOption.cs" />
     <Compile Include="Rule\StringTypeRule.cs" />
+    <Compile Include="ValidBase.cs" />
     <Compile Include="ValidResult.cs" />
     <Compile Include="Rule\ValidRule.cs" />
     <Compile Include="SimpleValid.cs" />
@@ -61,6 +64,7 @@
     <Compile Include="Valid\INullableTypeValid.cs" />
     <Compile Include="Valid\IStringTypeValid.cs" />
     <Compile Include="Valid\ITypeValid.cs" />
+    <Compile Include="Valid\IEntity.cs" />
     <Compile Include="Valid\IValueTypeValid.cs" />
     <Compile Include="Valid\NullableTypeValid.cs" />
     <Compile Include="Valid\RegexValid.cs" />

@@ -53,6 +53,7 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
+    <Compile Include="Entity\AddresseeInfo.cs" />
     <Compile Include="Entity\User.cs" />
     <Compile Include="Option\GenderOption.cs" />
     <Compile Include="Properties\EN.Designer.cs">
