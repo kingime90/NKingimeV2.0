@@ -7,9 +7,9 @@ using NKingime.Validate.Properties;
 namespace NKingime.Validate
 {
     /// <summary>
-    /// 可空类型验证。
+    /// 可空值类型验证。
     /// </summary>
-    /// <typeparam name="T">可空类型。</typeparam>
+    /// <typeparam name="T">可空值类型。</typeparam>
     public class NullableTypeValid<T> : TypeValidBase, INullableTypeValid<T> where T : struct, IComparable
     {
         /// <summary>

@@ -9,9 +9,10 @@ using NKingime.Utility.Extensions;
 namespace NKingime.Validate
 {
     /// <summary>
-    /// 简单验证。
+    /// 简单实体验证。
     /// </summary>
-    public class SimpleValid<TEntity> where TEntity : class
+    /// <typeparam name="TEntity">实体类型。</typeparam>
+    public class SimpleValid<TEntity> : IValid<TEntity> where TEntity : class
     {
         /// <summary>
         /// 描述特性的类型信息。
@@ -61,7 +62,9 @@ namespace NKingime.Validate
         /// <summary>
         /// 值类型验证。
         /// </summary>
+        /// <typeparam name="TProperty">值类型。</typeparam>
         /// <param name="propertySelector">选择值类型属性函数。</param>
+        /// <returns></returns>
         public IValueTypeValid<TProperty> ValueType<TProperty>(Expression<Func<TEntity, TProperty>> propertySelector) where TProperty : struct, IComparable
         {
             var propertyInfo = (PropertyInfo)(propertySelector.Body as MemberExpression).Member;
@@ -71,10 +74,10 @@ namespace NKingime.Validate
         }
 
         /// <summary>
-        /// 
+        /// 可空值类型验证。
         /// </summary>
-        /// <typeparam name="TProperty"></typeparam>
-        /// <param name="propertySelector"></param>
+        /// <typeparam name="TProperty">值类型。</typeparam>
+        /// <param name="propertySelector">选择可空值类型属性函数。</param>
         /// <returns></returns>
         public INullableTypeValid<TProperty> NullableType<TProperty>(Expression<Func<TEntity, TProperty?>> propertySelector) where TProperty : struct, IComparable
         {
@@ -85,19 +88,9 @@ namespace NKingime.Validate
         }
 
         /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="propertySelector"></param>
-        public void ReferenceType<TProperty>(Expression<Func<TEntity, TProperty>> propertySelector) where TProperty : class
-        {
-            var propertyInfo = (PropertyInfo)(propertySelector.Body as MemberExpression).Member;
-
-        }
-
-        /// <summary>
         /// 验证实体是否满足规则。
         /// </summary>
-        /// <param name="entity"></param>
+        /// <param name="entity">实体实例。</param>
         /// <returns></returns>
         public ValidResult Validate(TEntity entity)
         {

@@ -4,9 +4,9 @@ using NKingime.Utility.General;
 namespace NKingime.Validate
 {
     /// <summary>
-    /// 定义可空类型验证接口。
+    /// 定义可空值类型验证接口。
     /// </summary>
-    /// <typeparam name="T">可空类型。</typeparam>
+    /// <typeparam name="T">可空值类型。</typeparam>
     public interface INullableTypeValid<T> where T : struct, IComparable
     {
         /// <summary>
