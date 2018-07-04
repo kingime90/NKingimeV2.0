@@ -4,51 +4,45 @@ using System.ComponentModel;
 namespace NKingime.Validate.Tests.Entity
 {
     /// <summary>
-    /// 收件人信息
+    /// 收件人2信息
     /// </summary>
-    [Description("收件人信息")]
-    public class AddresseeInfo : IEntity
+    [Description("收件人2信息")]
+    public class Addressee2Info : IEntity
     {
         /// <summary>
-        /// 姓名。
+        /// 姓名2。
         /// </summary>
-        [Description("姓名")]
+        [Description("姓名2")]
         public string Name { get; set; }
 
         /// <summary>
-        /// 省
+        /// 省2
         /// </summary>
-        [Description("省")]
+        [Description("省2")]
         public string Province { get; set; }
 
         /// <summary>
-        /// 市
+        /// 市2
         /// </summary>
-        [Description("市")]
+        [Description("市2")]
         public string City { get; set; }
 
         /// <summary>
-        /// 区
+        /// 区2
         /// </summary>
-        [Description("区")]
+        [Description("区2")]
         public string Region { get; set; }
 
         /// <summary>
-        /// 镇
+        /// 镇2
         /// </summary>
-        [Description("镇")]
+        [Description("镇2")]
         public string Town { get; set; }
 
         /// <summary>
-        /// 地址
+        /// 地址2
         /// </summary>
-        [Description("地址")]
+        [Description("地址2")]
         public string Address { get; set; }
-
-        /// <summary>
-        /// 创建人
-        /// </summary>
-        [Description("创建人")]
-        public Creater Creater { get; set; }
     }
 }

@@ -52,6 +52,12 @@ namespace NKingime.Validate.Tests.Entity
         public AddresseeInfo Addressee { get; set; }
 
         /// <summary>
+        /// 收件人2。
+        /// </summary>
+        [Description("收件人2")]
+        public Addressee2Info Addressee2 { get; set; }
+
+        /// <summary>
         /// 注册时间。
         /// </summary>
         [Description("注册时间")]

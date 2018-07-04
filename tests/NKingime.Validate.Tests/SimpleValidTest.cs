@@ -51,14 +51,35 @@ namespace NKingime.Validate.Tests
             //string value= validResource.GetString("RequiredError");
 
             var compoundValid = new CompoundValid<User>();
+
             var addresseeValid = new CompoundValid<AddresseeInfo>();
             addresseeValid.StringType(s => s.Name).Required();
+            var createrValid = new SimpleValid<Creater>();
+            createrValid.StringType(s => s.CreaterId).Required();
+            addresseeValid.EntityType(s => s.Creater, createrValid).Required();
             compoundValid.EntityType(s => s.Addressee, addresseeValid).Required();
+
+            var addressee2Valid = new SimpleValid<Addressee2Info>();
+            addressee2Valid.StringType(s => s.Name).Required();
+            compoundValid.EntityType(s => s.Addressee2, addressee2Valid).Required();
+
             var validResults = compoundValid.Validate(new User()
             {
                 Email = "12345678910@163.com",
                 Grade = 4,
                 Birthday = new DateTime(1995, 04, 05),
+                Addressee = new AddresseeInfo
+                {
+                    Name = "Tam",
+                    Creater = new Creater
+                    {
+
+                    },
+                },
+                Addressee2 = new Addressee2Info
+                {
+
+                },
             });
         }
     }

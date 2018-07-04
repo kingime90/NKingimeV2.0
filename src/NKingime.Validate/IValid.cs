@@ -7,7 +7,7 @@ namespace NKingime.Validate
     ///  定义实体验证接口。
     /// </summary>
     /// <typeparam name="TEntity">实体接口类型。</typeparam>
-    public interface IValid<TEntity> where TEntity : class, IEntity
+    public interface IValid<TEntity> : IValid where TEntity : class, IEntity
     {
         /// <summary>
         /// 字符串类型验证。
@@ -38,5 +38,13 @@ namespace NKingime.Validate
         /// <param name="entity">实体实例。</param>
         /// <returns></returns>
         ValidResult Validate(TEntity entity);
+    }
+
+    /// <summary>
+    /// 定义验证接口。
+    /// </summary>
+    public interface IValid
+    {
+
     }
 }

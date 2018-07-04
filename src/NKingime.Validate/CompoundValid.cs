@@ -14,7 +14,7 @@ namespace NKingime.Validate
         /// <summary>
         /// 属性实体类型验证集合。
         /// </summary>
-        protected readonly IDictionary<PropertyInfo, IValid<IEntity>> EntityTypeValidSet = new Dictionary<PropertyInfo, IValid<IEntity>>();
+        protected readonly IDictionary<PropertyInfo, IValid> EntityTypeValidSet = new Dictionary<PropertyInfo, IValid>();
 
         /// <summary>
         /// 实体类型验证。
@@ -30,11 +30,11 @@ namespace NKingime.Validate
             AddTypeValid(propertyInfo, typeValid);
             if (EntityTypeValidSet.ContainsKey(propertyInfo))
             {
-                EntityTypeValidSet[propertyInfo] = valid as IValid<IEntity>;
+                EntityTypeValidSet[propertyInfo] = valid;
             }
             else
             {
-                EntityTypeValidSet.Add(propertyInfo, (IValid<IEntity>)valid);
+                EntityTypeValidSet.Add(propertyInfo, valid);
             }
             return typeValid;
         }
@@ -46,7 +46,25 @@ namespace NKingime.Validate
         /// <returns></returns>
         public override ValidResult Validate(TEntity entity)
         {
-            return base.Validate(entity);
+            var validResult = base.Validate(entity);
+            if (!validResult.Result)
+            {
+                return validResult;
+            }
+            //
+            object value;
+            MethodInfo methodInfo;
+            foreach (var item in EntityTypeValidSet)
+            {
+                methodInfo = item.Value.GetType().GetMethod(nameof(Validate));
+                value = item.Key.GetValue(entity);
+                validResult = methodInfo.Invoke(item.Value, new object[] { value }) as ValidResult;
+                if (!validResult.Result)
+                {
+                    return validResult;
+                }
+            }
+            return validResult;
         }
     }
 }
