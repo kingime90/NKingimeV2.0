@@ -10,7 +10,7 @@ namespace NKingime.Validate
     /// 实体验证基类。
     /// </summary>
     /// <typeparam name="TEntity">实体接口类型。</typeparam>
-    public abstract class ValidBase<TEntity> : IValid<TEntity> where TEntity : IEntity
+    public abstract class ValidBase<TEntity> : IValid<TEntity> where TEntity : class, IEntity
     {
         /// <summary>
         /// 属性类型验证集合。

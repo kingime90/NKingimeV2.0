@@ -9,7 +9,7 @@ namespace NKingime.Validate
     /// 简单实体验证。
     /// </summary>
     /// <typeparam name="TEntity">实体接口类型。</typeparam>
-    public class SimpleValid<TEntity> : ValidBase<TEntity> where TEntity : IEntity
+    public class SimpleValid<TEntity> : ValidBase<TEntity> where TEntity : class, IEntity
     {
         /// <summary>
         /// 描述特性的类型信息。
