@@ -7,10 +7,10 @@ using NKingime.Utility.General;
 namespace NKingime.Validate
 {
     /// <summary>
-    /// 实体验证基类。
+    /// 简单实体验证基类。
     /// </summary>
     /// <typeparam name="TEntity">实体接口类型。</typeparam>
-    public abstract class ValidBase<TEntity> : IValid<TEntity> where TEntity : class, IEntity
+    public abstract class SimpleValidBase<TEntity> : ISimpleValid<TEntity> where TEntity : class, IEntity
     {
         /// <summary>
         /// 属性类型验证集合。
@@ -20,7 +20,7 @@ namespace NKingime.Validate
         /// <summary>
         /// 初始化一个<see cref="ValidBase{TEntity}"/>类型的新实例。
         /// </summary>
-        public ValidBase() : this(new ValidateResource())
+        public SimpleValidBase() : this(new ValidateResource())
         {
 
         }
@@ -29,7 +29,7 @@ namespace NKingime.Validate
         /// 初始化一个<see cref="ValidBase{TEntity}"/>类型的新实例。
         /// </summary>
         /// <param name="i18nResource">全球化资源。</param>
-        public ValidBase(I18nResourceBase i18nResource)
+        public SimpleValidBase(I18nResourceBase i18nResource)
         {
             I18nResource = i18nResource;
         }
@@ -81,11 +81,11 @@ namespace NKingime.Validate
         }
 
         /// <summary>
-        /// 验证实体是否满足规则。
+        /// 验证指定的值是否满足规则。
         /// </summary>
-        /// <param name="entity">实体实例。</param>
+        /// <param name="entity">需要验证的值。</param>
         /// <returns></returns>
-        public abstract ValidResult Validate(TEntity entity);
+        public abstract ValidResult Validate(object value);
 
         /// <summary>
         /// 添加类型验证。

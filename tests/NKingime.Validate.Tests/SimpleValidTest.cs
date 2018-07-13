@@ -51,16 +51,21 @@ namespace NKingime.Validate.Tests
             //string value= validResource.GetString("RequiredError");
 
             var compoundValid = new CompoundValid<User>();
+            compoundValid.StringType(s => s.Username).Required();
 
             var addresseeValid = new CompoundValid<AddresseeInfo>();
             addresseeValid.StringType(s => s.Name).Required();
+
             var createrValid = new SimpleValid<Creater>();
             createrValid.StringType(s => s.CreaterId).Required();
+
             addresseeValid.EntityType(s => s.Creater, createrValid).Required();
+
             compoundValid.EntityType(s => s.Addressee, addresseeValid).Required();
 
             var addressee2Valid = new SimpleValid<Addressee2Info>();
             addressee2Valid.StringType(s => s.Name).Required();
+
             compoundValid.EntityType(s => s.Addressee2, addressee2Valid).Required();
 
             var validResults = compoundValid.Validate(new User()

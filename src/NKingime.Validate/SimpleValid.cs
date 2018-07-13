@@ -9,7 +9,7 @@ namespace NKingime.Validate
     /// 简单实体验证。
     /// </summary>
     /// <typeparam name="TEntity">实体接口类型。</typeparam>
-    public class SimpleValid<TEntity> : ValidBase<TEntity> where TEntity : class, IEntity
+    public class SimpleValid<TEntity> : SimpleValidBase<TEntity> where TEntity : class, IEntity
     {
         /// <summary>
         /// 描述特性的类型信息。
@@ -34,27 +34,28 @@ namespace NKingime.Validate
         }
 
         /// <summary>
-        /// 验证实体是否满足规则。
+        /// 验证指定的值是否满足规则。
         /// </summary>
-        /// <param name="entity">实体实例。</param>
+        /// <param name="entity">需要验证的值。</param>
         /// <returns></returns>
-        public override ValidResult Validate(TEntity entity)
+        public override ValidResult Validate(object value)
         {
-            object value;
+            value.CheckNotNull(() => nameof(value));
+            var entity = (TEntity)value;
+            object propertyValue;
             string description;
             var validResult = new ValidResult();
             foreach (var typeValid in TypeValidSet)
             {
-                value = typeValid.Key.GetValue(entity);
+                propertyValue = typeValid.Key.GetValue(entity);
                 description = typeValid.Key.GetDescription(_descriptionType).IfNullOrWhiteSpace(typeValid.Key.Name);
-                validResult = typeValid.Value.Validate(value, typeValid.Key.Name, description, entity);
+                validResult = typeValid.Value.Validate(propertyValue, typeValid.Key.Name, description, entity);
                 //
                 if (!validResult.Result)
                 {
                     return validResult;
                 }
             }
-            validResult.SetResult(true);
             return validResult;
         }
     }
