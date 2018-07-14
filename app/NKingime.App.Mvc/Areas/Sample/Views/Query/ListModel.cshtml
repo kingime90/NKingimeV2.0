@@ -35,7 +35,7 @@
                     <td class="text-right text-nowrap">@user.Mobile</td>
                     <td class="text-nowrap">@user.Email</td>
                     <td class="text-right text-nowrap">@user.CreateTime</td>
-                    <td class="text-right text-nowrap">@user.LastUpdateTime.ToLongTime()</td>
+                    <td class="text-right text-nowrap">@user.LastUpdateTime.ToLongTimeFormat()</td>
                     <td class="text-center text-nowrap">
                         @Html.ActionLink(" ", "Edit", "Update", new { uid = user.Id, v = vid }, new { @title = "编辑", @class = "btn btn-default btn-xs glyphicon glyphicon-edit" })
                         @Html.ActionLink(" ", "Delete", "Update", new { uid = user.Id, v = vid }, new { @title = "删除", @class = "btn btn-default btn-xs glyphicon glyphicon-remove" })

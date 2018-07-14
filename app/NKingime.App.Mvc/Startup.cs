@@ -1,11 +1,12 @@
 ﻿using Owin;
 using Microsoft.Owin;
+using NKingime.App.Mvc;
 using NKingime.Core.Dependency;
 using NKingime.Core.Initialize;
 using NKingime.Entity.Extensions;
 using NKingime.Web.Mvc.Dependency;
 
-[assembly: OwinStartupAttribute(typeof(NKingime.App.Mvc.Startup))]
+[assembly: OwinStartupAttribute(typeof(Startup))]
 namespace NKingime.App.Mvc
 {
     public partial class Startup
