@@ -49,6 +49,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Mapper\UserAddressMapper.cs" />
+    <Compile Include="UserAddress.cs" />
     <Compile Include="Mapper\UserMapper.cs" />
     <Compile Include="Option\GenderOption.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

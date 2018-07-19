@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using NKingime.Core.Entity;
 using NKingime.App.Entity.Option;
 
@@ -13,6 +14,7 @@ namespace NKingime.App.Entity
         /// <summary>
         /// 用户名。
         /// </summary>
+        [Description("用户名")]
         public string Username { get; set; }
 
         /// <summary>
@@ -34,6 +36,11 @@ namespace NKingime.App.Entity
         /// 电子邮箱。
         /// </summary>
         public string Email { get; set; }
+
+        /// <summary>
+        /// 地址信息
+        /// </summary>
+        public virtual UserAddress Address { get; set; }
 
         /// <summary>
         /// 注册时间。
